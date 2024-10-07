@@ -1,0 +1,159 @@
+html {
+    font-size: 62.5%;
+}
+
+body {
+    max-width: 1280px;
+    margin: 0 auto;
+    background-color: #eee;
+    padding: 0 75px 30px 75px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    padding: 30px 1%;
+    top: 0;
+    background-color: #eee;
+    z-index: 10;
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        padding: 0 0 30px 0;
+    }
+
+    header {
+        padding: 30px 8%;
+    }
+}
+
+.header__left {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header__icon {
+    display: flex;
+    align-items: center;
+}
+
+.drawer__hidden {
+    display: none;
+}
+
+.drawer__open {
+    display: flex;
+    height: 32px;
+    width: 32px;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 100;
+    cursor: pointer;
+    background-color: rgb(63, 90, 242);
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px gray;
+}
+
+.drawer__open:hover {
+    opacity: 0.8;
+}
+
+.drawer__open span,
+.drawer__open span:before,
+.drawer__open span:after {
+    content: "";
+    display: block;
+    height: 1px;
+    width: 16px;
+    border-radius: 3px;
+    background: #fff;
+    transition: 0.2s;
+    position: absolute;
+}
+
+.drawer__open span:before {
+    bottom: 6px;
+    width: 10px;
+}
+
+.drawer__open span:after {
+    top: 6px;
+    width: 6px;
+}
+
+#drawer__input:checked~.drawer__open span {
+    background: rgba(255, 255, 255, 0);
+}
+
+#drawer__input:checked~.drawer__open span::before {
+    bottom: 0;
+    transform: rotate(45deg);
+    width: 16px;
+}
+
+#drawer__input:checked~.drawer__open span::after {
+    top: 0;
+    transform: rotate(-45deg);
+    width: 16px;
+}
+
+.nav__content {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    right: 100%;
+    z-index: 99;
+    background: #fff;
+    transition: 0.5s;
+}
+
+#drawer__input:checked~.drawer__open {
+    z-index: 103;
+}
+
+#drawer__input:checked~.nav__content {
+    z-index: 102;
+}
+
+.nav__list {
+    list-style: none;
+    height: 60%;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#drawer__input:checked~.nav__content {
+    right: 0;
+}
+
+.nav__item {
+    font-size: 2.8rem;
+    text-align: center;
+    padding-bottom: 12px;
+    display: block;
+}
+
+.nav__item:hover {
+    opacity: 0.8;
+}
+
+.nav__item-link {
+    color: rgb(63, 90, 242);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.header__logo {
+    font-size: 2.8rem;
+    color: rgb(63, 90, 242);
+    padding-left: 16px;
+    font-weight: bold;
+}
