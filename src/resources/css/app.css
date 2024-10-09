@@ -16,7 +16,7 @@ header {
     position: sticky;
     padding: 30px 1%;
     top: 0;
-    background-color: #eee;
+    background-color: #fff;
     z-index: 10;
 }
 
@@ -101,7 +101,7 @@ header {
     width: 16px;
 }
 
-.nav_contents {
+.contents {
     width: 100%;
     height: 100%;
     position: fixed;
@@ -116,11 +116,11 @@ header {
     z-index: 103;
 }
 
-#drawer__input:checked~.nav__content {
+#drawer__input:checked~.contents {
     z-index: 102;
 }
 
-.nav__list {
+.list {
     list-style: none;
     height: 60%;
     min-height: 300px;
@@ -130,7 +130,7 @@ header {
     align-items: center;
 }
 
-#drawer__input:checked~.nav__content {
+#drawer__input:checked~.contents {
     right: 0;
 }
 

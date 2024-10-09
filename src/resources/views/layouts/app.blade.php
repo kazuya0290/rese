@@ -18,7 +18,7 @@
             <div class="header__icon">
                 <input id="drawer__input" class="drawer__hidden" type="checkbox">
                 <label for="drawer__input" class="drawer__open"></label>
-                <nav class="nav_contents">
+                <nav class="contents">
                     <ul class="list">
                         <li class="menu"><a class="menu-link" href="/">Home</a></li>
                         @if (Auth::check())
