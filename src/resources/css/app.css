@@ -101,7 +101,7 @@ header {
     width: 16px;
 }
 
-.nav__content {
+.nav_contents {
     width: 100%;
     height: 100%;
     position: fixed;
@@ -134,26 +134,26 @@ header {
     right: 0;
 }
 
-.nav__item {
+.menu {
     font-size: 2.8rem;
     text-align: center;
     padding-bottom: 12px;
     display: block;
 }
 
-.nav__item:hover {
+.menu:hover {
     opacity: 0.8;
 }
 
-.nav__item-link {
-    color: rgb(63, 90, 242);
+.menu-link {
+    color: rgb(0, 38, 255);
     text-decoration: none;
     font-weight: bold;
 }
 
-.header__logo {
+.header_name {
     font-size: 2.8rem;
-    color: rgb(63, 90, 242);
+    color: rgb(0, 38, 255);
     padding-left: 16px;
     font-weight: bold;
 }

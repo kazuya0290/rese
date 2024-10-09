@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Shop_allController;
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,3 +15,6 @@ use App\Http\Controllers\Shop_allController;
 */
 
 Route::get('/', [Shop_allController::class, 'index']);
+
+Auth::routes();
+
