@@ -16,7 +16,7 @@ header {
     position: sticky;
     padding: 30px 1%;
     top: 0;
-    background-color: #fff;
+    background-color: #eee;
     z-index: 10;
 }
 
@@ -101,26 +101,26 @@ header {
     width: 16px;
 }
 
-.contents {
-    width: 100vw;
-    height: 100vh;
+.nav__content {
+    width: 100%;
+    height: 100%;
     position: fixed;
     top: 0;
-    right: -100%;
+    right: 100%;
     z-index: 99;
     background: #fff;
-    transition: 0.5s ease-in-out;
+    transition: 0.5s;
 }
 
 #drawer__input:checked~.drawer__open {
     z-index: 103;
 }
 
-#drawer__input:checked~.contents {
+#drawer__input:checked~.nav__content {
     z-index: 102;
 }
 
-.list {
+.nav__list {
     list-style: none;
     height: 60%;
     min-height: 300px;
@@ -130,30 +130,30 @@ header {
     align-items: center;
 }
 
-#drawer__input:checked~.contents {
+#drawer__input:checked~.nav__content {
     right: 0;
 }
 
-.menu {
+.nav__item {
     font-size: 2.8rem;
     text-align: center;
     padding-bottom: 12px;
     display: block;
 }
 
-.menu:hover {
+.nav__item:hover {
     opacity: 0.8;
 }
 
-.menu-link {
-    color: rgb(0, 38, 255);
+.nav__item-link {
+    color: rgb(63, 90, 242);
     text-decoration: none;
     font-weight: bold;
 }
 
-.header_name {
+.header__logo {
     font-size: 2.8rem;
-    color: rgb(0, 38, 255);
+    color: rgb(63, 90, 242);
     padding-left: 16px;
     font-weight: bold;
 }
