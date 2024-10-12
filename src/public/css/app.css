@@ -32,12 +32,22 @@ header {
 
 .header__left {
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 16px;
+}
+
+.header__right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-left: auto;
 }
 
 .header__icon {
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .drawer__hidden {
@@ -54,8 +64,11 @@ header {
     z-index: 100;
     cursor: pointer;
     background-color: rgb(63, 90, 242);
+    /* 初期の背景色（青） */
     border-radius: 5px;
     box-shadow: 2px 2px 5px gray;
+    transition: background-color 0.3s ease;
+    /* 背景色の変更にトランジション追加 */
 }
 
 .drawer__open:hover {
@@ -67,49 +80,64 @@ header {
 .drawer__open span:after {
     content: "";
     display: block;
-    height: 1px;
-    width: 16px;
+    height: 3px;
+    width: 20px;
     border-radius: 3px;
     background: #fff;
-    transition: 0.2s;
+    transition: background 0.3s ease, transform 0.3s ease;
     position: absolute;
 }
-
 .drawer__open span:before {
-    bottom: 6px;
-    width: 10px;
-}
+        bottom: 6px;
+        width: 20px;
+    }
 
 .drawer__open span:after {
     top: 6px;
-    width: 6px;
+    width: 20px;
 }
 
 #drawer__input:checked~.drawer__open span {
     background: rgba(255, 255, 255, 0);
 }
 
+#drawer__input:checked~.drawer__open {
+    background-color: red;
+}
 #drawer__input:checked~.drawer__open span::before {
     bottom: 0;
     transform: rotate(45deg);
-    width: 16px;
+    width: 20px;
 }
 
 #drawer__input:checked~.drawer__open span::after {
     top: 0;
     transform: rotate(-45deg);
-    width: 16px;
+    width: 20px;
 }
 
 .nav__content {
     width: 100%;
+    /* 横幅を画面全体に */
     height: 100%;
+    /* 縦幅を画面全体に */
     position: fixed;
     top: 0;
-    right: 100%;
+    /* 画面のトップに配置 */
+    left: 0;
+    /* 画面の左端に配置 */
     z-index: 99;
     background: #fff;
-    transition: 0.5s;
+    transform: scale(0);
+    /* ズームアウト状態で非表示 */
+    transform-origin: center;
+    /* 中央からズームイン */
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    /* ズームインとフェードインのアニメーション */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* 少し影をつけてメニューを浮き上がらせる */
+    opacity: 0;
+    /* 初期状態では透明に */
 }
 
 #drawer__input:checked~.drawer__open {
@@ -117,17 +145,21 @@ header {
 }
 
 #drawer__input:checked~.nav__content {
+    transform: scale(1);
+    /* ズームインで画面全体に表示 */
+    opacity: 1;
+    /* 表示 */
     z-index: 102;
 }
-
 .nav__list {
     list-style: none;
-    height: 60%;
-    min-height: 300px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 #drawer__input:checked~.nav__content {
@@ -136,11 +168,9 @@ header {
 
 .nav__item {
     font-size: 2.8rem;
+    margin-bottom: 20px;
     text-align: center;
-    padding-bottom: 12px;
-    display: block;
 }
-
 .nav__item:hover {
     opacity: 0.8;
 }

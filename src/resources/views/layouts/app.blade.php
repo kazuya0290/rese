@@ -17,7 +17,7 @@
         <div class="header__left">
             <div class="header__icon">
                 <input id="drawer__input" class="drawer__hidden" type="checkbox">
-                <label for="drawer__input" class="drawer__open"><span></span></label>
+                <label for="drawer__input" class="drawer__open" title="メニュー"><span></span></label>
                 <nav class="nav__content">
                     <ul class="nav__list">
                         <li class="nav__item"><a class="nav__item-link" href="/">Home</a></li>
