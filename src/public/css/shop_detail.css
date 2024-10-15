@@ -1,0 +1,133 @@
+.shop-detail-container {
+    display: flex;
+    justify-content: space-between;
+    /* 左右に分ける */
+    gap: 20px;
+    /* 左右の余白 */
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.back-button-container {
+    position: absolute;
+    left: 130px;
+    top: 120px;
+    /* アイコンと被らないように、topの値を調整 */
+    width: auto;
+    /* 必要なサイズに変更 */
+    margin-bottom: 10px;
+}
+
+.back-button {
+    background-color: white;
+    color: #000;
+    font-weight:bold;
+    border: 1px solid #ccc;
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+.back-button:hover {
+    background-color: #f0f0f0;
+}
+
+.shop-info {
+    flex: 1;
+    text-align: left;
+}
+
+.shop-info p{
+    font-weight: bold;
+}
+
+.shop-info h1 {
+    font-size: 28px;
+    margin-top: 50px;
+    margin-bottom: 10px;
+}
+
+.shop-image {
+    max-width: 100%;
+    /* 画像の幅をコンテナに合わせる */
+    height: auto;
+    /* アスペクト比を維持 */
+    object-fit: cover;
+    /* 画像を中央でトリミングして均一に表示 */
+    max-height: 300px;
+    /* 画像の最大高さを指定して統一感を出す */
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.shop-info p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.reservation-form {
+    width: 40%;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: -10px;
+}
+
+.reservation-form h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.reservation-form label {
+    font-size: 14px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.reservation-form input,
+.reservation-form button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.reservation-form button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.reservation-form button:hover {
+    background-color: #0056b3;
+}
+
+.reservation-details {
+    font-size: 1.5em;
+}
+
+.detail-box {
+    background-color: #808080;
+    /* グレーの背景色 */
+    border: 1px solid #ccc;
+    /* 薄いグレーの枠線 */
+    padding: 10px;
+    /* 内側の余白 */
+    border-radius: 5px;
+    /* 角を少し丸める */
+    margin-bottom: 10px;
+}
+
+.login-message {
+    font-size: 1.8em;
+    text-align: center;
+    margin: 20px 0;
+    margin-top: 150px;
+    font-weight: bold;
+}

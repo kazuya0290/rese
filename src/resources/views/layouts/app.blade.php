@@ -17,7 +17,7 @@
         <div class="header__left">
             <div class="header__icon">
                 <input id="drawer__input" class="drawer__hidden" type="checkbox">
-                <label for="drawer__input" class="drawer__open" title="メニュー"><span></span></label>
+               <label id="menuLabel" for="drawer__input" class="drawer__open" title="メニュー"><span></span></label>
                 <nav class="nav__content">
                     <ul class="nav__list">
                         <li class="nav__item"><a class="nav__item-link" href="/">Home</a></li>
@@ -35,6 +35,20 @@
         </div>
         @yield('header')
     </header>
+
+    <script>
+    const drawerInput = document.getElementById('drawer__input');
+    const menuLabel = document.getElementById('menuLabel');
+
+    drawerInput.addEventListener('change', function() {
+        if (this.checked) {
+            menuLabel.title = '閉じる';
+        } else {
+            menuLabel.title = 'メニュー'; 
+        }
+    });
+</script>
+
     <main>
         @yield('content')
     </main>
