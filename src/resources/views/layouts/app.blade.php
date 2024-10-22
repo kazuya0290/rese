@@ -17,12 +17,17 @@
         <div class="header__left">
             <div class="header__icon">
                 <input id="drawer__input" class="drawer__hidden" type="checkbox">
-               <label id="menuLabel" for="drawer__input" class="drawer__open" title="メニュー"><span></span></label>
+                <label id="menuLabel" for="drawer__input" class="drawer__open" title="メニュー"><span></span></label>
                 <nav class="nav__content">
                     <ul class="nav__list">
                         <li class="nav__item"><a class="nav__item-link" href="/">Home</a></li>
                         @if (Auth::check())
-                            <li class="nav__item"><a class="nav__item-link" href="/logout">Logout</a></li>
+                            <li class="nav__item">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                                <a class="nav__item-link" href="#" id="logout-link">Logout</a>
+                            </li>
                             <li class="nav__item"><a class="nav__item-link" href="/mypage">Mypage</a></li>
                         @else
                             <li class="nav__item"><a class="nav__item-link" href="/register">Registration</a></li>
@@ -37,17 +42,37 @@
     </header>
 
     <script>
-    const drawerInput = document.getElementById('drawer__input');
-    const menuLabel = document.getElementById('menuLabel');
+        const drawerInput = document.getElementById('drawer__input');
+        const menuLabel = document.getElementById('menuLabel');
+        const logoutLink = document.getElementById('logout-link');
 
-    drawerInput.addEventListener('change', function() {
-        if (this.checked) {
-            menuLabel.title = '閉じる';
-        } else {
-            menuLabel.title = 'メニュー'; 
-        }
-    });
-</script>
+        // メニュー表示の切り替え
+        drawerInput.addEventListener('change', function() {
+            if (this.checked) {
+                menuLabel.title = '閉じる';
+            } else {
+                menuLabel.title = 'メニュー';
+            }
+        });
+
+        // ログアウト確認ダイアログ
+        logoutLink.addEventListener('click', function(event) {
+            event.preventDefault(); // リンクのデフォルト動作を防止
+
+            // 確認ダイアログを表示
+            const result = confirm('ログアウトしますか？');
+
+            // 「はい」がクリックされた場合
+            if (result) {
+                alert('ログアウトしました'); // アラートメッセージを表示
+                document.getElementById('logout-form').submit(); // ログアウトフォームを送信
+            }
+        });
+
+        @if (session('login_success'))
+            alert('{{ session('login_success') }}');
+        @endif
+    </script>
 
     <main>
         @yield('content')

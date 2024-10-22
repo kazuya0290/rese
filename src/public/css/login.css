@@ -1,0 +1,98 @@
+.container {
+    max-width: 400px;
+    margin: 50px auto;
+    min-height: 270px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.title_header {
+    display: block;
+    font-weight: bold;
+    font-size: 18px;
+    color: #fff;
+    background-color: #007bff;
+    padding: 10px;
+    text-align: left;
+    border-radius: 5px 5px 0 0;
+}
+
+.title_body {
+    padding: 20px;
+    background-color: #fff;
+}
+
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 5px;
+    border: none;
+    border-bottom: 2px solid #000;
+    background-color: #f9f9f9;
+    outline: none;
+    border-radius: 0;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-bottom-color: #0056b3;
+}
+
+button[type="submit"] {
+    padding: 5px 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    font-size: 14px;
+    float: right;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.invalid-feedback {
+    color: #ff0000;
+    font-size: 15px;
+        /* バリデーションメッセージのフォントサイズ */
+        text-align: center;
+        margin-top: 5px;
+        /* テキストボックスとの間にスペースを追加 */
+        display: block;
+        /* メッセージをブロック表示 */
+        clear: both;
+        /* 兄弟要素の影響を受けないようにする */
+        position: relative;
+        /* 位置を相対的にする */
+        top: 0;
+        /* 上に寄せる */
+}
+
+.input-with-icon {
+    display: flex;
+    /* アイコンとテキストボックスを横並びに */
+    align-items: center;
+    /* 垂直方向の中央揃え */
+    margin-bottom: 1rem;
+    /* テキストボックスとバリデーションメッセージの間にスペース */
+}
+
+.input-with-icon .icon {
+    margin-right: 10px;
+    /* アイコンとテキストボックスの間にスペースを追加 */
+    font-size: 2em;
+    /* アイコンのサイズを大きく設定 */
+    flex-shrink: 0;
+    /* アイコンが縮まらないようにする */
+}
+
+.input-with-icon input {
+    flex: 1;
+    /* テキストボックスが残りのスペースを占有する */
+    padding-left: 0;
+    /* 左側のパディングをリセット */
+    margin-bottom: 0;
+    /* 下部マージンをリセットして、スペースの調整を明確に */
+}

@@ -19,4 +19,14 @@ class Shop extends Model
     {
         return $this->belongsTo(Genre::class);
     }
+
+    public function users()
+    {
+    return $this->belongsToMany(User::class);
+    }
+    
+    public function favoredByUsers()
+    {
+    return $this->belongsToMany(User::class, 'favorites');
+    }
 }

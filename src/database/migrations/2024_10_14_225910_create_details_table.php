@@ -15,12 +15,12 @@ class CreateDetailsTable extends Migration
 {
     Schema::create('details', function (Blueprint $table) {
         $table->id();
-        $table->unsignedBigInteger('shop_id'); // お店に紐づく
-        $table->string('name'); // お店の名前
-        $table->text('description'); // お店の説明
-        $table->string('image'); // お店の画像URL
+        $table->unsignedBigInteger('shop_id'); 
+        $table->string('name'); 
+        $table->text('description'); 
+        $table->string('image'); 
         $table->timestamps();
-        $table->foreign('shop_id')->references('id')->on('shops')->onDelete('cascade'); // 外部キー制約
+        $table->foreign('shop_id')->references('id')->on('shops')->onDelete('cascade');
     });
 }
 

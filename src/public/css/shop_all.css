@@ -143,6 +143,8 @@
     cursor: pointer;
     display: inline-block;
     margin-left: 10px;
+    position: relative;
+    /* アニメーションのための相対位置指定 */
 }
 
 .favorite-icon {
@@ -153,6 +155,17 @@
 
 .favorite-icon.active {
     color: red;
+    animation: glow 0.5s ease forwards;
+    /* アニメーションを追加 */
+}
+
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 10px red, 0 0 20px red;
+    }
+    100% {
+        text-shadow: 0 0 20px red, 0 0 30px red;
+    }
 }
 
 .favorite-button.disabled .favorite-icon {

@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -45,7 +45,7 @@ class User extends Authenticatable
     // お気に入り店舗とのリレーション
     public function favorites()
     {
-        return $this->belongsToMany(Shop::class, 'favorites');
+    return $this->belongsToMany(Shop::class, 'shop_user');
     }
 
     // 予約とのリレーション (ユーザーは複数の予約を持つ)

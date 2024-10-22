@@ -63,7 +63,7 @@
 }
 
 .shop-info p {
-    font-size: 16px;
+    font-size: 15px;
     color: #666;
     margin-bottom: 10px;
 }
@@ -130,4 +130,29 @@
     margin: 20px 0;
     margin-top: 150px;
     font-weight: bold;
+}
+
+.error-messages {
+    font-size: 1.9em;
+    font-weight:bold;
+    color: #ff0000;
+    text-align:center;
+}
+
+.save-image-container {
+    position: absolute;
+    right: 770px;
+    bottom: 23px;
+}
+
+.save-image-container button {
+    padding: 8px 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.save-image-container button:hover {
+    background-color: #45a049;
 }

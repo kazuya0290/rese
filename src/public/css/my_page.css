@@ -1,0 +1,493 @@
+/* 日付日時変更と人数変更のラベルとボックスを横並びに */
+.reservation-actions label {
+    display: inline-block;
+    width: auto;
+    /* ラベルの幅を自動に */
+    text-align: left;
+    margin-right: 10px;
+}
+
+.reservation-actions input {
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.reservation-item form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.reservation-item .reservation-actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /* ラベルとボックスの並びを中央揃え */
+    margin-top: 10px;
+    width: 100%;
+    /* フォーム全体の幅を指定 */display: flex;
+        flex-direction: row;
+        justify-content: center;
+        /* ここを中央揃えに */
+        align-items: center;
+        /* 垂直方向の中央揃え */
+        margin-top: 10px;
+        width: 100%;
+        /* フォーム全体の幅を指定 */
+    }
+
+/* ラベルと入力フィールドを揃えるための調整 */
+.reservation-item .reservation-actions label,
+.reservation-item .reservation-actions input {
+    margin-bottom: 10px;
+}
+
+.reservation-actions button {
+    margin-left: 10px;
+    /* ボタンの左側にスペースを追加 */
+    margin: 0 auto ;
+    /* ボタンを中央に配置 */
+}
+
+/* ラベルとボックスを中央揃えにしつつ、左に配置 */
+.reservation-actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /* 中央寄せ */
+    align-items: center;
+    /* 垂直方向の中央揃え */
+    margin-top: 10px;
+    width: 100%;
+    /* フォーム全体の幅を指定 */
+
+}
+
+/* その他既存のスタイル */
+.home-form__heading {
+    font-size: 40px;
+    text-align: center;
+}
+
+.form-title {
+    margin-bottom:-10px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.left-panel {
+    width: 30%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.right-panel {
+    width: 65%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.right-panel img.shop-icon {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.reservation-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.reservation-actions button {
+    margin-left: 5px;
+    /* ボタンに少しスペースを追加 */
+}
+
+.reservation-actions label {
+    display: inline-block;
+    width: 120px;
+    /* ラベルの幅を統一 */
+    text-align: right;
+    margin-right: 10px;
+    margin-top: 10px;
+    /* マージンをリセット */
+    font-weight: bold;
+    font-size: 17px;
+    line-height: 30px;
+    /* インプットフィールドの高さに合わせる */
+}
+
+.reservation-actions input {
+    flex: 1;
+    padding: 5px;
+    max-width: 250px;
+    height: 30px;
+    /* 同じ高さに設定 */
+}
+
+.reservation-item {
+    background-color: #007bff;
+    /* 青色の背景 */
+    color: #fff;
+    clear: both;
+    padding: 20px;
+    min-height: 400px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    position: relative;
+    transition: transform 0.2s ease;
+}
+
+.reservation-item:hover {
+    transform: scale(1.05);
+}
+
+.reservation-item p {
+    font-size: 25px;
+    /* 予約詳細のフォントサイズを調整 */
+    margin: 10px 0;
+}
+
+.reservation-item input,
+.reservation-item button {
+    margin-top: 10px;
+}
+
+.reservation-container p {
+    margin: 10px 0;
+    /* 上下のマージンを統一 */
+    font-size: 16px;
+    /* フォントサイズを統一 */
+    line-height: 1.5;
+    /* 行間を統一 */
+    color: #333;
+    /* 文字色を設定（任意） */
+}
+
+/* 必要に応じて追加のスタイルを設定 */
+.reservation-details {
+    font-weight: bold;
+    /* 予約詳細のフォントを太字に */
+    font-size: 50px;
+}
+
+.reservation-container h3 {
+    font-size: 24px;
+    /* タイトルのフォントサイズを設定 */
+    margin: 10px 0;
+    /* タイトルの上下マージンを設定 */
+}
+
+.left-panel h3{
+    font-size: 27px;
+    /* 予約状況とお気に入り店舗見出しのフォントサイズを設定 */
+}
+
+.right-panel h3 {
+    text-align: left;
+    font-size: 27px;
+}
+
+.favorite_title {
+    text-align: left;
+    margin-left:40px;
+    font-size: 27px;
+}
+.material-symbols-outlined {
+    font-size: 40px !important;
+    /* アイコンのサイズを調整 */
+    margin-right: 8px;
+    /* アイコンとテキストの間にマージンを追加 */
+    vertical-align: middle;
+}
+
+.input-container {
+    position: relative;
+    font-weight: bold !important;
+    /* 太字を強制 */
+}
+
+.input-container input {
+    padding-right: 30px;
+    /* 右側にスペースを追加 */
+    font-weight: normal;
+    /* ここは通常で問題ありません */
+    font-size: 16px;
+    /* 入力部分のフォントサイズを変更 */
+}
+
+.unit {
+    font-weight: bold;
+    /* 太字を強制 */
+    font-size: 17px;
+    /* フォントサイズを変更 */
+    /* 他のスタイルをここに追加しても良い */
+}
+
+.cancel-button {
+    background-color: red;
+    /* 背景色を赤に */
+    border: 2px solid red;
+    /* 赤いボーダーを追加 */
+    color: white;
+    /* 文字色を白に */
+    font-size: 50px;
+    /* フォントサイズを大きく */
+    border-radius: 50%;
+    /* ボタンを丸くする */
+    width: 40px;
+    /* ボタンの幅 */
+    height: 40px;
+    /* ボタンの高さ */
+    cursor: pointer;
+    /* カーソルをポインタに */
+    position: absolute;
+    /* 絶対位置に設定 */
+    top: 10px;
+    /* 上からの距離 */
+    right: 10px;
+    /* 右からの距離 */
+    display: flex;
+    /* フレックスボックスを使用 */
+    align-items: center;
+    /* 垂直方向に中央揃え */
+    justify-content: center;
+    /* 水平方向に中央揃え */
+}
+
+.cancel-button:hover {
+    background-color: darkred;
+    /* ホバー時の背景色 */
+    color: white;
+    /* ホバー時の文字色 */
+}
+
+@media (max-width: 768px) {
+    .shop-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .shop-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+.header__left {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.header__right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-left: auto;
+}
+
+.header__sort {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+.select-box__label {
+    display: inline-block;
+}
+
+.select-box__item {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    height: 42px;
+    box-sizing: border-box;
+    margin-right: 10px;
+    width: 110px;
+}
+
+.search-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+.search-form {
+    padding: 8px 8px 8px 40px;
+    height: 40px;
+    width: 400px;
+    border: none;
+    box-sizing: border-box;
+    background-color: transparent;
+}
+
+.search-icon {
+    position: absolute;
+    left: 10px;
+    font-size: 24px;
+    color: #888;
+}
+
+.shop-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    justify-content: flex-end;
+    padding: 20px;
+}
+
+.shop-item {
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+    margin-left: 20px;
+    margin-top: -20px;
+    margin-bottom:20px;
+}
+
+.shop-item:hover {
+    transform: scale(1.05);
+}
+
+.shop-image {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid #ddd;
+}
+
+.shop-details {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.shop-info {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.shop-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.shop-details h3 {
+    font-size: 1.9em;
+    margin-bottom: 10px;
+}
+
+.shop-details p {
+    font-size: 1.2em;
+    color: #666;
+}
+
+.details-button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 10px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+.details-button:hover {
+    background-color: #0056b3;
+}
+
+.favorite-button {
+    cursor: pointer;
+    display: inline-block;
+    margin-left: 10px;
+    position: relative;
+    /* アニメーションのための相対位置指定 */
+}
+
+.favorite-icon {
+    font-size: 40px !important;
+    color: #ccc;
+    transition: color 0.3s ease;
+}
+
+.favorite-icon.active {
+    color: red;
+    animation: glow 0.5s ease forwards;
+    /* アニメーションを追加 */
+}
+
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 10px red, 0 0 20px red;
+    }
+
+    100% {
+        text-shadow: 0 0 20px red, 0 0 30px red;
+    }
+}
+
+.favorite-button.disabled .favorite-icon {
+    color: #ccc;
+    cursor: not-allowed;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 500px;
+    text-align: center;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.generate-qr-code {
+    display: block;
+    margin: 0 auto;
+}
+
+.qr-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
