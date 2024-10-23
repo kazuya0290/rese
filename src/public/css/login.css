@@ -1,11 +1,13 @@
 .container {
     max-width: 400px;
     margin: 50px auto;
-    min-height: 270px;
+    min-height: 230px;
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 .title_header {

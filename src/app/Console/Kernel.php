@@ -4,6 +4,9 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use App\Models\Reservation;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ReservationReminderMail;
 
 class Kernel extends ConsoleKernel
 {
@@ -15,7 +18,17 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+    // 毎日朝6時に実行
+    $schedule->call(function () {
+        $today = now()->format('Y-m-d');
+
+        $upcomingReservations = Reservation::whereDate('date', $today)->get();
+        
+        // 予約がある場合にメール送信
+        foreach ($upcomingReservations as $reservation) {
+            Mail::to($reservation->user->email)->send(new ReservationReminderMail($reservation));
+            }
+        })->dailyAt('06:00');
     }
 
     /**

@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ReservationRequest;
 use App\Models\Reservation;
 use App\Models\Favorite;
-use SimpleSoftwareIO\QrCode\Facades\QrCode; // QRコード生成ライブラリをインポート
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ReservationReminderMail;
 
 class ReservationController extends Controller
 {
