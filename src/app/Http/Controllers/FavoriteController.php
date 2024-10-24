@@ -1,7 +1,11 @@
 <?php
 
+namespace App\Http\Controllers;
+
 use App\Models\Favorite;
 use App\Models\Shop;
+use Illuminate\Support\Facades\Auth; 
+use App\Http\Controllers\Controller; 
 
 class FavoriteController extends Controller
 {
@@ -34,9 +38,7 @@ class FavoriteController extends Controller
     
     public function destroy($id)
     {
-    // お気に入りの店舗を削除するロジックをここに記述
-    // 例えば、Userのfavoritesリレーションを利用して削除することができます。
-
+    
     $user = Auth::user();
     $user->favorites()->detach($id); // ここでお気に入りを削除
 

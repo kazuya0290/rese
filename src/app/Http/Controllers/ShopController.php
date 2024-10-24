@@ -16,6 +16,9 @@ class ShopController extends Controller
 
         // 店舗詳細画面を返す
         return view('shops.show', compact('shop'));
+
+        $shop = Shop::with('reviews.user')->find($id); // 口コミを含めて取得
+        return view('shop_detail', compact('shop'));
     }
 
     // お気に入りの登録/解除をトグルするメソッド

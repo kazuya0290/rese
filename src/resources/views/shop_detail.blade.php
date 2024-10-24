@@ -18,7 +18,18 @@
     </div>
    
     <div class="shop-info">
-        <h1>{{ $shop->name }}</h1>
+        <h1>{{ $shop->name }}
+            <span class="shop-rating">
+            @for ($i = 0; $i < 5; $i++)
+                @if ($i < round($shop->averageRating()))
+                    ★
+                @else
+                    ☆
+                @endif
+            @endfor
+            <span class="review-count" id="open-review-modal" style="cursor: pointer;">({{ $shop->reviewsCount() }}件の口コミ)</span>
+            </span>
+        </h1>
         <img src="{{ $shop->image }}" alt="{{ $shop->name }}" class="shop-image">
         <p>#{{ $shop->area->area }} #{{ $shop->genre->genre }}</p>
         <p>{{ $shop->description }}</p>
@@ -35,11 +46,11 @@
             <input type="date" name="date" id="date" value="{{ old('date') }}" title="来店予約日を入力してください" required>
 
             @if ($errors->any())
-            <div class="error-messages">
-                @foreach ($errors->all() as $error)
-                    <p>{{ $error }}</p>
-                @endforeach
-            </div>
+                <div class="error-messages" style="color: red; font-weight: bold;">
+                    @foreach ($errors->all() as $error)
+                        <p>{{ $error }}</p>
+                    @endforeach
+                </div>
             @endif
 
             <label for="time">Time</label>
@@ -55,9 +66,8 @@
                 <p>Number: <span id="selected-number">{{ old('number_of_people') ? old('number_of_people') . ' 人' : '' }}</span></p>
             </div>
 
-            
             <button type="submit" class="reservation-submit">通常予約する</button>
-            <button id="stripe-button" type="submit" class="reservation-submit">Stripeで予約する</
+            <button id="stripe-button" type="button" class="reservation-submit">Stripeで予約する</button>
         </form>
         @endauth
 
@@ -68,13 +78,44 @@
         @endguest
     </div>
 </div>
-@endsection
 
+<div id="review-modal" class="modal">
+    <div class="modal-content">
+        <span class="close" style="cursor:pointer;">&times;</span>
+        <h2>口コミ一覧</h2>
+        <div class="review-list">
+            @foreach($shop->reviews as $review)
+                <div class="review-item">
+                    <p><strong>{{ $review->user->name }}</strong> - {{ $review->created_at->format('Y年m月d日') }}</p>
+                    <p>{{ $review->comment }}</p>
+                </div>
+            @endforeach
+        </div>
+    </div>
+</div>
+@endsection
 
 <script src="https://checkout.stripe.com/checkout.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        
+    const reviewModal = document.getElementById("review-modal");
+    const openModalBtn = document.getElementById("open-review-modal");
+    const closeModalBtn = document.getElementsByClassName("close")[0];
+
+    openModalBtn.onclick = function() {
+        reviewModal.style.display = "block";
+    }
+
+    closeModalBtn.onclick = function() {
+        reviewModal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == reviewModal) {
+            reviewModal.style.display = "none";
+        }
+    }
+
         const dateInput = document.querySelector('input[name="date"]');
         dateInput.addEventListener('input', function() {
             let selectedDate = new Date(this.value);
