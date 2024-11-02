@@ -11,9 +11,8 @@
 <div class="container">
     <div class="title_header">{{ __('Registration') }}</div>
     <div class="title_body">
-        <form id="register_form" action="{{ route('register') }}" method="POST">
+        <form method="POST" action="{{ route('register') }}" id="register_form">
             @csrf
-
             <!-- Name Field -->
             <div class="row_mb-3 input-with-icon">
                 <span class="material-symbols-outlined">person</span>

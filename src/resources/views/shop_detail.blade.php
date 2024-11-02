@@ -12,8 +12,14 @@
     </div>
    
     <div class="save-image-container">
-        <a href="{{ asset($shop->image) }}" download="{{ $shop->name }}.jpg">
-            <button type="button">画像を保存する</button>
+    @php
+        $imageUrl = $shop->image;
+        if (!str_starts_with($imageUrl, 'http')) {
+            $imageUrl = Storage::url($imageUrl);
+        }
+    @endphp
+        <a href="{{ $imageUrl }}" download="{{ $shop->name }}.jpg">
+        <button type="button">画像を保存する</button>
         </a>
     </div>
    
@@ -30,7 +36,14 @@
             <span class="review-count" id="open-review-modal" style="cursor: pointer;">({{ $shop->reviewsCount() }}件の口コミ)</span>
             </span>
         </h1>
-        <img src="{{ $shop->image }}" alt="{{ $shop->name }}" class="shop-image">
+         @php
+        // 画像のURLを判定
+        $imageUrl = $shop->image;
+        if (!str_starts_with($imageUrl, 'http')) {
+            $imageUrl = Storage::url($imageUrl); // ローカルストレージの場合
+        }
+        @endphp
+        <img src="{{ $imageUrl }}" alt="{{ $shop->name }}" class="shop-image">
         <p>#{{ $shop->area->area }} #{{ $shop->genre->genre }}</p>
         <p>{{ $shop->description }}</p>
     </div>
@@ -45,9 +58,9 @@
             <label for="date">Date</label>
             <input type="date" name="date" id="date" value="{{ old('date') }}" title="来店予約日を入力してください" required>
 
-            @if ($errors->any())
+            @if ($errors->has('date'))
                 <div class="error-messages" style="color: red; font-weight: bold;">
-                    @foreach ($errors->all() as $error)
+                    @foreach ($errors->get('date') as $error)
                         <p>{{ $error }}</p>
                     @endforeach
                 </div>
@@ -56,8 +69,24 @@
             <label for="time">Time</label>
             <input type="time" name="time" id="time" value="{{ old('time') }}" title="来店時間を入力してください" required>
 
+             @if ($errors->has('time'))
+                <div class="error-messages" style="color: red; font-weight: bold;">
+                    @foreach ($errors->get('time') as $error)
+                        <p>{{ $error }}</p>
+                    @endforeach
+                </div>
+            @endif
+
             <label for="number_of_people">Number</label>
             <input type="number" name="number_of_people" id="number_of_people" value="{{ old('number_of_people') }}" required min="1" max="20" title="来店人数を入力してください">
+            
+              @if ($errors->has('number_of_people'))
+                <div class="error-messages" style="color: red; font-weight: bold;">
+                    @foreach ($errors->get('number_of_people') as $error)
+                        <p>{{ $error }}</p>
+                    @endforeach
+                </div>
+              @endif
 
             <div class="reservation-details detail-box">
                 <p>Shop: <span>{{ $shop->name }}</span></p>

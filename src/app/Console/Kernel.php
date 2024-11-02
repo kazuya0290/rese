@@ -18,17 +18,15 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-    // 毎日朝6時に実行
     $schedule->call(function () {
         $today = now()->format('Y-m-d');
 
         $upcomingReservations = Reservation::whereDate('date', $today)->get();
         
-        // 予約がある場合にメール送信
         foreach ($upcomingReservations as $reservation) {
             Mail::to($reservation->user->email)->send(new ReservationReminderMail($reservation));
             }
-        })->dailyAt('21:53');
+        })->dailyAt('06:00');
     }
 
     /**

@@ -15,7 +15,7 @@ class ReservationRequest extends FormRequest
      */
     public function authorize()
     {
-        return auth()->check(); // ログインユーザーのみ予約可能
+        return auth()->check(); 
     }
 
     /**
@@ -26,13 +26,23 @@ class ReservationRequest extends FormRequest
     public function rules()
     {
         return [
-            'shop_id' => 'required|exists:shops,id',
-            'date' => 'required|date',
+            'shop_id' => 'required',
+            'date' => 'required',
             'time' => 'required', 
-            'number_of_people' => 'required|integer|min:1|max:20',
+            'number_of_people' => 'required|integer|min:1',
         ];
     }
 
+    public function messages()
+    {
+        return [
+            'date.required' => 'ご来店の日付を入力してください',
+            'time.required' => 'ご来店時間を設定してください',
+            'number_of_people.required' => 'ご来店人数を入力してください',
+            'number_of_people.integer' => '数値で入力してください',
+            'number_of_people.min' => '来店人数は1人以上入力してください'
+        ];
+    }
     /**
      * カスタムバリデーションを追加する
      */

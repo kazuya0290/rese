@@ -19,7 +19,7 @@
                     <h3> 
                         <span class="material-symbols-outlined" style="font-size: 24px; vertical-align: middle; margin-right: 8px;">restaurant</span> 
                         予約{{ $index + 1 }} 
-                        <form action="{{ route('reservations.destroy', $reservation->id) }}" method="POST" style="display: inline;" title="予約キャンセル" onsubmit="return handleCancel(event, '{{ $reservation->shop->name }}');"> 
+                        <form action="{{ route('reservations.destroy', $reservation->id) }}" method="POST" style="display: inline;" title="予約キャンセル・削除" onsubmit="return handleCancel(event, '{{ $reservation->shop->name }}');"> 
                             @csrf 
                             @method('DELETE') 
                             <button type="submit" class="cancel-button">×</button> 
@@ -48,7 +48,7 @@
                             <input type="number" id="number_of_people_{{ $index }}" name="number_of_people" value="{{ $reservation->number_of_people }}" min="1" max="20" placeholder="人数" title="来店人数を変更する場合は人数を変更してください"> 
                             <span class="unit">人</span> 
                         </div> 
-                        <button id="reservation-update-button_{{ $index }}" type="submit" disabled title="予約内容の変更を行ってください">予約変更</button> 
+                        <button id="reservation-update-button_{{ $index }}" type="submit" disabled title="予約内容の変更を行ってください" class="reservation-update-button">予約変更</button> 
                     </form> 
                 </div> 
             @endforeach 
@@ -138,7 +138,7 @@
     const selectedDateTime = new Date(timeInput.value);
     
     // 時間が変更されたかを個別に確認（同日でも時間のみの変更が可能になる）
-    const timeChanged = originalDateTime.getTime() !== selectedDateTime.getTime();
+      const timeChanged = originalDateTime.getTime() !== selectedDateTime.getTime();
 
     if (isPastDate) {
         updateButton.setAttribute('title', '過去の日付、または予約当日の過去の時刻が設定されています');
@@ -184,8 +184,8 @@
     });
 
     function handleCancel(event, shopName) {
-        if (confirm('本当にキャンセルしますか？')) {
-            alert(`${shopName}の予約キャンセルが完了しました`);
+        if (confirm('本当にキャンセルまたは削除しますか？')) {
+            alert(`${shopName}の予約キャンセル・削除が完了しました`);
             return true;
         } else {
             event.preventDefault();

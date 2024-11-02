@@ -21,7 +21,17 @@
                 <nav class="nav__content">
                     <ul class="nav__list">
                         <li class="nav__item"><a class="nav__item-link" href="/">Home</a></li>
-                        @if (Auth::check())
+                         @if (Auth::guard('representative')->check())
+                            <!-- 店舗代表者のメニュー -->
+                            <li class="nav__item"><a class="nav__item-link" href="{{ route('representative.index') }}">Reservation List</a></li>
+                        <li class="nav__item">
+                            <form id="logout-form" action="{{ route('representative.logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                            <a class="nav__item-link" href="#" id="logout-link">Logout</a>
+                        </li>
+                        @elseif (Auth::check())
+                            <!-- 通常ユーザーのメニュー -->
                             <li class="nav__item">
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf
@@ -30,6 +40,7 @@
                             </li>
                             <li class="nav__item"><a class="nav__item-link" href="/mypage">Mypage</a></li>
                         @else
+                            <!-- 未ログインユーザーのメニュー -->
                             <li class="nav__item"><a class="nav__item-link" href="/register">Registration</a></li>
                             <li class="nav__item"><a class="nav__item-link" href="/login">Login</a></li>
                         @endif

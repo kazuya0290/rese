@@ -491,3 +491,37 @@
     align-items: center;
     margin-top: 10px;
 }
+
+.reservation-update-button {
+    background-color: orange;
+    /* オレンジ色 */
+    color: white;
+    /* 文字色は白 */
+    font-weight: bold;
+    /* 文字を太字にする */
+    border: none;
+    /* ボーダーなし */
+    padding: 10px 15px;
+    /* パディングを追加 */
+    border-radius: 5px;
+    /* 角を丸める */
+    cursor: pointer;
+    /* カーソルをポインターに */
+    transition: background-color 0.3s, opacity 0.3s;
+    /* ホバー時の色変化にアニメーションを追加 */
+}
+
+.reservation-update-button:hover {
+    background-color: darkorange;
+    /* ホバー時に色を濃くする */
+}
+
+/* disabled状態のスタイル */
+.reservation-update-button:disabled {
+    background-color: rgba(255, 165, 0, 0.5);
+    /* 半透明のオレンジ色 */
+    color: rgba(255, 255, 255, 0.5);
+    /* 半透明の白色 */
+    cursor: not-allowed;
+    /* カーソルを変更 */
+}

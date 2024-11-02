@@ -2,16 +2,16 @@
 
 @section('css')
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
-<link rel="stylesheet" href="{{ asset('css/login.css') }}">
+<link rel="stylesheet" href="{{ asset('css/representative_login.css') }}">
 @endsection
 
 @section('content')
 <div class="container">
-    <div class="title_header">{{ __('Login') }}</div>
+    <div class="title_header">{{ __('Representative_Login') }}</div>
     <div class="title_body">
-        <form id="login-form" method="POST" action="{{ route('login') }}">
+        <form id="representative_login-form" method="POST" action="{{ route('representative.login') }}">
             @csrf
-            
+            <!-- メールアドレスのフィールド -->
             <div class="row_mb-3 input-with-icon">
                 <span class="icon material-symbols-outlined">mail</span>
                 <input id="email" type="email" placeholder="Email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email" autofocus>
@@ -22,7 +22,7 @@
                 </div>
             @enderror
 
-            
+            <!-- パスワードのフィールド -->
             <div class="row_mb-3 input-with-icon">
                 <span class="icon material-symbols-outlined">lock</span>
                 <input id="password" type="password" placeholder="Password" class="form-control @error('password') is-invalid @enderror" name="password" title="パスワード" autocomplete="current-password">
@@ -34,43 +34,16 @@
             @enderror
 
             <div class="row mb-0">
-                <button id="login" type="submit" class="btn btn-primary" name="btn-login">
+                <button id="representative_login" type="submit" class="btn btn-primary" name="btn-login">
                     {{ __('ログイン') }}
                 </button>
             </div>
         </form>
     </div>
 </div>
-    @guest
-    <p class="admin-message">
-    ※管理者の方は<a href="{{ route('admin.index') }}" onclick="return checkAdminPasscode()">こちら</a>
+ @guest
+<p class="login-message">
+※利用者の方は<a href="{{ route('login') }}">こちら</a>
 </p>
-
-    <p class="r-login-message">
-    ※店舗代表者の方は<a href="{{ route('representative.login') }}">こちら</a>
-    </p>
-    @endguest
-
-   <script>
-    
-    function checkAdminPasscode() {
-
-        const isAuthenticated = sessionStorage.getItem("admin_authenticated");
-
-       
-        if (!isAuthenticated) {
-            const passcode = prompt("管理者パスコードを入力してください");
-
-            if (passcode === "admin") {  
-                sessionStorage.setItem("admin_authenticated", true);
-                return true;  
-            } else {
-                alert("パスコードが違います");
-                return false; 
-            }
-        }
-        return true;  
-    }
-</script>
+@endguest
 @endsection
-

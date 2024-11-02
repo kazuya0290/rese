@@ -1,0 +1,120 @@
+/* 全体のスタイル */
+.container {
+    max-width: 1200px;
+    /* 最大幅を指定 */
+    margin: 0 auto;
+    /* 中央揃え */
+    padding: 20px;
+    /* パディング */
+}
+
+/* タイトルのスタイル */
+h1 {
+    text-align: center;
+    /* 中央揃え */
+    margin-bottom: 20px;
+    /* 下に余白 */
+    font-size: 40px;
+}
+
+h2 {
+    text-align: center;
+    /* 中央揃え */
+    margin-bottom: 20px;
+    /* 下に余白 */
+    font-size: 30px;
+}
+
+/* カードのスタイル */
+.card {
+    margin-bottom: 20px;
+    /* カード間の余白 */
+}
+
+.card-header {
+    text-align:center;
+    margin-top: 50px;
+    font-size: 30px;
+    font-weight: bold;
+}
+/* フォームのスタイル */
+.form-group {
+    margin-bottom: 15px;
+    /* フォーム間の余白 */
+}
+
+/* ボタンのスタイル */
+.input-btn {
+    width: 20%;
+    margin-left: 430px;
+    /* ボタンを全幅に */
+}
+
+/* テーブルのスタイル */
+.table {
+    width: 100%;
+    /* テーブルを全幅に */
+    margin-top: 20px;
+    /* テーブル上の余白 */
+}
+
+/* テーブルの背景色と上下線 */
+.table-bordered {
+    border-top: 2px solid #000;
+    border-bottom: 2px solid #000;
+    /* 上下に黒い線を引く */
+}
+
+.table thead th {
+    background-color: #2196f3;
+    /* 青色 */
+    color: #000000;
+    /* 白色の文字 */
+    text-align: center;
+    padding: 15px;
+    font-size: 1.9em;
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: #2196f3;
+    /* 薄い青 */
+}
+
+.table tbody tr:nth-child(odd) {
+    background-color: #ffffff;
+    /* 白 */
+}
+
+.table th,
+.table td {
+    text-align: center;
+    /* テキストを中央揃え */
+    padding: 15px;
+    /* セル内のパディング */
+    font-size: 1.9em;
+    /* フォントサイズを大きく */
+}
+
+/* ページネーションのスタイル */
+.pagination {
+    justify-content: center;
+    /* 中央揃え */
+    margin-top: 20px;
+    /* 上の余白 */
+}
+
+.input-file-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.input-file {
+    margin-bottom: 10px;
+}
+
+.alert {
+    text-align: center;
+}
