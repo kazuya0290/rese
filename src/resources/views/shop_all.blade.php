@@ -31,6 +31,9 @@
 @endsection
 
 @section('content')
+@if (Auth::guard('representative')->check())
+<h2 class="home-form__heading">{{ $representative->name }}さんお疲れ様です！！</h2>
+@endif
     <div class="shop-list">
         @foreach ($shops as $shop)
             <div class="shop-item">

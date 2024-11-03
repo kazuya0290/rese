@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Area;
 use App\Models\Genre;
 use App\Models\Shop;
+use App\Models\Representative;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth; // Authファサードの追加
 
@@ -15,7 +16,7 @@ class ShopAllController extends Controller
     // エリアとジャンルの全データを取得
     $areas = Area::all();
     $genres = Genre::all();
-
+    $representative = Auth::guard('representative')->user(); // ここを修正
     // ショップのクエリを作成
     $query = Shop::query();
 
@@ -50,7 +51,7 @@ class ShopAllController extends Controller
     $favorites = auth()->check() ? auth()->user()->favorites->pluck('id')->toArray() : []; 
 
     // ビューへ渡す変数
-    return view('shop_all', compact('shops', 'areas', 'genres', 'favorites'));
+    return view('shop_all', compact('shops', 'areas', 'genres', 'favorites','representative'));
 }
 
 

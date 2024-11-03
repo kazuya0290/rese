@@ -66,6 +66,7 @@ h2 {
     /* ボタンの角を丸くする */
     cursor: pointer;
     /* カーソルをポインターに */
+    margin-left: 500px;
 }
 
 /* ボタンのホバー効果 */
@@ -145,7 +146,7 @@ h2 {
 }
 
 .send-email-btn {
-    margin-top: 60px;
+    margin-top: 55px;
     /* 「メールを送信」ボタンの上にスペースを追加 */
 }
 
@@ -156,3 +157,28 @@ h2 {
     background-color: #808080;
     margin: 40px auto;
 }
+
+.error-messages {
+    color: #ff0000;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 5px;
+    display: block;
+    clear: both;
+    position: relative;
+    top: -20px;
+}
+
+.error-messages-message {
+    color: #ff0000;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 5px;
+    display: block;
+    clear: both;
+    position: relative;
+    top: 35px;
+}
+

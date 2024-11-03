@@ -21,8 +21,6 @@
                     <strong>{{ $message }}</strong>
                 </div>
             @enderror
-
-            
             <div class="row_mb-3 input-with-icon">
                 <span class="icon material-symbols-outlined">lock</span>
                 <input id="password" type="password" placeholder="Password" class="form-control @error('password') is-invalid @enderror" name="password" title="パスワード" autocomplete="current-password">

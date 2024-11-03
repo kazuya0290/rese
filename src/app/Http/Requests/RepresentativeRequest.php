@@ -2,10 +2,9 @@
 
 namespace App\Http\Requests;
 
-use Laravel\Fortify\Http\Requests\LoginRequest as FortifyLoginRequest;
+use Illuminate\Foundation\Http\FormRequest;
 
-
-class LoginRequest extends FortifyLoginRequest
+class RepresentativeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -14,7 +13,7 @@ class LoginRequest extends FortifyLoginRequest
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
     /**
@@ -25,8 +24,7 @@ class LoginRequest extends FortifyLoginRequest
     public function rules()
     {
         return [
-            'email' => 'required | email | max:191|failed',
-            'password' => 'required | current_password | min:8 | max:191'
+            //
         ];
     }
 }
