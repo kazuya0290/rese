@@ -32,13 +32,12 @@
 
 @section('content')
 @if (Auth::guard('representative')->check())
-<h2 class="home-form__heading">{{ $representative->name }}さんお疲れ様です！！</h2>
+<h2 class="home-form__heading">代表{{ $representative->name }}さんお疲れ様です！！</h2>
 @endif
     <div class="shop-list">
         @foreach ($shops as $shop)
             <div class="shop-item">
                  @php
-                    // 画像のURLを判定
                     $imageUrl = $shop->image;
                     if (!str_starts_with($imageUrl, 'http')) {
                         $imageUrl = Storage::url($imageUrl);

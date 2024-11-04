@@ -149,7 +149,6 @@
     display: inline-block;
     margin-left: 10px;
     position: relative;
-    /* アニメーションのための相対位置指定 */
 }
 
 .favorite-icon {
@@ -161,7 +160,6 @@
 .favorite-icon.active {
     color: red;
     animation: glow 0.5s ease forwards;
-    /* アニメーションを追加 */
 }
 
 @keyframes glow {
@@ -176,4 +174,32 @@
 .favorite-button.disabled .favorite-icon {
     color: #ccc;
     cursor: not-allowed;
+}
+
+.shop-add {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.add-button {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.add-button:hover {
+    color: #3F5AF2;
+}
+
+.add-icon {
+    font-size: 32px;
+    vertical-align: middle;
+    margin-right: 8px;
+    transition: color 0.3s;
+}
+
+.add-icon:hover {
+    color: #3F5AF2;
 }

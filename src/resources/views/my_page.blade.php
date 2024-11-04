@@ -57,23 +57,29 @@
         <div class="right-panel">
             <h3 class="favorite_title">お気に入り店舗</h3>
             <div class="shop-list">
-                @foreach ($shops as $shop)
-                    <div class="shop-item">
-                        <img src="{{ $shop->image }}" alt="{{ $shop->name }}" class="shop-image">
-                        <div class="shop-details">
-                            <div class="shop-info">
-                                <h3>{{ $shop->name }}</h3>
-                                <p>
-                                    @if ($shop->area) #{{ $shop->area->area }} @endif
-                                    @if ($shop->genre) #{{ $shop->genre->genre }} @endif
-                                </p>
-                            </div>
-                            <div class="shop-actions">
-                                <a href="{{ route('shop.show', ['id' => $shop->id]) }}" class="details-button">詳しくみる</a>
-                                <span class="favorite-button" data-shop-id="{{ $shop->id }}">
-                                    <i class="material-symbols-outlined favorite-icon {{ in_array($shop->id, $favorites) ? 'active' : '' }}" title="お気に入り登録">
-                                        {{ in_array($shop->id, $favorites) ? 'favorite' : 'favorite_border' }}
-                                    </i>
+        @foreach ($shops as $shop)
+            <div class="shop-item">
+                 @php
+                    $imageUrl = $shop->image;
+                    if (!str_starts_with($imageUrl, 'http')) {
+                        $imageUrl = Storage::url($imageUrl);
+                    }
+                @endphp
+                <img src="{{ $imageUrl }}" alt="{{ $shop->name }}" class="shop-image">
+                <div class="shop-details">
+                    <div class="shop-info">
+                        <h3>{{ $shop->name }}</h3>
+                        <p>
+                            @if ($shop->area) #{{ $shop->area->area }} @endif
+                            @if ($shop->genre) #{{ $shop->genre->genre }} @endif
+                        </p>
+                    </div>
+                    <div class="shop-actions">
+                            <a href="{{ route('shop.show', ['id' => $shop->id]) }}" class="details-button">詳しくみる</a>
+                            <span class="favorite-button" data-shop-id="{{ $shop->id }}">
+                                <i class="material-symbols-outlined favorite-icon {{ in_array($shop->id, $favorites) ? 'active' : '' }}" title="お気に入り登録">
+                                    {{ in_array($shop->id, $favorites) ? 'favorite' : 'favorite_border' }}
+                                </i>
                                 </span>
                             </div>
                         </div>

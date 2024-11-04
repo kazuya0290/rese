@@ -1,70 +1,105 @@
 @extends('layouts.app')
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('css/shop_edit.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/shop_create.css') }}">
 @endsection
 
 @section('content')
-    <div class="edit__wrap">
-        <div class="edit__header">
+    <div class="create__wrap">
+        <div class="create__header">
             店舗情報の作成
         </div>
 
-        <div class="edit__content-wrap">
-            <form action="{{ route('shop.store') }}" method="post" enctype="multipart/form-data" class="edit__form">
+        <div class="create__content-wrap">
+            <form action="{{ route('shop.store') }}" method="post" enctype="multipart/form-data" class="create__form">
                 @csrf
-                <div class="edit__content">
-                    <div class="edit__title vertical-center">
+                <div class="create__content">
+                    <div class="create__title vertical-center">
                         店舗名
                     </div>
-                    <div class="edit__area">
-                        <input type="text" name="name" class="edit__area-name" value="{{ old('name') }}" required>
+                    <div class="create__area">
+                        <input type="text" name="name" class="create__area-name" value="{{ old('name') }}">
+                        @if ($errors->has('name'))
+                        <div class="error-messages" style="color: red; font-weight: bold;">
+                            @foreach ($errors->get('name') as $error)
+                                <p>{{ $error }}</p>
+                            @endforeach
+                        </div>
+                        @endif
                     </div>
                 </div>
 
-                <!-- エリアとジャンルのセレクトボックス -->
-                <div class="edit__content">
-                    <div class="edit__title vertical-center">
+                
+                <div class="create__content">
+                    <div class="create__title vertical-center">
                         エリア
                     </div>
-                    <div class="edit__area">
-                        <select name="area_id" class="edit__area-select" required>
+                    <div class="create__area">
+                        <select name="area_id" class="create__area-select">
                             <option value="" selected disabled>-- 選択 --</option>
                             @foreach ($areas as $area)
                                 <option value="{{ $area->id }}">{{ $area->area }}</option>
                             @endforeach
                         </select>
+                        @if ($errors->has('area_id'))
+                        <div class="error-messages" style="color: red; font-weight: bold;">
+                            @foreach ($errors->get('area_id') as $error)
+                                <p>{{ $error }}</p>
+                            @endforeach
+                        </div>
+                        @endif
                     </div>
                 </div>
 
-                <div class="edit__content">
-                    <div class="edit__title vertical-center">
+                <div class="create__content">
+                    <div class="create__title vertical-center">
                         ジャンル
                     </div>
-                    <div class="edit__area">
-                        <select name="genre_id" class="edit__area-select" required>
+                    <div class="create__area">
+                        <select name="genre_id" class="create__area-select">
                             <option value="" selected disabled>-- 選択 --</option>
                             @foreach ($genres as $genre)
                                 <option value="{{ $genre->id }}">{{ $genre->genre }}</option>
                             @endforeach
                         </select>
+                        @if ($errors->has('genre_id'))
+                        <div class="error-messages" style="color: red; font-weight: bold;">
+                            @foreach ($errors->get('genre_id') as $error)
+                                <p>{{ $error }}</p>
+                            @endforeach
+                        </div>
+                        @endif
                     </div>
                 </div>
 
                 <!-- 説明 -->
-                <div class="edit__content textarea__content">
-                    <div class="edit__title">説明</div>
-                    <div class="edit__area textarea__area">
-                        <textarea class="edit__area-textarea" name="description" rows="10" required>{{ old('description') }}</textarea>
+                <div class="create__content textarea__content">
+                    <div class="create__title">説明</div>
+                    <div class="create__area textarea__area">
+                        <textarea class="create__area-textarea" name="description" rows="10">{{ old('description') }}</textarea>
+                        @if ($errors->has('description'))
+                        <div class="error-messages" style="color: red; font-weight: bold;">
+                            @foreach ($errors->get('description') as $error)
+                                <p>{{ $error }}</p>
+                            @endforeach
+                        </div>
+                        @endif
                     </div>
                 </div>
 
                 <!-- イメージ -->
-                <div class="edit__content input-file__content">
-                    <div class="edit__title vertical-center">イメージ</div>
-                    <div class="edit__area input-file__area">
-                        <p class="edit__area-message">画像を選択してください</p>
-                        <input type="file" name="image" class="edit__area-file">
+                <div class="create__content input-file__content">
+                    <div class="create__title vertical-center">イメージ</div>
+                    <div class="create__area input-file__area">
+                        <p class="create__area-message">画像を選択してください</p>
+                        <input type="file" name="image" class="create__area-file">
+                        @if ($errors->has('image'))
+                        <div class="error-messages" style="color: red; font-weight: bold;">
+                            @foreach ($errors->get('image') as $error)
+                                <p>{{ $error }}</p>
+                            @endforeach
+                        </div>
+                        @endif
                     </div>
                 </div>
 

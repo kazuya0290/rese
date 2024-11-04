@@ -7,30 +7,32 @@ use App\Models\Area;
 use App\Models\Genre;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
+use App\Http\Requests\ShopEditRequest;
+use App\Http\Requests\ShopCreateRequest;
 
 class ShopController extends Controller
 {
-    // 店舗の詳細を表示するメソッド
+   
     public function show($id)
     {
-        // 指定されたIDの店舗を取得し、口コミを含めて取得
+       
         $shop = Shop::with('reviews.user')->findOrFail($id);
 
-        // 店舗詳細画面を返す
+        
         return view('shops.show', compact('shop'));
     }
 
-    // お気に入りの登録/解除をトグルするメソッド
+    
     public function toggleFavorite($shopId)
     {
         $user = auth()->user();
         $shop = Shop::findOrFail($shopId);
 
         if ($user->favorites()->where('shop_id', $shopId)->exists()) {
-            // 既にお気に入り登録されていれば削除
+           
             $user->favorites()->detach($shopId);
         } else {
-            // お気に入り登録されていなければ追加
+           
             $user->favorites()->attach($shopId);
         }
 
@@ -39,24 +41,21 @@ class ShopController extends Controller
 
     public function showAllShops()
     {
-        $shops = Shop::all(); // 全ての店舗を取得
+        $shops = Shop::all();
 
-        // ユーザーがログインしている場合のみお気に入りを取得
+        
         $favorites = auth()->check() ? auth()->user()->favorites->pluck('id')->toArray() : []; 
 
-        // ビューにデータを渡す
+        
         return view('shop_all', compact('shops', 'favorites'));
     }
 
     public function saveImage(Request $request, $id)
     {
-        $request->validate([
-            'image' => 'required|image|mimes:jpg,jpeg,png', // 2MBまでの画像
-        ]);
-
+        
         $shop = Shop::findOrFail($id);
         if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('shops', 'public'); // ストレージのshopsフォルダに保存
+            $path = $request->file('image')->store('shops', 'public'); 
             $shop->image_path = $path;
             $shop->save();
         }
@@ -68,45 +67,36 @@ class ShopController extends Controller
     {
         $shop = Shop::findOrFail($id);
         
-        // ここで地域情報を取得
-        $areas = Area::all(); // Areaモデルを使用して地域情報を取得する場合
+        $areas = Area::all(); 
         $genres = Genre::all();
 
-        return view('shop_edit', compact('shop', 'areas', 'genres')); // shop と areas をビューに渡す
+        return view('shop_edit', compact('shop', 'areas', 'genres')); 
     }
 
-   public function update(Request $request)
+    public function update(ShopEditRequest $request)
     {
-    // バリデーション
-    $request->validate([
-        'name' => 'required|string|max:255',
-        'area_id' => 'required|exists:areas,id',
-        'genre_id' => 'required|exists:genres,id',
-        'description' => 'required|string',
-        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif', // 画像のバリデーション
-    ]);
-
-    // IDをリクエストから取得
+    $validated = $request->validated();
+    
     $shop = Shop::findOrFail($request->id); 
 
-    // ショップの情報を更新
-    $shop->name = $request->name;
+    
+    $shop->name = $validated['name'];
     $shop->area_id = $request->area_id;
     $shop->genre_id = $request->genre_id;
-    $shop->description = $request->description; // outlineをdescriptionに修正
+    $shop->description = $validated['description'];
 
-    // 画像がアップロードされた場合
+    
     if ($request->hasFile('image')) {
-
-        $shop->image = $request->file('image')->store('images', 'public'); // 適切なストレージに保存
+        $shop->image = $request->file('image')->store('images', 'public'); 
     }
 
-    $shop->save(); // 更新を保存
+    $shop->save(); 
 
     return redirect()->back()->with('success', '店舗情報が更新されました。');
     }
 
-   public function create()
+
+    public function create()
     {
     $areas = Area::all();
     $genres = Genre::all();
@@ -114,22 +104,16 @@ class ShopController extends Controller
     return view('shop_create', compact('areas', 'genres'));
     }
 
-    public function store(Request $request)
-{
-    // バリデーション
-    $request->validate([
-        'name' => 'required|string|max:255',
-        'area_id' => 'required|exists:areas,id',
-        'genre_id' => 'required|exists:genres,id',
-        'description' => 'required|string|max:1000', // 説明をnullableに設定
-        'image' => 'required|image|mimes:jpeg,png,jpg,gif', // 画像のバリデーション
-    ]);
+    public function store(ShopCreateRequest $request)
+    {
+    
+    $validated = $request->validated();
 
     $shop = new Shop();
-    $shop->name = $request->input('name');
-    $shop->area_id = $request->input('area_id');
-    $shop->genre_id = $request->input('genre_id');
-    $shop->description = $request->input('description'); 
+    $shop->name =$validated['name'];
+    $shop->area_id = $validated['area_id']; 
+    $shop->genre_id = $validated['genre_id'];
+    $shop->description = $validated['description'];
     if ($request->hasFile('image')) {
     $path = $request->file('image')->store('public/images');
     $shop->image = str_replace('public/', '', $path);
@@ -137,8 +121,8 @@ class ShopController extends Controller
 
     $shop->save();
 
-  return redirect()->back()->with('success', '店舗が追加されました');
-}
+    return redirect()->back()->with('success', '店舗が追加されました');
+    }
 
 }
 

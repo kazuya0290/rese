@@ -43,42 +43,44 @@ class ReservationRequest extends FormRequest
             'number_of_people.min' => '来店人数は1人以上入力してください'
         ];
     }
-    /**
-     * カスタムバリデーションを追加する
-     */
+    
     public function withValidator($validator)
-    {
-        $validator->after(function ($validator) {
-            $userId = auth()->id();
-            $reservationDate = Carbon::parse($this->date)->format('Y-m-d');
-            $reservationTime = $this->time; // `time` フィールドから取得
-            $shopId = $this->shop_id;
+{
+    $validator->after(function ($validator) {
+        $userId = auth()->id();
+        $reservationDate = Carbon::parse($this->date)->format('Y-m-d');
+        $reservationTime = $this->time; 
+        $shopId = $this->shop_id;
 
-            $currentDate = Carbon::now()->format('Y-m-d');
+        $currentDate = Carbon::now()->format('Y-m-d');
+
+        
+        if ($this->date && $this->time) {
             if ($reservationDate < $currentDate) {
-            $validator->errors()->add('date', '過去の日付で予約することは出来ません');
+                $validator->errors()->add('date', '過去の日付で予約することは出来ません');
             }
-            
-            // 同じ店舗で同じ日時の予約をチェック
+
+           
             $existingReservationSameShop = Reservation::where('user_id', $userId)
                 ->where('shop_id',  $shopId)
-                ->whereDate('date', $reservationDate) // カラム名が `date` であることを確認
+                ->whereDate('date', $reservationDate) 
                 ->exists();
 
             if ($existingReservationSameShop) {
-                // 同じ店舗で同日に既に予約がある場合のエラーメッセージ
+                
                 $validator->errors()->add('date', '同じ店舗で同日に既に予約が存在します');
             }
 
-            // 別の店舗で同日の予約をチェック
+            
             $existingReservationOtherShop = Reservation::where('user_id', $userId)
                 ->where('shop_id', '!=', $shopId)
                 ->whereDate('date', $reservationDate)
                 ->exists();
 
             if ($existingReservationOtherShop) {
-                // 別の店舗で同日に既に予約がある場合のエラーメッセージ
+                
                 $validator->errors()->add('date', '同日に別の店舗で予約が既に存在します');
+                }
             }
         });
     }

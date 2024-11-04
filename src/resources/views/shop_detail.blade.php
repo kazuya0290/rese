@@ -56,7 +56,7 @@
             <input type="hidden" name="shop_id" value="{{ $shop->id }}">
 
             <label for="date">Date</label>
-            <input type="date" name="date" id="date" value="{{ old('date') }}" title="来店予約日を入力してください" required>
+            <input type="date" name="date" id="date" value="{{ old('date') }}" title="来店予約日を入力してください">
 
             @if ($errors->has('date'))
                 <div class="error-messages" style="color: red; font-weight: bold;">
@@ -67,7 +67,7 @@
             @endif
 
             <label for="time">Time</label>
-            <input type="time" name="time" id="time" value="{{ old('time') }}" title="来店時間を入力してください" required>
+            <input type="time" name="time" id="time" value="{{ old('time') }}" title="来店時間を入力してください" >
 
              @if ($errors->has('time'))
                 <div class="error-messages" style="color: red; font-weight: bold;">
@@ -78,7 +78,7 @@
             @endif
 
             <label for="number_of_people">Number</label>
-            <input type="number" name="number_of_people" id="number_of_people" value="{{ old('number_of_people') }}" required min="1" max="20" title="来店人数を入力してください">
+            <input type="number" name="number_of_people" id="number_of_people" value="{{ old('number_of_people') }}"  min="1" max="20" title="来店人数を入力してください">
             
               @if ($errors->has('number_of_people'))
                 <div class="error-messages" style="color: red; font-weight: bold;">
@@ -196,7 +196,7 @@
 
             stripeHandler.open({
                 name: '{{ $shop->name }} の予約',
-                description: '{{ $shop->name }} の予約',
+                description: '{{ $shop->name }} のStripe決済予約',
                 amount: 1000
             });
         });
