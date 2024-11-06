@@ -1,75 +1,52 @@
-/* 全体のスタイル */
 .container {
     max-width: 1200px;
-    /* 最大幅を指定 */
     margin: 0 auto;
-    /* 中央揃え */
     padding: 20px;
-    /* パディング */
 }
 
-/* タイトルのスタイル */
-h1 {
+h1,
+h2 {
     text-align: center;
-    /* 中央揃え */
     margin-bottom: 20px;
-    /* 下に余白 */
+}
+
+h1 {
     font-size: 40px;
 }
 
 h2 {
-    text-align: center;
-    /* 中央揃え */
-    margin-bottom: 20px;
-    /* 下に余白 */
     font-size: 30px;
 }
 
-/* カードのスタイル */
 .card {
     margin-bottom: 20px;
-    /* カード間の余白 */
 }
 
 .card-header {
-    text-align:center;
-    margin-top: 50px;
+    text-align: center;
     font-size: 30px;
     font-weight: bold;
 }
-/* フォームのスタイル */
-.form-group {
-    margin-bottom: 15px;
-    /* フォーム間の余白 */
-}
 
-/* ボタンのスタイル */
-.input-btn {
-    width: 20%;
-    margin-left: 430px;
-    /* ボタンを全幅に */
-}
-
-/* テーブルのスタイル */
 .table {
     width: 100%;
-    /* テーブルを全幅に */
     margin-top: 20px;
-    /* テーブル上の余白 */
 }
 
-/* テーブルの背景色と上下線 */
 .table-bordered {
     border-top: 2px solid #000;
     border-bottom: 2px solid #000;
-    /* 上下に黒い線を引く */
 }
 
-.table thead th {
+.table th {
     background-color: #2196f3;
-    /* 青色 */
     color: #000000;
-    /* 白色の文字 */
+    text-align: center;
+    padding: 15px;
+    font-size: 1.9em;
+}
+
+.table td {
     text-align: center;
     padding: 15px;
     font-size: 1.9em;
@@ -77,44 +54,86 @@ h2 {
 
 .table tbody tr:nth-child(even) {
     background-color: #2196f3;
-    /* 薄い青 */
 }
 
 .table tbody tr:nth-child(odd) {
     background-color: #ffffff;
-    /* 白 */
 }
 
-.table th,
-.table td {
-    text-align: center;
-    /* テキストを中央揃え */
-    padding: 15px;
-    /* セル内のパディング */
-    font-size: 1.9em;
-    /* フォントサイズを大きく */
-}
-
-/* ページネーションのスタイル */
-.pagination {
-    justify-content: center;
-    /* 中央揃え */
-    margin-top: 20px;
-    /* 上の余白 */
-}
-
-.input-file-container {
+.pagination-wrapper {
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
-.input-file {
-    margin-bottom: 10px;
+.pagination {
+    display: flex;
+    list-style: none;
+    padding: 0;
 }
 
-.alert {
-    text-align: center;
+.pagination li {
+    margin: 0 5px;
+}
+
+.pagination li a,
+.pagination li span {
+    font-size: 1.5em;
+    color: #000;
+    padding: 5px 10px;
+    text-decoration: none;
+}
+
+.pagination li a:hover {
+    background-color: #2196f3;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.pagination .active span {
+    background-color: #2196f3;
+    color: #fff;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+@media (max-width: 768px) {
+
+    .container {
+        padding: 15px;
+    }
+
+    .table {
+        font-size: 1em;
+    }
+
+    .card-header {
+        font-size: 24px;
+    }
+
+    .table th,
+    .table td {
+        padding: 10px;
+        font-size: 1.2em;
+    }
+
+    .pagination li a,
+    .pagination li span {
+        font-size: 1.2em;
+        padding: 3px 6px;
+    }
+
+    
+    .card-body {
+        padding: 15px;
+    }
+
+   
+    h1 {
+        font-size: 28px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
 }

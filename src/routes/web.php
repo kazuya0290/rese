@@ -62,9 +62,9 @@ Route::get('/register_thanks', function () {
     return view('layouts.register_thanks');
 })->name('register.thanks');
 
-Route::get('/reservation_thanks', function () {
-    return view('reservation_thanks');
-})->name('reservation.thanks');
+Route::get('/done', function () {
+    return view('done');
+})->name('done.thanks');
 
 Route::post('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
 Route::get('/reservation/qr', [ReservationController::class, 'qr'])->name('reservation.qr');

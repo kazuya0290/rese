@@ -38,7 +38,9 @@
                         <select name="area_id" class="create__area-select">
                             <option value="" selected disabled>-- 選択 --</option>
                             @foreach ($areas as $area)
-                                <option value="{{ $area->id }}">{{ $area->area }}</option>
+                                <option value="{{ $area->id }}" {{ old('area_id') == $area->id ? 'selected' : '' }}>
+                                    {{ $area->area }}
+                                </option>
                             @endforeach
                         </select>
                         @if ($errors->has('area_id'))
@@ -59,7 +61,9 @@
                         <select name="genre_id" class="create__area-select">
                             <option value="" selected disabled>-- 選択 --</option>
                             @foreach ($genres as $genre)
-                                <option value="{{ $genre->id }}">{{ $genre->genre }}</option>
+                                <option value="{{ $genre->id }}" {{ old('genre_id') == $genre->id ? 'selected' : '' }}>
+                                    {{ $genre->genre }}
+                                </option>
                             @endforeach
                         </select>
                         @if ($errors->has('genre_id'))
@@ -72,7 +76,6 @@
                     </div>
                 </div>
 
-                <!-- 説明 -->
                 <div class="create__content textarea__content">
                     <div class="create__title">説明</div>
                     <div class="create__area textarea__area">
@@ -87,7 +90,6 @@
                     </div>
                 </div>
 
-                <!-- イメージ -->
                 <div class="create__content input-file__content">
                     <div class="create__title vertical-center">イメージ</div>
                     <div class="create__area input-file__area">

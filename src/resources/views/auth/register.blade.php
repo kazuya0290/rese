@@ -13,7 +13,7 @@
     <div class="title_body">
         <form method="POST" action="{{ route('register') }}" id="register_form">
             @csrf
-            <!-- Name Field -->
+            
             <div class="row_mb-3 input-with-icon">
                 <span class="material-symbols-outlined">person</span>
                 <input id="name" type="text" placeholder="Name" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" autocomplete="name" title="名前" autofocus>
@@ -24,7 +24,7 @@
                 </div>
             @enderror
 
-            <!-- Email Field -->
+           
             <div class="row_mb-3 input-with-icon">
                 <span class="material-symbols-outlined">mail</span>
                 <input id="email" type="email" placeholder="Email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email" title="メールアドレス">
@@ -35,7 +35,7 @@
                 </div>
             @enderror
 
-            <!-- Password Field -->
+           
             <div class="row_mb-3 input-with-icon">
                 <span class="material-symbols-outlined">lock</span>
                 <input id="password" type="password" placeholder="Password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="new-password" title="パスワード">
@@ -46,13 +46,13 @@
                 </div>
             @enderror
 
-            <!-- Password Confirmation Field -->
+            
             <div class="row_mb-3 input-with-icon">
                 <span class="material-symbols-outlined">enhanced_encryption</span> 
                 <input id="password-confirm" type="password" placeholder="Password Confirmation" class="form-control" name="password_confirmation" autocomplete="new-password" title="パスワード確認用">
             </div>
 
-            <!-- Submit Button -->
+            
             <div class="row_mb-0">
                 <div class="col-md-6 offset-md-4">
                     <button type="submit" class="btn btn-primary">

@@ -25,7 +25,7 @@
                         <tr>
                             <td>{{ $reservation->user->name }}</td>
                             <td>{{ $reservation->user->email }}</td>
-                            <td>{{  $reservation->shop->name}}</td>
+                            <td>{{ $reservation->shop->name }}</td>
                             <td>{{ $reservation->date }}</td>
                             <td>{{ $reservation->time }}</td>
                             <td>{{ $reservation->number_of_people }}人</td>
@@ -33,8 +33,8 @@
                     @endforeach
                 </tbody>
             </table>
-            <div class="pagination justify-content-center">
-                {{ $reservations->links() }}
+            <div class="pagination-wrapper">
+                {{ $reservations->links('pagination::bootstrap-4') }}
             </div>
         </div>
     </div>

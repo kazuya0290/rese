@@ -11,7 +11,7 @@
     <div class="title_body">
         <form id="representative_login-form" method="POST" action="{{ route('representative.login') }}">
             @csrf
-            <!-- メールアドレスのフィールド -->
+            
             <div class="row_mb-3 input-with-icon">
                 <span class="icon material-symbols-outlined">mail</span>
                 <input id="email" type="email" placeholder="Email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email" autofocus>
@@ -22,7 +22,7 @@
                 </div>
             @enderror
 
-            <!-- パスワードのフィールド -->
+            
             <div class="row_mb-3 input-with-icon">
                 <span class="icon material-symbols-outlined">lock</span>
                 <input id="password" type="password" placeholder="Password" class="form-control @error('password') is-invalid @enderror" name="password" title="パスワード" autocomplete="current-password">

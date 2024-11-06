@@ -16,13 +16,18 @@
                 @for ($i = 1; $i <= 5; $i++)
                     <span class="star" data-value="{{ $i }}">☆</span>
                 @endfor
-                <input type="hidden" name="rating" id="rating" value="" required>
+                <input type="hidden" name="rating" id="rating" value="{{ old('rating') }}">
             </div>
+                @error('rating')
+                    <div class="error">{{ $message }}</div>
+                @enderror
         </div>
 
         <label for="comment">コメント:</label>
-        <textarea name="comment" id="comment" rows="4" required></textarea>
-
+        <textarea name="comment" id="comment" rows="4">{{ old('comment') }}</textarea>
+                @error('comment')
+                    <div class="error">{{ $message }}</div>
+                @enderror
         <button type="submit">レビューを送信</button>
     </form>
 </div>
@@ -31,7 +36,13 @@
     document.addEventListener('DOMContentLoaded', function() {
         const stars = document.querySelectorAll('.star');
         let ratingInput = document.getElementById('rating');
+        let oldRating = "{{ old('rating') }}";
 
+        if (oldRating) {
+            fillStarsUpTo(oldRating);
+            ratingInput.value = oldRating;
+        }
+        
         stars.forEach(star => {
             star.addEventListener('mouseover', function() {
                 resetStars();
@@ -40,6 +51,14 @@
 
             star.addEventListener('click', function() {
                 ratingInput.value = this.getAttribute('data-value');
+                fillStarsUpTo(ratingInput.value); 
+            });
+
+            star.addEventListener('mouseout', function() {
+                resetStars();
+                if (ratingInput.value) { 
+                    fillStarsUpTo(ratingInput.value);
+                }
             });
         });
 

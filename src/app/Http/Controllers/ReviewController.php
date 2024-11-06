@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Review;
 use App\Models\Shop;
 use Illuminate\Http\Request;
+use App\Http\Requests\ReviewRequest;
 
 class ReviewController extends Controller
 {
@@ -14,19 +15,17 @@ class ReviewController extends Controller
         return view('review', compact('shop'));
     }
 
-    public function store(Request $request, $shop_id)
+    public function store(ReviewRequest $request, $shop_id)
     {
-    $request->validate([
-        'rating' => 'required|integer|min:1|max:5',
-        'comment' => 'required|string|max:500',
-    ]);
+
+    $validated = $request->validated();
 
     Review::create([
         'shop_id' => $shop_id,
-        'rating' => $request->rating,
-        'comment' => $request->comment,
+        'rating' => $validated['rating'],
+        'comment' => $validated['comment'],
         'user_id' => auth()->id(),
-    ]);
+        ]);
 
      return redirect()->route('review.thanks');
     }

@@ -86,3 +86,35 @@ button[type="submit"] {
     flex: 1;
     padding-left: 0;
 }
+
+@media (max-width: 768px) {
+    .container {
+        max-width: 90%;
+        margin: 20px auto;
+    }
+
+    .title_header {
+        font-size: 18px;
+        padding: 12px;
+    }
+
+    .title_body {
+        padding: 20px 15px;
+    }
+
+    .row_mb-3 {
+        margin-bottom: 10px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+        padding: 12px;
+    }
+
+    button[type="submit"] {
+        width: 100%;
+        font-size: 16px;
+        margin-top: 15px;
+    }
+}

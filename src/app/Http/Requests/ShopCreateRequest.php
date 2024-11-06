@@ -43,7 +43,7 @@ class ShopCreateRequest extends FormRequest
             'genre_id.required' => 'ジャンルを選択してください',
             'image.required' => '画像を選択してください',
             'image.image' => '画像ファイルを選択してください。',
-            'image.mimes' => '選択可能な画像はjpeg,png,jpg,gifのみです',
+            'image.mimes' => '選択可能な画像は1MB未満のjpeg,png,jpg,gifのみです',
             'description.required' => '説明を入力してください',
             'description.string' => '説明は文字列で入力してください',
             'description.max' => '説明は191文字以内で入力してください'

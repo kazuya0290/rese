@@ -17,9 +17,10 @@ class ShopFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->company,           
-            'description' => $this->faker->paragraph,
-            'image' => $this->faker->imageUrl(640, 480, 'shop', true),
+        'name' => $this->faker->company(),
+        'description' => $this->faker->paragraph(),
+        'image' => $this->faker->imageUrl(640, 480, 'shop', true, 'shop adipisci'),
+        'area_id' => Area::inRandomOrder()->first()->id,
         ];
     }
 }

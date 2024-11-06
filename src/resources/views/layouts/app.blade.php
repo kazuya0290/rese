@@ -22,7 +22,6 @@
                     <ul class="nav__list">
                         <li class="nav__item"><a class="nav__item-link" href="/">Home</a></li>
                          @if (Auth::guard('representative')->check())
-                            <!-- 店舗代表者のメニュー -->
                             <li class="nav__item"><a class="nav__item-link" href="{{ route('representative.index') }}">Reservation List</a></li>
                         <li class="nav__item">
                             <form id="logout-form" action="{{ route('representative.logout') }}" method="POST" style="display: none;">
@@ -31,7 +30,6 @@
                             <a class="nav__item-link" href="#" id="logout-link">Logout</a>
                         </li>
                         @elseif (Auth::check())
-                            <!-- 通常ユーザーのメニュー -->
                             <li class="nav__item">
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf
@@ -40,7 +38,6 @@
                             </li>
                             <li class="nav__item"><a class="nav__item-link" href="/mypage">Mypage</a></li>
                         @else
-                            <!-- 未ログインユーザーのメニュー -->
                             <li class="nav__item"><a class="nav__item-link" href="/register">Registration</a></li>
                             <li class="nav__item"><a class="nav__item-link" href="/login">Login</a></li>
                         @endif
@@ -57,7 +54,6 @@
         const menuLabel = document.getElementById('menuLabel');
         const logoutLink = document.getElementById('logout-link');
 
-        // メニュー表示の切り替え
         drawerInput.addEventListener('change', function() {
             if (this.checked) {
                 menuLabel.title = '閉じる';
@@ -66,17 +62,16 @@
             }
         });
 
-        // ログアウト確認ダイアログ
         logoutLink.addEventListener('click', function(event) {
-            event.preventDefault(); // リンクのデフォルト動作を防止
+            event.preventDefault(); 
 
-            // 確認ダイアログを表示
+            
             const result = confirm('ログアウトしますか？');
 
-            // 「はい」がクリックされた場合
+            
             if (result) {
-                alert('ログアウトしました'); // アラートメッセージを表示
-                document.getElementById('logout-form').submit(); // ログアウトフォームを送信
+                alert('ログアウトしました'); 
+                document.getElementById('logout-form').submit(); 
             }
         });
 

@@ -13,22 +13,21 @@ class MyPageController extends Controller
 {
     public function showMyPage()
     {
-    $user = Auth::user();
-    $reservations = $user->reservations; 
-    $favorites = $user->favorites()->pluck('shop_id')->toArray(); 
 
-    $shops = Shop::whereIn('id', $favorites)->get(); 
+        $user = Auth::user();
+        $reservations = $user->reservations; 
+        $favorites = $user->favorites()->pluck('shop_id')->toArray(); 
+        $shops = Shop::whereIn('id', $favorites)->get(); 
 
-    return view('my_page', compact('user', 'reservations', 'favorites', 'shops'));
+        return view('my_page', compact('user', 'reservations', 'favorites', 'shops'));
     }
 
      public function myPage()
     {
+
         $user = Auth::user();
         $reservations = $user->reservations; 
-        $favorites = $user->favorites()->pluck('shop_id')->toArray(); 
-
-        
+        $favorites = $user->favorites()->pluck('shop_id')->toArray();         
         $shops = Shop::whereIn('id', $favorites)->get(); 
 
         return view('my_page', compact('user', 'reservations', 'favorites', 'shops'));

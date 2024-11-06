@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\User;
+use App\Models\Reservation;
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,5 +20,7 @@ class DatabaseSeeder extends Seeder
             GenresTableSeeder::class,
             ShopsTableSeeder::class
         ]);
+            User::factory(35)->create();
+            Reservation::factory(35)->create();
     }
 }

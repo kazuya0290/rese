@@ -13,7 +13,6 @@ class FavoriteController extends Controller
     {
         $user = Auth::user();
 
-        // お気に入りに追加
         if (!$user->favorites()->where('shop_id', $shop->id)->exists()) {
             $user->favorites()->attach($shop->id);
         }
@@ -26,7 +25,6 @@ class FavoriteController extends Controller
         $user = auth()->user();
         $shop = Shop::findOrFail($shopId);
 
-        // お気に入りの追加または削除
         if ($user->favorites()->where('shop_id', $shopId)->exists()) {
             $user->favorites()->detach($shopId);
         } else {
@@ -40,7 +38,7 @@ class FavoriteController extends Controller
     {
     
     $user = Auth::user();
-    $user->favorites()->detach($id); // ここでお気に入りを削除
+    $user->favorites()->detach($id);
 
     return redirect()->back()->with('success', 'お気に入りを削除しました。');
     }

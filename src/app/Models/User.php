@@ -45,7 +45,7 @@ class User extends Authenticatable implements MustVerifyEmail
     // お気に入り店舗とのリレーション
     public function favorites()
     {
-    return $this->belongsToMany(Shop::class, 'shop_user');
+    return $this->belongsToMany(Shop::class, 'shops_users');
     }
 
     // 予約とのリレーション (ユーザーは複数の予約を持つ)

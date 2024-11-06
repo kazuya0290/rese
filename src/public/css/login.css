@@ -58,45 +58,30 @@ button[type="submit"] {
 .invalid-feedback {
     color: #ff0000;
     font-size: 15px;
-        /* バリデーションメッセージのフォントサイズ */
-        text-align: center;
-        margin-top: 5px;
-        /* テキストボックスとの間にスペースを追加 */
-        display: block;
-        /* メッセージをブロック表示 */
-        clear: both;
-        /* 兄弟要素の影響を受けないようにする */
-        position: relative;
-        /* 位置を相対的にする */
-        top: 0;
-        /* 上に寄せる */
+    text-align: center;
+    margin-top: 5px;
+    display: block;
+    clear: both;
+    position: relative;
+    top: 0;
 }
 
 .input-with-icon {
     display: flex;
-    /* アイコンとテキストボックスを横並びに */
     align-items: center;
-    /* 垂直方向の中央揃え */
     margin-bottom: 1rem;
-    /* テキストボックスとバリデーションメッセージの間にスペース */
 }
 
 .input-with-icon .icon {
     margin-right: 10px;
-    /* アイコンとテキストボックスの間にスペースを追加 */
     font-size: 2em;
-    /* アイコンのサイズを大きく設定 */
     flex-shrink: 0;
-    /* アイコンが縮まらないようにする */
 }
 
 .input-with-icon input {
     flex: 1;
-    /* テキストボックスが残りのスペースを占有する */
     padding-left: 0;
-    /* 左側のパディングをリセット */
     margin-bottom: 0;
-    /* 下部マージンをリセットして、スペースの調整を明確に */
 }
 
 .admin-message {
@@ -107,8 +92,53 @@ button[type="submit"] {
 }
 
 .r-login-message {
-    margin-left:370px;
-    margin-top:-10px;
-    font-size:15px;
-    font-weight:bold;
+    margin-left: 370px;
+    margin-top: -10px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .container {
+        max-width: 90%;
+        margin: 30px auto;
+        padding: 15px;
+    }
+
+    .title_header {
+        font-size: 16px;
+        text-align: center;
+    }
+
+    .title_body {
+        padding: 15px;
+    }
+
+    input[type="email"],
+    input[type="password"] {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    button[type="submit"] {
+        font-size: 12px;
+        padding: 10px;
+        float: none;
+        display: block;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .admin-message,
+    .r-login-message {
+        margin-left: 0;
+        text-align: center;
+        margin-top: 10px;
+        font-size: 14px;
+    }
+
+    .input-with-icon .icon {
+        font-size: 1.5em;
+        margin-right: 5px;
+    }
 }

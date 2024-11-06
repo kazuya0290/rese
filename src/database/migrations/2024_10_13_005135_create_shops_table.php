@@ -21,7 +21,6 @@ class CreateShopsTable extends Migration
             $table->text('hashtags')->nullable();
             $table->text('description');
             $table->string('image');
-            $table->string('image_path');
             $table->timestamps();
         });
     }

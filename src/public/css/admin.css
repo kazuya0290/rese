@@ -1,21 +1,16 @@
-/* 全体の文字サイズを大きく */
 body {
     font-size: 1.2rem;
-    /* 文字サイズを調整 */
 }
 
-/* ヘッダーを中央揃え */
 h1,
 h2 {
     text-align: center;
-    /* テキストを中央揃え */
 }
 
-/* フォーム内のラベルを大きくする */
 .form-group label[for="password"] {
     font-size: 1.9rem;
     margin-left: 250px;
-    font-weight:bold;
+    font-weight: bold;
 }
 
 .form-group label[for="name"] {
@@ -42,112 +37,72 @@ h2 {
     font-weight: bold;
 }
 
-/* フォームの中央揃え */
 .form-inline {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* 中央揃え */
 }
 
-/* ボタンのスタイルを変更 */
 .btn {
     background-color: #007bff;
-    /* 青色 */
     color: white;
-    /* 文字色を白に */
     font-size: 1.2rem;
-    /* ボタンの文字サイズを調整 */
     padding: 10px 20px;
-    /* ボタンのパディングを調整 */
     border: none;
-    /* ボーダーを削除 */
     border-radius: 5px;
-    /* ボタンの角を丸くする */
     cursor: pointer;
-    /* カーソルをポインターに */
-    margin-left: 500px;
+    margin-left: -5px;
 }
 
-/* ボタンのホバー効果 */
 .btn:hover {
     background-color: #0056b3;
-    /* ホバー時の色を変更 */
 }
 
 .form-group textarea {
     width: 100%;
-    /* 幅を100%に設定 */
     max-width: 400px;
-    /* 最大幅を400pxに制限 */
     padding: 10px;
-    /* 内側のパディングを追加 */
     margin-bottom: -45px;
-    /* 下の余白を追加 */
     border: 1px solid #ced4da;
-    /* ボーダーを追加 */
     border-radius: 5px;
-    /* 角を丸くする */
     box-sizing: border-box;
-    /* パディングとボーダーを含めた幅を計算 */
     margin-left: 20px;
-/* テキストボックスとメッセージボックスのスタイル */
 }
+
 .form-group input[type="text"],
-.form-group input[type="password"]{
+.form-group input[type="password"] {
     width: 100%;
-        /* 幅を100%に設定 */
     max-width: 400px;
-        /* 最大幅を400pxに制限 */
     padding: 10px;
-        /* 内側のパディングを追加 */
     margin-bottom: 20px;
-        /* 下の余白を追加 */
     border: 1px solid #ced4da;
-        /* ボーダーを追加 */
     border-radius: 5px;
-        /* 角を丸くする */
     box-sizing: border-box;
-        /* パディングとボーダーを含めた幅を計算 */
     margin-left: 20px;
-        /* テキストボックスとメッセージボックスのスタイル */
 }
 
 .form-group input[type="email"] {
     width: 100%;
-        /* 幅を100%に設定 */
     max-width: 400px;
-        /* 最大幅を400pxに制限 */
     padding: 10px;
-        /* 内側のパディングを追加 */
     margin-bottom: 20px;
-        /* 下の余白を追加 */
     border: 1px solid #ced4da;
-        /* ボーダーを追加 */
     border-radius: 5px;
-        /* 角を丸くする */
     box-sizing: border-box;
-        /* パディングとボーダーを含めた幅を計算 */
     margin-left: 20px;
 }
-/* フォーム要素の余白を調整 */
+
 .form-group {
-    
     width: 100%;
-    /* 各フォームグループの下に余白を追加 */
 }
 
-/* メッセージボックスのスタイル */
 .form-group textarea {
     height: 100px;
-    /* 高さを指定 */
     resize: none;
-    /* サイズ変更を無効にする */
 }
 
 .send-email-btn {
     margin-top: 55px;
-    /* 「メールを送信」ボタンの上にスペースを追加 */
 }
 
 .my-5 {
@@ -182,3 +137,55 @@ h2 {
     top: 35px;
 }
 
+@media (max-width: 768px) {
+
+    h1,
+    h2 {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .form-inline {
+        flex-direction: column;
+        
+    }
+
+    .form-group label[for="password"],
+    .form-group label[for="name"],
+    .form-group label[for="email"],
+    .form-group label[for="subject"],
+    .form-group label[for="message"] {
+        font-size: 1.2rem;
+        margin-left: 0;
+        text-align: left;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="password"],
+    .form-group input[type="email"],
+    .form-group textarea {
+        width: 90%;
+        max-width: none;
+        margin-left: 0;
+    }
+
+    .btn {
+        font-size: 1rem;
+        padding: 8px 16px;
+        margin-left: 0;
+    }
+
+    .send-email-btn {
+        margin-top: 20px;
+    }
+
+    .my-5 {
+        margin: 20px auto;
+    }
+
+    .error-messages,
+    .error-messages-message {
+        font-size: 14px;
+        top: -15px;
+    }
+}

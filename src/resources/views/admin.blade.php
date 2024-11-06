@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="container mt-5">
-        <h1>管理者ダッシュボード</h1>
+        <h1>管理者画面</h1>
         
         <section class="mt-4">
             <h2>店舗代表者の追加</h2>
@@ -14,12 +14,12 @@
                 @csrf
                 <div class="form-group">
                     <label for="name">代表者名:</label>
-                    <input type="text" name="name" id="name" class="form-control mx-2">
+                    <input type="text" name="name" id="name" class="form-control mx-2" value="{{ old('name') }}">
                     <div class="error-messages" id="nameErrors"></div>
                 </div>
                 <div class="form-group">
                     <label for="email">メールアドレス:</label>
-                    <input type="email" name="email" id="email" class="form-control mx-2">
+                     <input type="email" name="email" id="email" class="form-control mx-2" value="{{ old('email') }}">
                     <div class="error-messages" id="emailErrors"></div>
                 </div>
                 <div class="form-group">
@@ -41,12 +41,12 @@
                 @csrf
                 <div class="form-group">
                     <label for="subject">件名:</label>
-                    <input type="text" name="subject" id="subject" class="form-control mx-2">
+                     <input type="text" name="subject" id="subject" class="form-control mx-2" value="{{ old('subject') }}">
                     <div class="error-messages" id="subjectErrors"></div>
                 </div>
                 <div class="form-group">
                     <label for="message">メッセージ内容:</label>
-                    <textarea name="message" id="message" class="form-control mx-2" rows="3"></textarea>
+                    <textarea name="message" id="message" class="form-control mx-2" rows="3">{{ old('message') }}</textarea>
                     <div class="error-messages-message" id="messageErrors"></div>
                 </div>
                 <button type="submit" class="btn btn-primary send-email-btn">メールを送信</button>
@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', function () {
             clearErrors();
             if (errors.errors) {
                 for (const [field, messages] of Object.entries(errors.errors)) {
-                    const errorField = document.getElementById(`${field}Errors`);
+                    const errorField = document.getElementById(`${field}Errors`) || document.getElementById(`${field}Errors`.replace("message", "messageErrors"));
                     if (errorField) {
                         messages.forEach(message => {
                             errorField.innerHTML += `<p>${message}</p>`;
@@ -147,11 +147,18 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     function clearErrors() {
-        const errorElements = document.querySelectorAll('.error-messages');
-        errorElements.forEach(element => {
-            element.innerHTML = '';
+    const errorElements = document.querySelectorAll('.error-messages, .error-messages-message');
+    errorElements.forEach(element => {
+        element.innerHTML = '';
         });
     }
+    
+        const isAuthenticated = sessionStorage.getItem("admin_authenticated");
+        if (!isAuthenticated) {
+            alert("管理者パスコードが必要です");
+            window.location.href = "{{ route('login') }}";
+        }
 });
+
 </script>
 @endsection

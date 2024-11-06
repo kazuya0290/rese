@@ -41,12 +41,10 @@ class ShopController extends Controller
 
     public function showAllShops()
     {
-        $shops = Shop::all();
 
-        
+        $shops = Shop::all();
         $favorites = auth()->check() ? auth()->user()->favorites->pluck('id')->toArray() : []; 
 
-        
         return view('shop_all', compact('shops', 'favorites'));
     }
 
@@ -56,7 +54,6 @@ class ShopController extends Controller
         $shop = Shop::findOrFail($id);
         if ($request->hasFile('image')) {
             $path = $request->file('image')->store('shops', 'public'); 
-            $shop->image_path = $path;
             $shop->save();
         }
 
@@ -65,6 +62,7 @@ class ShopController extends Controller
 
     public function edit($id)
     {
+
         $shop = Shop::findOrFail($id);
         
         $areas = Area::all(); 
@@ -79,7 +77,6 @@ class ShopController extends Controller
     
     $shop = Shop::findOrFail($request->id); 
 
-    
     $shop->name = $validated['name'];
     $shop->area_id = $request->area_id;
     $shop->genre_id = $request->genre_id;

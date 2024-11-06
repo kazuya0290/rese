@@ -10,7 +10,6 @@ class CheckoutController extends Controller
 {
     public function checkout(Request $request)
     {
-        // Stripe APIキーの設定
         Stripe::setApiKey(env('STRIPE_SECRET'));
 
         try {

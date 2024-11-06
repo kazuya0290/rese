@@ -22,3 +22,45 @@
     cursor: pointer;
     color: blue;
 }
+
+.error {
+    font-size: 1.9em;
+    font-weight: bold;
+    color: #ff0000;
+    text-align: left;
+}
+
+@media (max-width: 768px) {
+    .review-container {
+        margin: 10px;
+    }
+
+    .review-container h1 {
+        font-size: 1.5em;
+        text-align: center;
+    }
+
+    .review-container label {
+        font-size: 1.2em;
+    }
+
+    .review-container textarea {
+        font-size: 1em;
+        padding: 8px;
+    }
+
+    .stars {
+        justify-content: center;
+    }
+
+    .star {
+        font-size: 24px;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        font-size: 1.2em;
+        margin-top: 10px;
+    }
+}

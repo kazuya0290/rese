@@ -31,7 +31,7 @@ class ReservationController extends Controller
             'number_of_people' => $validated['number_of_people'],
         ]);
 
-        return redirect()->route('reservation.thanks');
+        return redirect()->route('done.thanks');
     }
 
     public function update(Request $request, $id)
@@ -60,24 +60,23 @@ class ReservationController extends Controller
         return redirect()->back();
     }
 
-    // マイページ表示に関する処理
+   
     public function myPage()
     {
-        $url = "https://example.com"; // QRコードに埋め込みたいURL
-        $qrCode = QrCode::size(200)->generate($url); // QRコード生成
-
+        $url = "https://example.com"; 
+        $qrCode = QrCode::size(200)->generate($url); 
         $reservations = Reservation::with('shop')->where('user_id', auth()->id())->get();
         $favorites = Favorite::with('shop')->where('user_id', auth()->id())->get();
 
         return view('my_page', compact('reservations', 'favorites', 'qrCode'));
     }
 
-    // QRコードの表示
+   
     public function qr()
     {
-        $url = "https://example.com"; // QRコードに埋め込みたいURL
-        $qrCode = QrCode::size(200)->generate($url); // QRコード生成
+        $url = "https://example.com";
+        $qrCode = QrCode::size(200)->generate($url);
 
-        return view('qr_view', compact('qrCode')); // 必要に応じてビュー名を変更
+        return view('qr_view', compact('qrCode'));
     }
 }

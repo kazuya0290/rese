@@ -101,7 +101,7 @@
 
     document.addEventListener('DOMContentLoaded', function() {
         const now = new Date(); 
-        const formattedNow = now.toISOString().slice(0, 16); // 現在の日時（フォーマット: YYYY-MM-DDTHH:MM）
+        const formattedNow = now.toISOString().slice(0, 16);
 
         @foreach ($reservations as $index => $reservation)
             (function(index) {
@@ -110,20 +110,17 @@
                 const peopleInput = document.getElementById("number_of_people_" + index);
                 const updateButton = document.getElementById("reservation-update-button_" + index);
                 
-                // 予約日を配列に格納
                 const isDuplicate = @json($reservations->pluck('date')->map(function($date) { return \Carbon\Carbon::parse($date)->format('Y-m-d'); }));
 
-                // 日付の入力に対して、過去の日付と当日の現在時刻以前の時間を無効にする
                 dateInput.setAttribute('min', formattedNow);
 
                 dateInput.addEventListener("change", function() {
                     const selectedDate = new Date(dateInput.value);
 
-                    // 当日を選択した場合は現在時刻以降のみ選択可能にする
                     if (selectedDate.toDateString() === now.toDateString()) {
-                        dateInput.setAttribute('min', formattedNow); // 当日なら現在の時刻を最小値に設定
+                        dateInput.setAttribute('min', formattedNow);
                     } else {
-                        dateInput.setAttribute('min', new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1).toISOString().slice(0, 16)); // 未来の日付なら制限なし
+                        dateInput.setAttribute('min', new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1).toISOString().slice(0, 16));
                     }
                     checkInputs(index);
                 });
@@ -133,17 +130,17 @@
                 });
 
                 function checkInputs(index) {
-    const dateChanged = timeInput.value !== initialDates[index];  // 日付・時間の変更を確認
-    const peopleChanged = peopleInput.value !== initialPeople[index].toString();  // 人数の変更を確認
-    const isPastDate = new Date(timeInput.value) < new Date();  // 過去の日付かどうかを確認
-    const selectedDate = new Date(timeInput.value).toISOString().slice(0, 10);  // 選択された日付（年月日）を取得
-    const hasDuplicateReservation = isDuplicate.filter(date => date !== initialDates[index].slice(0, 10)).includes(selectedDate); // 他の予約日と重複しているか確認
+    const dateChanged = timeInput.value !== initialDates[index];
+    const peopleChanged = peopleInput.value !== initialPeople[index].toString();
+    const isPastDate = new Date(timeInput.value) < new Date();  
+    const selectedDate = new Date(timeInput.value).toISOString().slice(0, 10);  
+    const hasDuplicateReservation = isDuplicate.filter(date => date !== initialDates[index].slice(0, 10)).includes(selectedDate); 
     
-    // 時間帯だけの変更の場合もdateChangedをtrueとする
+    
     const originalDateTime = new Date(initialDates[index]);
     const selectedDateTime = new Date(timeInput.value);
     
-    // 時間が変更されたかを個別に確認（同日でも時間のみの変更が可能になる）
+    
       const timeChanged = originalDateTime.getTime() !== selectedDateTime.getTime();
 
     if (isPastDate) {
@@ -154,7 +151,6 @@
         updateButton.setAttribute('title', '予約内容の変更を行ってください');
     }
 
-    // 時間帯のみの変更も有効とするために、timeChangedも条件に追加
     updateButton.disabled = !(dateChanged || peopleChanged || timeChanged) || isPastDate || hasDuplicateReservation;
 }
 
@@ -225,7 +221,7 @@
         });
 
         function generateQRCode(url, element) {
-            element.innerHTML = ""; // 既存のQRコードをクリア
+            element.innerHTML = "";
             new QRCode(element, {
                 text: url,
                 width: 128,
