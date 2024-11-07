@@ -13,7 +13,7 @@ class CreateReviewsTable extends Migration
             $table->foreignId('shop_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->tinyInteger('rating')->comment('1から5までの評価');
-            $table->text('comment')->nullable();
+            $table->text('comment');
             $table->timestamps();
         });
     }
