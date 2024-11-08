@@ -45,25 +45,25 @@ git@github.com:kazuya0290/atte.git<br>
 -MySQL-> php artisan migrateによるマイグレーション<br>
 
 ## テーブル図
-<b>areasテーブル</b>
+
 ![areas](https://github.com/user-attachments/assets/d9b3ae8f-c605-4e5e-aee9-420a2c9afac9)
-<b>detailsテーブル</b>
+
 ![details](https://github.com/user-attachments/assets/2d3247ee-f87a-465e-9334-d451f7d9b5e8)
-<b>favoritesテーブル</b>
+
 ![favorites](https://github.com/user-attachments/assets/445f0546-098b-4d0b-bbe7-8316dd4eef5d)
-<b>genresテーブル</b>
+
 ![genres](https://github.com/user-attachments/assets/49ad7721-9717-4060-aefd-e1836e3a1aa2)
-<b>representativesテーブル</b>
+
 ![representatives](https://github.com/user-attachments/assets/9812fc1b-1222-44f9-9fe3-627820e3319a)
-<b>reservationsテーブル</b>
+
 ![reservations](https://github.com/user-attachments/assets/c2f89f76-9078-48b5-afb8-c862d56aced4)
-<b>reviewsテーブル</b>
+
 ![reviews](https://github.com/user-attachments/assets/2aeace73-94d5-4198-8ecc-9a2696f0ae69)
-<b>shopsテーブル</b>
+
 ![shops](https://github.com/user-attachments/assets/4e719628-0e3b-45b3-89a9-eece4d58a499)
-<b>shops_usersテーブル</b>
+
 ![shops_users](https://github.com/user-attachments/assets/99997495-5143-4d74-b060-6e2ffb7c96b3)
-<b>usersテーブル</b>
+
 ![users](https://github.com/user-attachments/assets/6e818e97-8fc4-4476-8d7b-3b7d49f23ce0)
 
 ## ER図
