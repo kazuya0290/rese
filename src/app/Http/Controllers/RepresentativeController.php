@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Shop;
 use App\Models\Reservation;
+use App\Models\Representative;
+use App\Http\Requests\RepresentativeRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
@@ -16,22 +18,21 @@ class RepresentativeController extends Controller
         return view('auth.representative_login');
     }
 
-    public function login(Request $request)
-    {
-    $request->validate([
-        'email' => 'required|email',
-        'password' => 'required|string|min:8',
-    ]);
-
+    public function login(RepresentativeRequest $request)
+{
+    $validated = $request->validated();
+    
+    
     $credentials = $request->only('email', 'password');
 
     if (Auth::guard('representative')->attempt($credentials)) {
         session()->flash('login_success', 'ログインしました'); 
         return redirect()->intended('/');
-        } else {
-        return redirect()->back()->withErrors(['login_error' => '認証に失敗しました。']);
-        }
+    } else {
+         session()->flash('login_error', '認証に失敗しました、メールアドレスかパスワードが間違っています');
+        return redirect()->back();
     }
+}
 
     public function index()
     {

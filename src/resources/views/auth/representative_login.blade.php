@@ -46,4 +46,11 @@
 ※利用者の方は<a href="{{ route('login') }}">こちら</a>
 </p>
 @endguest
+
+@if (session('login_error'))
+    <script>
+        alert("{{ session('login_error') }}");
+    </script>
+@endif
+
 @endsection

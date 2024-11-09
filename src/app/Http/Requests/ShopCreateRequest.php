@@ -35,9 +35,9 @@ class ShopCreateRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => '名前を入力してください',
-            'name.string' => '名前は文字列で入力してください',
-            'name.max' => '名前は191文字以内で入力してください',
+            'name.required' => '店舗名を入力してください',
+            'name.string' => '店舗名は文字列で入力してください',
+            'name.max' => '店舗名は191文字以内で入力してください',
             'name.unique' => 'この店舗名は登録済みです',
             'area_id.required' => 'エリアを選択してください',
             'genre_id.required' => 'ジャンルを選択してください',
