@@ -40,7 +40,7 @@ http://localhost/shop/{id} (各飲食店詳細ページ)<br>
 http://localhost/shop/{id}/edit (各飲食店更新ページ)<br>
 http://localhost/shop/create (店舗追加ページ)<br>
 http://localhost/admin (管理者ページ)<br>
-http://localhost/representative (利用者(ユーザー)予約一覧ページ)
+http://localhost/representative (利用者(ユーザー)予約一覧ページ)<br>
 http://localhost/register_thanks (会員登録サンクスページ)<br>
 http://localhost/review_thanks (レビュー投稿サンクスページ)<br>
 
