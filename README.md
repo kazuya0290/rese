@@ -12,37 +12,68 @@
 ・勤務開始後、「休憩開始」および「勤務終了」ボタンが使用可能になります。<br>
 ・休憩は1日に何度でも取ることができ、休憩時間は分単位で手動設定可能です。<br>
 ・過去の勤務時間もカレンダーを使用して確認可能です。<br>
-                            <b>ホーム画面</b>
+<b>ホーム画面</b>
 ![ホーム画面](https://github.com/user-attachments/assets/e6f2e042-9e6f-4394-93b7-072780848120)
-                           <b>タイマー画面</b>
+<b>タイマー画面</b>
 ![タイマー画面](https://github.com/user-attachments/assets/9adff991-07b2-4e72-ad24-ccbb79c12c31)
-                           <b>ログイン画面</b>
+<b>ログイン画面</b>
 ![ログイン画面](https://github.com/user-attachments/assets/c0c4911a-7209-4fb4-a780-a020dee84018)
-                            <b>会員登録画面</b>
+<b>会員登録画面</b>
 ![会員登録画面](https://github.com/user-attachments/assets/53d94cc5-247f-4bdc-8462-2aed207b5fa0)
-                             <b>日付一覧画面</b>
+<b>日付一覧画面</b>
 ![日付一覧画面](https://github.com/user-attachments/assets/172e7ad9-9ecf-4be0-aea1-4acbdae60901)
 
 ## 作成した目的
-新規事業を立ち上げた企業向けの勤怠管理システムとして開発しました。<br> 
-このアプリを通じて、労務管理だけでなく、人事評価にも役立てることが可能です。
+ある企業からの依頼で、外部の飲食店予約サービスは手数料を取られるので、<br>
+自社で予約サービスを持ちたいという要望から作成致しました。<br> 
+手数料の目的以外に利用者(ユーザー)だけでなく、管理者も店舗代表者にも簡単に利用できるよう<br>
+工夫して作成致しました。
+
 ## アプリケーションURL
-http://localhost/ (開発環境)<br>
-https://atte-dves.onrender.com デプロイ(本番環境)
+http://localhost/ (ホーム画面・飲食店一覧ページ)<br>
+http://localhost/login (ログインページ)<br>
+http://localhost/verify (メール認証ページ)<br>
+http://localhost/representative/login (店舗代表者ログインページ)<br>
+http://localhost/register (会員登録ページ)<br>
+http://localhost/mypage (マイページ)<br>
+http://localhost/shop/{id} (各飲食店詳細ページ)<br>
+http://localhost/shop/{id}/edit (各飲食店更新ページ)<br>
+http://localhost/shop/create (店舗追加ページ)<br>
+http://localhost/admin (管理者ページ)<br>
+http://localhost/representative (利用者(ユーザー)予約一覧ページ)
+http://localhost/register_thanks (会員登録サンクスページ)<br>
+http://localhost/review_thanks (レビュー投稿サンクスページ)<br>
+
 ## 他のリポジトリ
-git@github.com:kazuya0290/atte.git<br>
-→　勤怠管理システム、認証機能を含むリポジトリです。
+git@github.com:kazuya0290/rese.git<br>
+→　飲食店予約サービス、その他設定ファイルを含むリポジトリです。
+
 ## 機能一覧
 1.ログイン機能<br>
 2.会員登録機能<br>
-3.勤怠管理機能<br>
-4.勤怠履歴確認機能・カレンダー機能
+3.メール認証機能<br>
+4.お気に入り登録・削除機能<br>
+5.エリア・ジャンル選択・キーワード検索によるソート機能<br>
+6.店舗予約機能<br>
+7.店舗画像保存機能<br>
+8.マイページからの予約内容変更・キャンセル(削除)機能<br>
+9.QRコード発行・照合機能
+10.Stripe決済機能
+11.予約リマインダーメール送信機能<br>
+12.レビュー機能<br>
+13.コメント閲覧機能<br>
+14.管理者による店舗代表者追加機能<br>
+15.管理者による登録済利用者(ユーザー)一斉メール送信機能<br>
+16.店舗代表者による各店舗予約内容確認機能<br>
+17.店舗代表者による既存店舗更新機能<br>
+18.店舗代表者による新規店舗作成機能
 
 ## 使用技術(実行環境)
 -Laravel Framework 8.83.8<br>
 -PHP 7.4.9<br>
 -JavaScript<br>
 -MySQL-> php artisan migrateによるマイグレーション<br>
+-Mailhog 1.0.1<br>
 
 ## テーブル図
 
@@ -67,11 +98,12 @@ git@github.com:kazuya0290/atte.git<br>
 ![users](https://github.com/user-attachments/assets/6e818e97-8fc4-4476-8d7b-3b7d49f23ce0)
 
 ## ER図
+
 ![er](https://github.com/user-attachments/assets/ba5bbe11-ba8d-4921-bccd-eee107f2ea39)
 
 ## 環境構築
 <b>- Dockerのビルド -</b><br>
-1.リポジトリのクローン　→　git clone git@github.com:kazuya0290/atte.git<br>
+1.リポジトリのクローン　→　git clone git@github.com:kazuya0290/rese.git<br>
 2.Dockerデスクトップを立ち上げ、作成したコンテナを起動する。<br>
 3.コンテナの起動と再ビルド　→　docker-compose up -d --build
 
@@ -86,6 +118,26 @@ DB_PORT=3306<br>
 DB_DATABASE=laravel_db<br>
 DB_USERNAME=laravel_user<br>
 DB_PASSWORD=laravel_pass<br>
+BROADCAST_DRIVER=log<br>
+CACHE_DRIVER=file<br>
+FILESYSTEM_DRIVER=local<br>
+QUEUE_CONNECTION=sync<br>
+SESSION_DRIVER=file<br>
+SESSION_LIFETIME=120<br>
+MEMCACHED_HOST=127.0.0.1<br>
+REDIS_HOST=127.0.0.1<br>
+REDIS_PASSWORD=null<br>
+REDIS_PORT=6379<br>
+MAIL_MAILER=smtp<br>
+MAIL_HOST=mailhog<br>
+MAIL_PORT=1025<br>
+MAIL_USERNAME=null<br>
+MAIL_PASSWORD=null<br>
+MAIL_ENCRYPTION=null<br>
+MAIL_FROM_ADDRESS=example@example.com<br>
+MAIL_FROM_NAME="Example"<br>
+STRIPE_KEY=pk_test_51QCaiKINecNlWRFz1faiSxHyYUW6BKkysgHeSitbGAU0VJjH3HGdYFEcAlZxJNkHUiBAhju7eyklW2AGn2mqS2zd00B4Xp1iSg<br>
+STRIPE_SECRET=sk_test_51QCaiKINecNlWRFzZ15SXBwdCEs5c1gX1Yo7W0ArQ4g5jDqY3Qji3TFOyOtLcc9g8fJvfRcnwSGtO4IUhfMswSsx00OTvsCtV9<br>
 5. アプリケーションキーの作成<br>
 →　php artisan key:generate<br>
 6. マイグレーションの実行<br>
