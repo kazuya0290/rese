@@ -14,7 +14,7 @@
             
             <div class="row_mb-3 input-with-icon">
                 <span class="icon material-symbols-outlined">mail</span>
-                <input id="email" type="email" placeholder="Email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email" autofocus>
+                <input id="email" type="email" placeholder="Email" class="form-control @error('email') is-invalid @enderror" name="email" title="メールアドレス" value="{{ old('email') }}" autocomplete="email" autofocus>
             </div>
             @error('email')
                 <div class="invalid-feedback">

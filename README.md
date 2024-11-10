@@ -8,20 +8,38 @@
 管理者や店舗代表者に関しては、追加や登録されているユーザー(利用者)全員にお知らせメールを送信(メール自体はlocalhost:8025のmailhog宛に届く)することが出来、店舗代表者は登録されている全店舗の情報の更新や新店舗の追加が出来る仕組みになっております。<br>
 
 <b>-基本機能-</b><br>
-・非ログイン時はお気に入り登録や予約等行うことは出来ませんが、ログインすることにより、全ての機能が利用できるようになります。ハートマークのお気に入りボタンはクリックすると赤く光り、<br>
-・勤務開始後、「休憩開始」および「勤務終了」ボタンが使用可能になります。<br>
+・メニュー選択画面：
+・店舗一覧画面：各店舗にハッシュタグ(#)のついたエリアとジャンル、画像がそれぞれ載ってあります。非ログイン時はお気に入り登録や予約等行うことは出来ませんが、ログインすることにより、全ての機能が利用できるようになります。ハートマークのお気に入りボタンはクリックすると赤く光ってお気に入り追加され、もう1度クリックするとお気に入り削除を行うことが簡単に出来ます。各店舗に付いている詳しくみるボタンを押すことで店舗の詳細画面を見ることが出来ます。<br>
+・店舗詳細画面：店舗一覧画面同様各店舗のエリアとジャンル、画像に加え店舗の説明が載ってあります。非ログイン時でもストレージに画像を保存することが可能で、画像を保存するボタンをクリックすることで、ストレージに画像を保存することが可能です。右側の予約フォームは非ログイン時では予約を取ることは出来ませんが、ログインすることで、来店の予約を取ることが可能です。<br>
 ・休憩は1日に何度でも取ることができ、休憩時間は分単位で手動設定可能です。<br>
 ・過去の勤務時間もカレンダーを使用して確認可能です。<br>
 <b>ホーム画面</b>
-![ホーム画面](https://github.com/user-attachments/assets/e6f2e042-9e6f-4394-93b7-072780848120)
-<b>タイマー画面</b>
-![タイマー画面](https://github.com/user-attachments/assets/9adff991-07b2-4e72-ad24-ccbb79c12c31)
-<b>ログイン画面</b>
-![ログイン画面](https://github.com/user-attachments/assets/c0c4911a-7209-4fb4-a780-a020dee84018)
-<b>会員登録画面</b>
-![会員登録画面](https://github.com/user-attachments/assets/53d94cc5-247f-4bdc-8462-2aed207b5fa0)
-<b>日付一覧画面</b>
-![日付一覧画面](https://github.com/user-attachments/assets/172e7ad9-9ecf-4be0-aea1-4acbdae60901)
+![ホーム画面](https://github.com/user-attachments/assets/9ebada05-9bc0-4c5c-892f-a5a2a54f5eaa)
+![メニュー画面1](https://github.com/user-attachments/assets/3bdbcdef-d6d6-439e-89ac-015351422ca1)
+![ログイン画面](https://github.com/user-attachments/assets/9fccb6f6-d642-4cd1-a10c-589027be5bd0)
+![会員登録画面](https://github.com/user-attachments/assets/0049ff30-005d-40db-b906-4e1bb07e484f)
+![メール認証画面](https://github.com/user-attachments/assets/fd74e672-7802-464c-b525-a8206762a52d)
+![サンクス画面(会員登録)](https://github.com/user-attachments/assets/a4004a69-717b-4111-a899-9efb4f271a62)
+![ホーム画面(ログイン時)](https://github.com/user-attachments/assets/811f0d16-3d39-454e-9eb3-1017a33c363c)
+![メニュー画面2(ログイン時)](https://github.com/user-attachments/assets/4c94d24f-86fb-4e73-a649-7b65c0b0e1af)
+![店舗詳細画面](https://github.com/user-attachments/assets/56cd9ecb-2c43-445c-b57a-783ffe84b915)
+![Stripe決済画面](https://github.com/user-attachments/assets/bd51be15-f2ce-4659-a39a-74fccc5a3538)
+![予約サンクス画面](https://github.com/user-attachments/assets/d4567b7a-920c-4226-aa3f-4c90d8789d2e)
+![マイページ画面](https://github.com/user-attachments/assets/a3f8f527-5f07-4aeb-92a5-887bf094a975)
+![予約リマインダーメール](https://github.com/user-attachments/assets/1b6d2286-64a4-4288-8896-568bf36a79d5)
+![予約リマインダーメールの内容](https://github.com/user-attachments/assets/b7503f4e-a6e9-4eb9-bf55-7236d8b76206)
+![レビュー投稿画面](https://github.com/user-attachments/assets/a08df26c-6aca-4977-8bbc-f23b091734e1)
+![レビューサンクス画面](https://github.com/user-attachments/assets/b9ded2da-fdf3-43dd-bbee-abd4bd03d1b8)
+![レビュー内容確認画面](https://github.com/user-attachments/assets/b07d94e8-0d4c-4f96-b131-99eb4495c230)
+![管理者画面(店舗代表者の追加)](https://github.com/user-attachments/assets/636cd693-8134-4bae-b4e8-5f36ea0e26c9)
+![管理者画面(利用者へのお知らせメール送信)](https://github.com/user-attachments/assets/36adbcbc-8619-4488-b34e-817bd9e8022c)
+![店舗代表者ログイン画面](https://github.com/user-attachments/assets/87f871c9-303b-46f2-bae6-aeba1c575059)
+![店舗代表者ホーム画面](https://github.com/user-attachments/assets/0a22f786-003f-4ab4-a37d-5842b96ef5f9)
+![店舗代表者ホーム画面2](https://github.com/user-attachments/assets/12ee82cc-89f4-4079-98ee-7a5354c8c436)
+![メニュー画面3(店舗代表者ログイン時)](https://github.com/user-attachments/assets/c40c5e7d-ec2d-4a49-b5ee-2744cba6cb07)
+![店舗情報の更新画面](https://github.com/user-attachments/assets/f5b9e087-6400-4eca-bad6-4eea129dbd6d)
+![店舗情報の作成画面](https://github.com/user-attachments/assets/3ee95324-2b44-461b-9af2-5cbbd0eb0c40)
+![利用者(ユーザー)予約一覧画面](https://github.com/user-attachments/assets/e9ee7e02-d78d-44d2-b23b-e717c10de274)
 
 ## 作成した目的
 ある企業からの依頼で、外部の飲食店予約サービスは手数料が発生してしまう為、<br>
@@ -49,24 +67,25 @@ git@github.com:kazuya0290/rese.git<br>
 →　飲食店予約サービス、その他設定ファイルを含むリポジトリです。
 
 ## 機能一覧
-1.ログイン機能<br>
-2.会員登録機能<br>
-3.メール認証機能<br>
-4.お気に入り登録・削除機能<br>
-5.エリア・ジャンル選択・キーワード検索によるソート機能<br>
-6.店舗予約機能<br>
-7.店舗画像保存機能<br>
-8.マイページからの予約内容変更・キャンセル(削除)機能<br>
-9.QRコード発行・照合機能
-10.Stripe決済機能
-11.予約リマインダーメール送信機能<br>
-12.レビュー機能<br>
-13.コメント閲覧機能<br>
-14.管理者による店舗代表者追加機能<br>
-15.管理者による登録済利用者(ユーザー)一斉メール送信機能<br>
-16.店舗代表者による各店舗予約内容確認機能<br>
-17.店舗代表者による既存店舗更新機能<br>
-18.店舗代表者による新規店舗作成機能
+1.メニュー選択機能<br>
+2.ログイン機能<br>
+3.会員登録機能<br>
+4.メール認証機能<br>
+5.お気に入り登録・削除機能<br>
+6.エリア・ジャンル選択・キーワード検索によるソート機能<br>
+7.店舗予約機能<br>
+8.店舗画像保存機能<br>
+9.マイページからの予約内容変更・キャンセル(削除)機能<br>
+10.QRコード発行・照合機能
+11.Stripe決済機能
+12.予約リマインダーメール送信機能<br>
+13.レビュー機能<br>
+14.コメント閲覧機能<br>
+15.管理者による店舗代表者追加機能<br>
+16.管理者による登録済利用者(ユーザー)一斉メール送信機能<br>
+17.店舗代表者による利用者(ユーザー)予約内容確認機能<br>
+18.店舗代表者による既存店舗更新機能<br>
+19.店舗代表者による新規店舗作成機能
 
 ## 使用技術(実行環境)
 -Laravel Framework 8.83.8<br>
@@ -149,9 +168,8 @@ STRIPE_SECRET=sk_test_51QCaiKINecNlWRFzZ15SXBwdCEs5c1gX1Yo7W0ArQ4g5jDqY3Qji3TFOy
 - 開発環境：http://localhost/ <br>
 - mailhog : http://localhost:8025/<br>
 - phpMyAdmin : http://localhost:8080/<br>
-- 本番環境 : https://rese-dves.onrender.com (従量課金制の為、サービス停止中)
+- 本番環境 : https://rese-he2e.onrender.com (従量課金制の為、サービス停止中)
 
 ## その他　<b>アプリケーションURL(特に本番環境について)</b>
 mailhogにて届いたメールを開くとhtmlメッセージが表示されないことがあります。その場合は１度メールを閉じて再度開くと表示されます。
-Dockerfile,default.conf,docker-compose.ymlファイルは開発環境と本番環境のコードに分けて記載してあります。通常は開発環境のコードを表示、本番環境のコードをコメントアウトしております。<br>また、Render.comは従量課金制の為、無料で利用するために通常はサービスを停止しております。採点の際はサービスをONにしますのでご連絡いただきますよう、よろしくお願いいたします。<br>
-メールアドレス: kzytty199120@yahoo.co.jp
+Dockerfile,default.conf,docker-compose.ymlファイルは開発環境と本番環境のコードに分けて記載してあります。通常は開発環境のコードを表示、本番環境のコードをコメントアウトしております。<br>Render.comは従量課金制の為、無料で利用するためにサービスを停止しております。<br>
