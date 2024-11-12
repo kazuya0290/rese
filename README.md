@@ -51,7 +51,7 @@
 ![レビューサンクス画面](https://github.com/user-attachments/assets/b9ded2da-fdf3-43dd-bbee-abd4bd03d1b8)
 
 <b>レビュー内容確認画面</b>
-![レビュー内容確認画面](https://github.com/user-attachments/assets/b9ded2da-fdf3-43dd-bbee-abd4bd03d1b8)
+![レビュー内容確認画面](https://github.com/user-attachments/assets/10c09b05-9d48-4b6c-92db-d3c52a11a62f)
 
 <b>管理者画面(店舗代表者の追加)</b>
 ![管理者画面(店舗代表者の追加)](https://github.com/user-attachments/assets/636cd693-8134-4bae-b4e8-5f36ea0e26c9)
