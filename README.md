@@ -1,5 +1,4 @@
 ## アプリケーション名
-
 <strong>Rese飲食店予約サービスアプリ</strong><br>
 
 Rese飲食店予約サービスアプリは、利用者(ユーザー)が飲食店をエリアやジャンル選択、キーワード検索で簡単に検索し、オンラインで予約できるサービスです。<br> 検索機能は、プルダウンボックスからエリアやジャンルを選択して絞り込むフィルター機能と、キーワード検索機能の2つを提供し、ユーザーが希望の飲食店を迅速に見つけることができます。<br> その他にも、お気に入り店舗の追加、予約管理、QRコード発行、オンライン決済（Stripe決済）、リマインダーメール機能、レビュー投稿など、多彩な機能を提供し、ユーザーの利便性を高めています。<br> また、管理者は店舗代表者の追加・利用者(ユーザー)への一斉メール送信、店舗代表者は店舗情報の更新や新規追加が可能で、店舗運営をサポートします。<br>
@@ -83,7 +82,7 @@ Rese飲食店予約サービスアプリは、利用者(ユーザー)が飲食�
 ![利用者(ユーザー)予約一覧画面](https://github.com/user-attachments/assets/e9ee7e02-d78d-44d2-b23b-e717c10de274)
 
 
-<h3>-基本機能(上部に添付した画面の説明)-</h3>
+<strong>-基本機能(上部に添付した画面の説明)-</strong>
 
 ・<strong>ホーム画面(店舗一覧)</strong>：各店舗を表示する画面です。画面右上のエリア・ジャンル選択、キーワード検索によるフィルター機能は非ログイン時でも利用可能です。各店舗の「詳しくみる」ボタンをクリックすると、店舗詳細情報を閲覧することが出来ます。<br>
 
@@ -138,11 +137,9 @@ Rese飲食店予約サービスアプリは、利用者(ユーザー)が飲食�
 ・<strong>利用者(ユーザー)予約一覧画面</strong>：メニュー画面3のReservation Listをクリックするとこちらの画面が開かれます。この画面より利用者(ユーザー)の氏名、メールアドレスを含めた詳細な予約情報を閲覧することが可能です。ページネーションを使用しており、7件ごとのデータを表示するように設定しております。<br>
 
 ## 作成した目的
-
 外部予約サービスの手数料を回避するため、自社で予約システムを持ちたいという依頼を受けて開発しました。<br>ユーザー・管理者・店舗代表者のそれぞれに使いやすい設計となっております。<br>
 
 ## アプリケーションURL
-
 http://localhost/ (ホーム画面・飲食店一覧ページ)<br>
 http://localhost/login (ログインページ)<br>
 http://localhost/verify (メール認証ページ)<br>
@@ -158,12 +155,10 @@ http://localhost/register_thanks (会員登録サンクスページ)<br>
 http://localhost/review_thanks (レビュー投稿サンクスページ)<br>
 
 ## 他のリポジトリ
-
 git@github.com:kazuya0290/rese.git<br>
 → 飲食店予約サービス、その他設定ファイルを含むリポジトリです。<br>
 
 ## 機能一覧
-
 1.メニュー選択機能<br>
 2.ログイン機能<br>
 3.会員登録機能<br>
@@ -185,7 +180,6 @@ git@github.com:kazuya0290/rese.git<br>
 19.店舗代表者による新規店舗作成機能<br>
 
 ## 使用技術(実行環境)
-
 -Laravel Framework 8.83.8<br>
 -PHP 7.4.9<br>
 -JavaScript<br>
@@ -195,7 +189,6 @@ git@github.com:kazuya0290/rese.git<br>
 -Stripe PHP 9.9 (決済システム)<br>
 
 ## テーブル図
-
 ![areas](https://github.com/user-attachments/assets/d9b3ae8f-c605-4e5e-aee9-420a2c9afac9)
 
 ![details](https://github.com/user-attachments/assets/2d3247ee-f87a-465e-9334-d451f7d9b5e8)
@@ -217,11 +210,9 @@ git@github.com:kazuya0290/rese.git<br>
 ![users](https://github.com/user-attachments/assets/6e818e97-8fc4-4476-8d7b-3b7d49f23ce0)
 
 ## ER図
-
 ![er](https://github.com/user-attachments/assets/ba5bbe11-ba8d-4921-bccd-eee107f2ea39)
 
 ## 環境構築
-
 -<strong> Dockerのビルド</strong>-<br>
 
 1.リポジトリのクローン<br>
@@ -284,13 +275,11 @@ QRコード発行機能に simplesoftwareio/simple-qrcode ライブラリを使�
 開発環境でのメール送信には MailHog を使用しています。MAIL_MAILER=smtp と MAIL_HOST=mailhog の設定により、送信されたメールは http://localhost:8025 の MailHog ダッシュボードで確認できます。MailHogは、開発環境でメール送信をテストするためのツールです。<br>
 
 ## URL
-
 - 開発環境: http://localhost/ <br>
 - mailhog : http://localhost:8025/<br>
 - phpMyAdmin : http://localhost:8080/<br>
 - 本番環境 : https://rese-he2e.onrender.com (従量課金制の為、サービス停止中)<br>
 
 ## その他
-
 mailhog(localhost:8025)にて届いたメールを開くとhtmlメッセージが表示されないことがあります。その場合は1度メールを閉じて再度開くと表示されます。(手順：メールをクリック →　InBoxをクリック → 再度メールをクリック)<br>
-Dockerfile,default.conf,docker-compose.ymlファイルは開発環境と本番環境のコードに分けて記載してあります。通常は開発環境のコードを表示しており、本番環境のコードはコメントアウトしております。<br>Render.comは従量課金制の為、無料で利用するためにサービスを停止しております。<br>
+Dockerfile,default.conf,docker-compose.ymlファイルは開発環境と本番環境のコードに分けて記載してあります。<br>通常は開発環境のコードを表示しており、本番環境のコードはコメントアウトしております。<br>Render.comは従量課金制の為、無料で利用するためにサービスを停止しております。<br>

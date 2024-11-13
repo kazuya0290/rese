@@ -42,13 +42,11 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-    // お気に入り店舗とのリレーション
     public function favorites()
     {
     return $this->belongsToMany(Shop::class, 'shops_users');
     }
 
-    // 予約とのリレーション (ユーザーは複数の予約を持つ)
     public function reservations()
     {
         return $this->hasMany(Reservation::class);

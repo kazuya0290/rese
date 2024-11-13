@@ -37,10 +37,9 @@
             </span>
         </h1>
          @php
-        // 画像のURLを判定
         $imageUrl = $shop->image;
         if (!str_starts_with($imageUrl, 'http')) {
-            $imageUrl = Storage::url($imageUrl); // ローカルストレージの場合
+            $imageUrl = Storage::url($imageUrl);
         }
         @endphp
         <img src="{{ $imageUrl }}" alt="{{ $shop->name }}" class="shop-image">
