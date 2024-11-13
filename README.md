@@ -224,7 +224,7 @@ git@github.com:kazuya0290/rese.git<br>
 3.コンテナの起動と再ビルド<br>
 →```docker-compose up -d --build```<br>
 
--<strong>Laravel環境構築</strong>-
+-<strong>Laravel環境構築</strong>-<br>
 1.Dockerコンテナに入る<br>
 →```docker-compose exec php bash```<br>
 2.Composerのインストール<br>
