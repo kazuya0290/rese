@@ -1,6 +1,6 @@
 ## アプリケーション名
 <strong>Rese飲食店予約サービスアプリ</strong><br>
-利用者(ユーザー)が飲食店をエリアやジャンルごとに検索し、予約できるサービスです。<br>お気に入り追加や予約の管理機能、リマインダーメール、レビュー投稿機能など、利用者が便利に使える機能が揃っています。<br>また、管理者や店舗代表者の機能も提供しており、店舗情報の更新や新規追加が可能です。<br>
+利用者(ユーザー)が飲食店をエリアやジャンルごとに検索し、予約できるサービスです。<br>お気に入り追加や予約の管理機能、リマインダーメール、レビュー投稿機能など、利用者(ユーザー)が便利に使える機能が揃っています。<br>また、管理者や店舗代表者の機能も提供しており、店舗情報の更新や新規追加が可能です。<br>
 
 <strong>ホーム画面</strong>
 ![ホーム画面](https://github.com/user-attachments/assets/9ebada05-9bc0-4c5c-892f-a5a2a54f5eaa)
@@ -139,6 +139,7 @@
 外部予約サービスの手数料を回避するため、自社で予約システムを持ちたいという依頼を受けて開発しました。<br>ユーザー・管理者・店舗代表者のそれぞれに使いやすい設計となっております。<br>
 
 ## アプリケーションURL
+
 http://localhost/ (ホーム画面・飲食店一覧ページ)<br>
 http://localhost/login (ログインページ)<br>
 http://localhost/verify (メール認証ページ)<br>
@@ -154,8 +155,9 @@ http://localhost/register_thanks (会員登録サンクスページ)<br>
 http://localhost/review_thanks (レビュー投稿サンクスページ)<br>
 
 ## 他のリポジトリ
+
 git@github.com:kazuya0290/rese.git<br>
-→ 飲食店予約サービス、その他設定ファイルを含むリポジトリです。
+→ 飲食店予約サービス、その他設定ファイルを含むリポジトリです。<br>
 
 ## 機能一覧
 1.メニュー選択機能<br>
@@ -172,18 +174,21 @@ git@github.com:kazuya0290/rese.git<br>
 12.予約リマインダーメール送信機能<br>
 13.レビュー機能<br>
 14.コメント閲覧機能<br>
-15.管理者による店舗代表者追加機能<br>
+15.管理者による店舗代表者追加機能 (店舗の代表者を新たに登録)<br>
 16.管理者による登録済利用者(ユーザー)一斉メール送信機能<br>
 17.店舗代表者による利用者(ユーザー)予約内容確認機能<br>
 18.店舗代表者による既存店舗更新機能<br>
-19.店舗代表者による新規店舗作成機能
+19.店舗代表者による新規店舗作成機能<br>
 
 ## 使用技術(実行環境)
+
 -Laravel Framework 8.83.8<br>
 -PHP 7.4.9<br>
 -JavaScript<br>
--MySQL-> php artisan migrateによるマイグレーション<br>
--Mailhog 1.0.1<br>
+-MySQL (マイグレーションは php artisan migrate を使用)<br>
+-Mailhog 1.0.1 (開発環境用のメール送受信ツール)<br>
+-qrcodejs 1.0.0 (QRコード発行ライブラリ)<br>
+-Stripe PHP 9.9 (決済システム)<br>
 
 ## テーブル図
 
@@ -212,16 +217,18 @@ git@github.com:kazuya0290/rese.git<br>
 ![er](https://github.com/user-attachments/assets/ba5bbe11-ba8d-4921-bccd-eee107f2ea39)
 
 ## 環境構築
-<strong>- Dockerのビルド -</strong><br>
+-<strong> Dockerのビルド</strong>-<br>
 1.リポジトリのクローン → git clone git@github.com:kazuya0290/rese.git<br>
 2.Dockerデスクトップを立ち上げ、作成したコンテナを起動する。<br>
 3.コンテナの起動と再ビルド → docker-compose up -d --build
 
-  <strong>-Laravel環境構築-</strong>
-1. Dockerコンテナに入る → docker-compose exec php bash
-2. Composerのインストール → composer install
-3. 「.env.example」ファイルを 「.env」ファイルに命名を変更。または、新しく.envファイルを作成
-4. .envに以下の環境変数を追加<br>
+-<strong>Laravel環境構築</strong>-
+1.Dockerコンテナに入る → docker-compose exec php bash
+2.Composerのインストール → composer install
+3.「.env.example」ファイルを 「.env」ファイルに命名を変更。または、新しく.envファイルを作成
+→ cp .env.example .env<br>
+4..envに以下の環境変数を追加<br>
+```
 DB_CONNECTION=mysql<br>
 DB_HOST=mysql<br>
 DB_PORT=3306<br>
@@ -248,19 +255,25 @@ MAIL_FROM_ADDRESS=example@example.com<br>
 MAIL_FROM_NAME="Example"<br>
 STRIPE_KEY=pk_test_51QCaiKINecNlWRFz1faiSxHyYUW6BKkysgHeSitbGAU0VJjH3HGdYFEcAlZxJNkHUiBAhju7eyklW2AGn2mqS2zd00B4Xp1iSg<br>
 STRIPE_SECRET=sk_test_51QCaiKINecNlWRFzZ15SXBwdCEs5c1gX1Yo7W0ArQ4g5jDqY3Qji3TFOyOtLcc9g8fJvfRcnwSGtO4IUhfMswSsx00OTvsCtV9<br>
-5. アプリケーションキーの作成<br>
+5.アプリケーションキーの作成<br>
 → php artisan key:generate<br>
-6. マイグレーションの実行<br>
+6.マイグレーションの実行<br>
 → php artisan migrate<br>
-7. シーディングの実行<br>
+7.シーディングの実行(データ・ダミーデータの挿入)<br>
 → php artisan db:seed
+```
+-<strong>使用するパッケージについて</strong>-
+1.QRコード生成<br>
+QRコード発行機能に simplesoftwareio/simple-qrcode ライブラリを使用しています。このパッケージにより、Laravel内で簡単にQRコードを生成できます。<br>
+2.Stripe決済機能<br>
+決済機能には stripe/stripe-php を使用しています。このライブラリを利用することで、Stripe APIと簡単に連携し、オンライン決済処理を行うことができます。
 
 ## URL
 - 開発環境: http://localhost/ <br>
 - mailhog : http://localhost:8025/<br>
 - phpMyAdmin : http://localhost:8080/<br>
-- 本番環境 : https://rese-he2e.onrender.com (従量課金制の為、サービス停止中)
+- 本番環境 : https://rese-he2e.onrender.com (従量課金制の為、サービス停止中)<br>
 
-## その他 <strong>アプリケーションURL(特に本番環境について)</strong>
-mailhogにて届いたメールを開くとhtmlメッセージが表示されないことがあります。その場合は1度メールを閉じて再度開くと表示されます。
-Dockerfile,default.conf,docker-compose.ymlファイルは開発環境と本番環境のコードに分けて記載してあります。通常は開発環境のコードを表示、本番環境のコードをコメントアウトしております。<br>Render.comは従量課金制の為、無料で利用するためにサービスを停止しております。<br>
+## その他
+mailhog(localhost:8025)にて届いたメールを開くとhtmlメッセージが表示されないことがあります。その場合は1度メールを閉じて再度開くと表示されます。
+Dockerfile,default.conf,docker-compose.ymlファイルは開発環境と本番環境のコードに分けて記載してあります。通常は開発環境のコードを表示しており、本番環境のコードはコメントアウトしております。<br>Render.comは従量課金制の為、無料で利用するためにサービスを停止しております。<br>
