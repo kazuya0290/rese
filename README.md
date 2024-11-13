@@ -225,11 +225,11 @@ git@github.com:kazuya0290/rese.git<br>
 ```docker-compose up -d --build```<br>
 
 -<strong>Laravel環境構築</strong>-
-1.Dockerコンテナに入る
+1.Dockerコンテナに入る<br>
 ```docker-compose exec php bash```<br>
-2.Composerのインストール
+2.Composerのインストール<br>
 ```composer install```<br>
-3.「.env.example」ファイルを 「.env」ファイルに命名を変更。または、新しく.envファイルを作成
+3.「.env.example」ファイルを 「.env」ファイルに命名を変更。または、新しく.envファイルを作成<br>
 ```cp .env.example .env```<br>
 4..envに以下の環境変数を追加<br>
 ```
