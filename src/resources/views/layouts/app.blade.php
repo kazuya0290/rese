@@ -70,7 +70,7 @@
 
             
             if (result) {
-                alert('ログアウトしました'); 
+                alert('ログアウトしました。'); 
                 document.getElementById('logout-form').submit(); 
             }
         });
