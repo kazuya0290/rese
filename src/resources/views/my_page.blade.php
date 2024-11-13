@@ -187,7 +187,7 @@
 
     function handleCancel(event, shopName) {
         if (confirm('本当にキャンセルまたは削除しますか？')) {
-            alert(`${shopName}の予約キャンセル・削除が完了しました。`);
+            alert(`${shopName}の予約キャンセル・削除が完了しました`);
             return true;
         } else {
             event.preventDefault();
