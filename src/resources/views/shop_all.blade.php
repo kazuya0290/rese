@@ -62,7 +62,7 @@
                             </span>
                          @elseif (Auth::guard('representative')->check())
                             <a href="{{ route('shop.edit', ['id' => $shop->id]) }}" class="details-button">更新</a>
-                            <span class="favorite-button disabled" onclick="alert('ユーザー(利用者)のみが利用可能な機能です');">
+                            <span class="favorite-button disabled" onclick="alert('利用者(ユーザー)のみが利用可能な機能です');">
                                 <i class="material-symbols-outlined favorite-icon">favorite_border</i>
                             </span>
                         @else
