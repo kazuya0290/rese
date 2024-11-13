@@ -218,55 +218,62 @@ git@github.com:kazuya0290/rese.git<br>
 
 ## 環境構築
 -<strong> Dockerのビルド</strong>-<br>
-1.リポジトリのクローン → git clone git@github.com:kazuya0290/rese.git<br>
+1.リポジトリのクローン<br>
+```git clone git@github.com:kazuya0290/rese.git```
 2.Dockerデスクトップを立ち上げ、作成したコンテナを起動する。<br>
-3.コンテナの起動と再ビルド → docker-compose up -d --build
+3.コンテナの起動と再ビルド
+```docker-compose up -d --build```
 
 -<strong>Laravel環境構築</strong>-
-1.Dockerコンテナに入る → docker-compose exec php bash
-2.Composerのインストール → composer install
+1.Dockerコンテナに入る
+```docker-compose exec php bash```
+2.Composerのインストール
+```composer install```
 3.「.env.example」ファイルを 「.env」ファイルに命名を変更。または、新しく.envファイルを作成
-→ cp .env.example .env<br>
+```cp .env.example .env```
 4..envに以下の環境変数を追加<br>
 ```
-DB_CONNECTION=mysql<br>
-DB_HOST=mysql<br>
-DB_PORT=3306<br>
-DB_DATABASE=laravel_db<br>
-DB_USERNAME=laravel_user<br>
-DB_PASSWORD=laravel_pass<br>
-BROADCAST_DRIVER=log<br>
-CACHE_DRIVER=file<br>
-FILESYSTEM_DRIVER=local<br>
-QUEUE_CONNECTION=sync<br>
-SESSION_DRIVER=file<br>
-SESSION_LIFETIME=120<br>
-MEMCACHED_HOST=127.0.0.1<br>
-REDIS_HOST=127.0.0.1<br>
-REDIS_PASSWORD=null<br>
-REDIS_PORT=6379<br>
-MAIL_MAILER=smtp<br>
-MAIL_HOST=mailhog<br>
-MAIL_PORT=1025<br>
-MAIL_USERNAME=null<br>
-MAIL_PASSWORD=null<br>
-MAIL_ENCRYPTION=null<br>
-MAIL_FROM_ADDRESS=example@example.com<br>
-MAIL_FROM_NAME="Example"<br>
-STRIPE_KEY=pk_test_51QCaiKINecNlWRFz1faiSxHyYUW6BKkysgHeSitbGAU0VJjH3HGdYFEcAlZxJNkHUiBAhju7eyklW2AGn2mqS2zd00B4Xp1iSg<br>
-STRIPE_SECRET=sk_test_51QCaiKINecNlWRFzZ15SXBwdCEs5c1gX1Yo7W0ArQ4g5jDqY3Qji3TFOyOtLcc9g8fJvfRcnwSGtO4IUhfMswSsx00OTvsCtV9<br>
-5.アプリケーションキーの作成<br>
-→ php artisan key:generate<br>
-6.マイグレーションの実行<br>
-→ php artisan migrate<br>
-7.シーディングの実行(データ・ダミーデータの挿入)<br>
-→ php artisan db:seed
+DB_CONNECTION=mysql
+DB_HOST=mysql
+DB_PORT=3306
+DB_DATABASE=laravel_db
+DB_USERNAME=laravel_user
+DB_PASSWORD=laravel_pass
+BROADCAST_DRIVER=log
+CACHE_DRIVER=file
+FILESYSTEM_DRIVER=local
+QUEUE_CONNECTION=sync
+SESSION_DRIVER=file
+SESSION_LIFETIME=120
+MEMCACHED_HOST=127.0.0.1
+REDIS_HOST=127.0.0.1
+REDIS_PASSWORD=null
+REDIS_PORT=6379
+MAIL_MAILER=smtp
+MAIL_HOST=mailhog
+MAIL_PORT=1025
+MAIL_USERNAME=null
+MAIL_PASSWORD=null
+MAIL_ENCRYPTION=null
+MAIL_FROM_ADDRESS=example@example.com
+MAIL_FROM_NAME="Example"
+STRIPE_KEY=pk_test_51QCaiKINecNlWRFz1faiSxHyYUW6BKkysgHeSitbGAU0VJjH3HGdYFEcAlZxJNkHUiBAhju7eyklW2AGn2mqS2zd00B4Xp1iSg
+STRIPE_SECRET=sk_test_51QCaiKINecNlWRFzZ15SXBwdCEs5c1gX1Yo7W0ArQ4g5jDqY3Qji3TFOyOtLcc9g8fJvfRcnwSGtO4IUhfMswSsx00OTvsCtV9
 ```
--<strong>使用するパッケージについて</strong>-
+5.アプリケーションキーの作成<br>
+```php artisan key:generate```
+6.マイグレーションの実行<br>
+```php artisan migrate```
+7.シーディングの実行(データ・ダミーデータの挿入)<br>
+```php artisan db:seed```
+
+-<strong>使用するパッケージについて</strong>-<br>
 1.QRコード生成<br>
 QRコード発行機能に simplesoftwareio/simple-qrcode ライブラリを使用しています。このパッケージにより、Laravel内で簡単にQRコードを生成できます。<br>
 2.Stripe決済機能<br>
-決済機能には stripe/stripe-php を使用しています。このライブラリを利用することで、Stripe APIと簡単に連携し、オンライン決済処理を行うことができます。
+決済機能には stripe/stripe-php を使用しています。このライブラリを利用することで、Stripe APIと簡単に連携し、オンライン決済処理を行うことができます。<br>
+3.メール送信（MailHog）<br>
+開発環境でのメール送信には MailHog を使用しています。MAIL_MAILER=smtp と MAIL_HOST=mailhog の設定により、送信されたメールは http://localhost:8025 の MailHog ダッシュボードで確認できます。MailHogは、開発環境でメール送信をテストするためのツールです。<br>
 
 ## URL
 - 開発環境: http://localhost/ <br>
