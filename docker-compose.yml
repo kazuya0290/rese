@@ -105,4 +105,4 @@ services:
 #     mailhog:
 #     image: mailhog/mailhog
 #     ports:
-#       - "1025:1025"
+#       - "1025:1025"\
