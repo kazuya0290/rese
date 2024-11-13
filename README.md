@@ -219,18 +219,18 @@ git@github.com:kazuya0290/rese.git<br>
 ## 環境構築
 -<strong> Dockerのビルド</strong>-<br>
 1.リポジトリのクローン<br>
-```git clone git@github.com:kazuya0290/rese.git```<br>
+→```git clone git@github.com:kazuya0290/rese.git```<br>
 2.Dockerデスクトップを立ち上げ、作成したコンテナを起動する。<br>
-3.コンテナの起動と再ビルド
-```docker-compose up -d --build```<br>
+3.コンテナの起動と再ビルド<br>
+→```docker-compose up -d --build```<br>
 
 -<strong>Laravel環境構築</strong>-
 1.Dockerコンテナに入る<br>
-```docker-compose exec php bash```<br>
+→```docker-compose exec php bash```<br>
 2.Composerのインストール<br>
-```composer install```<br>
+→```composer install```<br>
 3.「.env.example」ファイルを 「.env」ファイルに命名を変更。または、新しく.envファイルを作成<br>
-```cp .env.example .env```<br>
+→```cp .env.example .env```<br>
 4..envに以下の環境変数を追加<br>
 ```
 DB_CONNECTION=mysql
@@ -261,11 +261,11 @@ STRIPE_KEY=pk_test_51QCaiKINecNlWRFz1faiSxHyYUW6BKkysgHeSitbGAU0VJjH3HGdYFEcAlZx
 STRIPE_SECRET=sk_test_51QCaiKINecNlWRFzZ15SXBwdCEs5c1gX1Yo7W0ArQ4g5jDqY3Qji3TFOyOtLcc9g8fJvfRcnwSGtO4IUhfMswSsx00OTvsCtV9
 ```
 5.アプリケーションキーの作成<br>
-```php artisan key:generate```<br>
+→```php artisan key:generate```<br>
 6.マイグレーションの実行<br>
-```php artisan migrate```<br>
+→```php artisan migrate```<br>
 7.シーディングの実行(データ・ダミーデータの挿入)<br>
-```php artisan db:seed```<br>
+→```php artisan db:seed```<br>
 
 -<strong>使用するパッケージについて</strong>-<br>
 1.QRコード生成<br>
