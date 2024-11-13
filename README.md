@@ -1,4 +1,5 @@
 ## アプリケーション名
+
 <strong>Rese飲食店予約サービスアプリ</strong><br>
 利用者(ユーザー)が飲食店をエリアやジャンルごとに検索し、予約できるサービスです。<br>お気に入り追加や予約の管理機能、リマインダーメール、レビュー投稿機能など、利用者(ユーザー)が便利に使える機能が揃っています。<br>また、管理者や店舗代表者の機能も提供しており、店舗情報の更新や新規追加が可能です。<br>
 
@@ -136,6 +137,7 @@
 ・<strong>利用者(ユーザー)予約一覧画面</strong>：メニュー画面3のReservation Listをクリックするとこちらの画面が開かれます。この画面より利用者(ユーザー)の氏名、メールアドレスを含めた詳細な予約情報を閲覧することが可能です。ページネーションを使用しており、7件ごとのデータを表示するように設定しております。<br>
 
 ## 作成した目的
+
 外部予約サービスの手数料を回避するため、自社で予約システムを持ちたいという依頼を受けて開発しました。<br>ユーザー・管理者・店舗代表者のそれぞれに使いやすい設計となっております。<br>
 
 ## アプリケーションURL
@@ -160,6 +162,7 @@ git@github.com:kazuya0290/rese.git<br>
 → 飲食店予約サービス、その他設定ファイルを含むリポジトリです。<br>
 
 ## 機能一覧
+
 1.メニュー選択機能<br>
 2.ログイン機能<br>
 3.会員登録機能<br>
@@ -217,7 +220,9 @@ git@github.com:kazuya0290/rese.git<br>
 ![er](https://github.com/user-attachments/assets/ba5bbe11-ba8d-4921-bccd-eee107f2ea39)
 
 ## 環境構築
+
 -<strong> Dockerのビルド</strong>-<br>
+
 1.リポジトリのクローン<br>
 →```git clone git@github.com:kazuya0290/rese.git```<br>
 2.Dockerデスクトップを立ち上げ、作成したコンテナを起動する。<br>
@@ -225,6 +230,7 @@ git@github.com:kazuya0290/rese.git<br>
 →```docker-compose up -d --build```<br>
 
 -<strong>Laravel環境構築</strong>-<br>
+
 1.Dockerコンテナに入る<br>
 →```docker-compose exec php bash```<br>
 2.Composerのインストール<br>
@@ -268,6 +274,7 @@ STRIPE_SECRET=sk_test_51QCaiKINecNlWRFzZ15SXBwdCEs5c1gX1Yo7W0ArQ4g5jDqY3Qji3TFOy
 →```php artisan db:seed```<br>
 
 -<strong>使用するパッケージについて</strong>-<br>
+
 1.QRコード生成<br>
 QRコード発行機能に simplesoftwareio/simple-qrcode ライブラリを使用しています。このパッケージにより、Laravel内で簡単にQRコードを生成できます。<br>
 2.Stripe決済機能<br>
@@ -276,11 +283,13 @@ QRコード発行機能に simplesoftwareio/simple-qrcode ライブラリを使�
 開発環境でのメール送信には MailHog を使用しています。MAIL_MAILER=smtp と MAIL_HOST=mailhog の設定により、送信されたメールは http://localhost:8025 の MailHog ダッシュボードで確認できます。MailHogは、開発環境でメール送信をテストするためのツールです。<br>
 
 ## URL
+
 - 開発環境: http://localhost/ <br>
 - mailhog : http://localhost:8025/<br>
 - phpMyAdmin : http://localhost:8080/<br>
 - 本番環境 : https://rese-he2e.onrender.com (従量課金制の為、サービス停止中)<br>
 
 ## その他
-mailhog(localhost:8025)にて届いたメールを開くとhtmlメッセージが表示されないことがあります。その場合は1度メールを閉じて再度開くと表示されます。
+
+mailhog(localhost:8025)にて届いたメールを開くとhtmlメッセージが表示されないことがあります。その場合は1度メールを閉じて再度開くと表示されます。(手順：メールをクリック →　InBoxをクリック → 再度メールをクリック)<br>
 Dockerfile,default.conf,docker-compose.ymlファイルは開発環境と本番環境のコードに分けて記載してあります。通常は開発環境のコードを表示しており、本番環境のコードはコメントアウトしております。<br>Render.comは従量課金制の為、無料で利用するためにサービスを停止しております。<br>
