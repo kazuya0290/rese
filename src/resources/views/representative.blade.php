@@ -7,7 +7,7 @@
 @section('content')
 <div class="container">
     <div class="card mt-4">
-        <div class="card-header">予約一覧</div>
+        <div class="card-header">予約一覧,</div>
         <div class="card-body">
             <table class="table table-bordered">
                 <thead>
