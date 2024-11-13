@@ -28,7 +28,7 @@
                 @error('comment')
                     <div class="error">{{ $message }}</div>
                 @enderror
-        <button type="submit">レビューを送信,</button>
+        <button type="submit">レビューを送信</button>
     </form>
 </div>
 
