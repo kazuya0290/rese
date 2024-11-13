@@ -272,7 +272,7 @@ QRコード発行機能に simplesoftwareio/simple-qrcode ライブラリを使�
 2.Stripe決済機能<br>
 決済機能には stripe/stripe-php を使用しています。このライブラリを利用することで、Stripe APIと簡単に連携し、オンライン決済処理を行うことができます。<br>
 3.メール送信（MailHog）<br>
-開発環境でのメール送信には MailHog を使用しています。MAIL_MAILER=smtp と MAIL_HOST=mailhog の設定により、送信されたメールは http://localhost:8025 の MailHog ダッシュボードで確認できます。MailHogは、開発環境でメール送信をテストするためのツールです。<br>
+開発環境でのメール送信には MailHog を使用しています。MAIL_MAILER=smtp と MAIL_HOST=mailhog の設定により、送信されたメールは http://localhost:8025 の MailHog ダッシュボードで確認できます。MailHogは開発環境でメール送信をテストするためのツールです。<br>
 
 ## URL
 - 開発環境: http://localhost/ <br>
