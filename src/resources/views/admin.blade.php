@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
         const isAuthenticated = sessionStorage.getItem("admin_authenticated");
         if (!isAuthenticated) {
-            alert("管理者パスコードが必要です.");
+            alert("管理者パスコードが必要です");
             window.location.href = "{{ route('login') }}";
         }
 });
