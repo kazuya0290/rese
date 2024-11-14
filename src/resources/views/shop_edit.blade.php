@@ -83,7 +83,7 @@
                         現在のイメージ
                         </a>
                         @else
-                        <p class="edit__area-message">現在イメージはありません。</p>
+                        <p class="edit__area-message">現在イメージはありません</p>
                         @endif
                         <p class="edit__area-message">※変更する場合</p>
                         <input type="file" name="image" id="image" class="edit__area-file">
