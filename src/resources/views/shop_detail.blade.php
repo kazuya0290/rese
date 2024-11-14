@@ -55,7 +55,7 @@
             <input type="hidden" name="shop_id" value="{{ $shop->id }}">
 
             <label for="date">Date</label>
-            <input type="date" name="date" id="date" value="{{ old('date') }}" title="来店予約日を入力してください.">
+            <input type="date" name="date" id="date" value="{{ old('date') }}" title="来店予約日を入力してください">
 
             @if ($errors->has('date'))
                 <div class="error-messages" style="color: red; font-weight: bold;">
