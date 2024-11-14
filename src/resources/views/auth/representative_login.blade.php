@@ -43,7 +43,7 @@
 </div>
  @guest
 <p class="login-message">
-※利用者(ユーザー)の方は<a href="{{ route('login') }}">こちら</a>
+※利用者(ユーザー)の方は,<a href="{{ route('login') }}">こちら</a>
 </p>
 @endguest
 

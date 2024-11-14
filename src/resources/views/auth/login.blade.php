@@ -41,7 +41,7 @@
 </div>
     @guest
     <p class="admin-message">
-    ※管理者の方は<a href="{{ route('admin.index') }}" onclick="return checkAdminPasscode()">こちら</a>
+    ※管理者の方は,<a href="{{ route('admin.index') }}" onclick="return checkAdminPasscode()">こちら</a>
 </p>
 
     <p class="r-login-message">
