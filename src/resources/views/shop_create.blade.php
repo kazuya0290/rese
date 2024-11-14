@@ -93,7 +93,7 @@
                 <div class="create__content input-file__content">
                     <div class="create__title vertical-center">イメージ</div>
                     <div class="create__area input-file__area">
-                        <p class="create__area-message">画像を選択してください.</p>
+                        <p class="create__area-message">画像を選択してください</p>
                         <input type="file" name="image" class="create__area-file">
                         @if ($errors->has('image'))
                         <div class="error-messages" style="color: red; font-weight: bold;">
