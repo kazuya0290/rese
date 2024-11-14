@@ -7,7 +7,7 @@
 @section('content')
 <div class="thanks-page">
   <div class="thanks-page__inner">
-    <p class="thanks-page__message">レビューのご協力ありがとうございます！！！<br>またのお越しをお待ちしております。</p>
+    <p class="thanks-page__message">レビューのご協力ありがとうございます！！<br>またのお越しをお待ちしております。</p>
     <form class="thanks-page__form" action="/mypage" method="get">
       <button class="return_btn btn">マイページへ戻る</button>
     </form>
