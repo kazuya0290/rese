@@ -14,7 +14,7 @@
                 <div class="card-body">
                     @if (session('resent'))
                         <div class="alert alert-success" role="alert">
-                            {{ __('新しい認証リンクがメールアドレスに送信されました') }}
+                            {{ __('新しい認証リンクがメールアドレスに送信されました。') }}
                         </div>
                     @endif
 

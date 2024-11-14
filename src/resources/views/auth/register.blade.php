@@ -49,7 +49,7 @@
             
             <div class="row_mb-3 input-with-icon">
                 <span class="material-symbols-outlined">enhanced_encryption</span> 
-                <input id="password-confirm" type="password" placeholder="Password Confirmation" class="form-control" name="password_confirmation" autocomplete="new-password" title="パスワード確認用,">
+                <input id="password-confirm" type="password" placeholder="Password Confirmation" class="form-control" name="password_confirmation" autocomplete="new-password" title="パスワード確認用">
             </div>
 
             
