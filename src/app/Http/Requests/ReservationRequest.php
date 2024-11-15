@@ -85,5 +85,3 @@ class ReservationRequest extends FormRequest
         });
     }
 }
-
-
