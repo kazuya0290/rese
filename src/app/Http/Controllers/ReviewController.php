@@ -17,7 +17,6 @@ class ReviewController extends Controller
 
     public function store(ReviewRequest $request, $shop_id)
     {
-
     $validated = $request->validated();
 
     Review::create([
@@ -29,5 +28,4 @@ class ReviewController extends Controller
 
      return redirect()->route('review.thanks');
     }
-
 }
