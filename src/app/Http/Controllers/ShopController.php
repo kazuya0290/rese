@@ -22,7 +22,6 @@ class ShopController extends Controller
         return view('shops.show', compact('shop'));
     }
 
-    
     public function toggleFavorite($shopId)
     {
         $user = auth()->user();
@@ -85,7 +84,7 @@ class ShopController extends Controller
     
     if ($request->hasFile('image')) {
         $shop->image = $request->file('image')->store('images', 'public'); 
-    }
+        }
 
     $shop->save(); 
 
@@ -114,12 +113,10 @@ class ShopController extends Controller
     if ($request->hasFile('image')) {
     $path = $request->file('image')->store('public/images');
     $shop->image = str_replace('public/', '', $path);
-    }
+        }
 
     $shop->save();
 
     return redirect()->back()->with('success', '店舗が追加されました');
     }
-
 }
-
