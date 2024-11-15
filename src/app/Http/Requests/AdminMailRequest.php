@@ -29,4 +29,3 @@ class AdminMailRequest extends FormRequest
         ];
     }
 }
-
