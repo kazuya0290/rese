@@ -13,6 +13,7 @@ use App\Http\Controllers\RepresentativeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\RegisterController;
 
+
 Auth::routes(['verify' => true]);
 
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
@@ -25,29 +26,33 @@ Route::get('/representative', [RepresentativeController::class, 'index'])->name(
 Route::post('/representative/logout', [RepresentativeController::class, 'logout'])->name('representative.logout');
 Route::get('/representative/reservations', [RepresentativeController::class, 'getReservations'])->name('representative.reservations');
 
+
 Route::get('/home', function () {
     return view('home');
 })->name('home')->middleware('auth');
 
-Route::get('/', [ShopAllController::class, 'index'])->name('shop.index');
 Route::get('/shop/create', [ShopController::class, 'create'])->name('shop.create'); 
 Route::get('/shop/{id}/edit', [ShopController::class, 'edit'])->name('shop.edit'); 
-Route::get('/shop/{id}', [ShopAllController::class, 'show'])->name('shop.show');
 Route::post('/shop', [ShopController::class, 'store'])->name('shop.store');
 Route::post('/shop/{id}/update', [ShopController::class, 'update'])->name('shop.update');
 Route::post('/shop/{id}/save-image', [ShopController::class, 'saveImage'])->name('shop.saveImage'); 
 
 Route::post('/favorite/{shopId}', [ShopAllController::class, 'toggleFavorite'])->middleware('auth')->name('favorite.toggle');
+Route::get('/', [ShopAllController::class, 'index'])->name('shop.index');
+Route::get('/shop/{id}', [ShopAllController::class, 'show'])->name('shop.show');
+
 Route::post('/favorites/toggle/{shop}', [FavoriteController::class, 'toggle'])->name('favorites.toggle');
 Route::post('/favorite/{shop}', [FavoriteController::class, 'store'])->name('favorite.store');
 Route::delete('/favorites/{id}', [FavoriteController::class, 'destroy'])->name('favorites.destroy');
 
 Route::post('/shop/{id}/reserve', [ReservationController::class, 'store'])->name('reservation.store');
 Route::resource('reservations', ReservationController::class);
+Route::get('/reservation/qr', [ReservationController::class, 'qr'])->name('reservation.qr');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/mypage', [MyPageController::class, 'showMyPage'])->name('my_page');
 });
+
 
 Route::get('/verify', function () {
     return view('auth.verify');
@@ -62,8 +67,6 @@ Route::get('/done', function () {
 })->name('done.thanks');
 
 Route::post('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
-
-Route::get('/reservation/qr', [ReservationController::class, 'qr'])->name('reservation.qr');
 
 Route::get('/reviews/create/{shop_id}', [ReviewController::class, 'create'])->name('review.create');
 Route::post('/reviews/store/{shop_id}', [ReviewController::class, 'store'])->name('review.store');
