@@ -28,7 +28,7 @@ class ShopCreateRequest extends FormRequest
             'area_id' => 'required',
             'genre_id' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif',
-            'description' => 'required|string|max:191',
+            'description' => 'required|string|max:500',
         ];
     }
 
