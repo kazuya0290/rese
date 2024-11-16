@@ -13,9 +13,7 @@ use App\Http\Controllers\RepresentativeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\RegisterController;
 
-
 Auth::routes(['verify' => true]);
-
 
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 Route::post('/admin/store-representative', [AdminController::class, 'storeRepresentative'])->name('admin.store.representative');
@@ -27,11 +25,9 @@ Route::get('/representative', [RepresentativeController::class, 'index'])->name(
 Route::post('/representative/logout', [RepresentativeController::class, 'logout'])->name('representative.logout');
 Route::get('/representative/reservations', [RepresentativeController::class, 'getReservations'])->name('representative.reservations');
 
-
 Route::get('/home', function () {
     return view('home');
 })->name('home')->middleware('auth');
-
 
 Route::get('/', [ShopAllController::class, 'index'])->name('shop.index');
 Route::get('/shop/create', [ShopController::class, 'create'])->name('shop.create'); 
@@ -53,7 +49,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/mypage', [MyPageController::class, 'showMyPage'])->name('my_page');
 });
 
-
 Route::get('/verify', function () {
     return view('auth.verify');
 })->name('verify');
@@ -67,10 +62,12 @@ Route::get('/done', function () {
 })->name('done.thanks');
 
 Route::post('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
+
 Route::get('/reservation/qr', [ReservationController::class, 'qr'])->name('reservation.qr');
 
 Route::get('/reviews/create/{shop_id}', [ReviewController::class, 'create'])->name('review.create');
 Route::post('/reviews/store/{shop_id}', [ReviewController::class, 'store'])->name('review.store');
+
 Route::get('/review_thanks', function () {
     return view('review_thanks');
 })->name('review.thanks');
