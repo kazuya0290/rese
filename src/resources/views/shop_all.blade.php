@@ -7,6 +7,19 @@
 
 @section('header')
     <form class="header__right" action="{{ route('shop.index') }}" method="get" id="filterForm">
+        <div class="sort__select">
+        <label class="select-box__label sort__label">
+            <select name="sort" class="select-box__item sort__item" title="ソート機能" 
+                onchange="document.getElementById('filterForm').submit()"
+                onfocus="this.selectedIndex = -1;">
+                <option value="sorting">並び替え評価：高/低</option>
+                <option value="random" {{ request('sort') == 'random' ? 'selected' : '' }}>ランダム</option>
+                <option value="high_rating" {{ request('sort') == 'high_rating' ? 'selected' : '' }}>評価が高い順</option>
+                <option value="low_rating" {{ request('sort') == 'low_rating' ? 'selected' : '' }}>評価が低い順</option>
+            </select>
+        </label>
+    </div>
+
         <div class="header__sort">
             <select name="area" class="select-box__item sort__item" title="エリア選択" onchange="document.getElementById('filterForm').submit()">
                 <option value="All_area">All area</option>
@@ -15,18 +28,19 @@
                 @endforeach
             </select>
 
-            <select name="genre" class="select-box__item sort__item" title="ジャンル選択" onchange="document.getElementById('filterForm').submit()">
-                <option value="All_genre">All genre</option>
-                @foreach($genres as $genre)
-                    <option value="{{ $genre->id }}" {{ request('genre') == $genre->id ? 'selected' : '' }}>{{ $genre->genre }}</option>
-                @endforeach
-            </select>
+                <select name="genre" class="select-box__item sort__item" title="ジャンル選択" onchange="document.getElementById('filterForm').submit()">
+                    <option value="All_genre">All genre</option>
+                    @foreach($genres as $genre)
+                        <option value="{{ $genre->id }}" {{ request('genre') == $genre->id ? 'selected' : '' }}>{{ $genre->genre }}</option>
+                    @endforeach
+                </select>
 
-            <div class="search-box">
-                <span class="material-symbols-outlined search-icon">search</span>
-                <input class="search-form" type="text" name="keyword" placeholder="Search..." value="{{ request('keyword') }}" id="searchInput" title="キーワード検索"/>
+                    <div class="search-box">
+                        <span class="material-symbols-outlined search-icon">search</span>
+                        <input class="search-form" type="text" name="keyword" placeholder="Search..." value="{{ request('keyword') }}" id="searchInput" title="キーワード検索"/>
+                    </div>
+                </div>
             </div>
-        </div>
     </form>
 @endsection
 

@@ -4,6 +4,12 @@
     justify-content: flex-start;
 }
 
+.sort__select {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
 .header__right {
     display: flex;
     align-items: center;
@@ -198,6 +204,12 @@
         align-items: flex-start;
     }
 
+    .sort__select {
+        display: flex;
+        align-items: center;
+        margin-left: auto;
+    }
+    
     .select-box__item,
     .search-form {
         width: 100%;
