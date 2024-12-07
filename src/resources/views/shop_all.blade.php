@@ -135,12 +135,11 @@
 
     const isAdminMode = @json(session('admin_mode') === true);
 
-    // 初期表示: 管理者モードでなければボタンを非表示
+    
     if (!isAdminMode) {
         adminModeButton.style.display = "none";
     }
 
-    // 管理者モード切り替え処理
     adminModeButton.addEventListener("click", function () {
         const passcode = prompt("管理者パスコードを入力してください");
 
@@ -157,7 +156,7 @@
             .then(data => {
                 if (data.success) {
                     alert("管理者モードが有効になりました。");
-                    location.reload(); // ページをリロードして状態を反映
+                    location.reload();
                 } else {
                     alert("パスコードが違います");
                 }
@@ -165,11 +164,9 @@
         }
     });
 
-    // 管理者モードバナーの表示
     if (isAdminMode) {
         adminModeBanner.style.display = "block";
     }
 });
-
     </script>
 @endsection
