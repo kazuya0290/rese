@@ -6,7 +6,13 @@
 
 @section('content')
 <div class="shop-detail-container">
-
+@if(session('success'))
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        alert("{{ session('success') }}");
+        });
+        </script>
+@endif
     <div class="back-button-container">
         <a href="{{ route('shop.index') }}" class="back-button" title="店舗一覧に戻る">&lt;</a>
     </div>
@@ -45,8 +51,10 @@
         <img src="{{ $imageUrl }}" alt="{{ $shop->name }}" class="shop-image">
         <p>#{{ $shop->area->area }} #{{ $shop->genre->genre }}</p>
         <p>{{ $shop->description }}</p>
+        @auth
+        <a href="{{ route('review.create', ['shop_id' => $shop->id]) }}" class="review-link">口コミを投稿する</a>
+        @endauth
     </div>
-
     <div class="reservation-form">
         <h2>予約</h2>
         @auth
@@ -112,12 +120,41 @@
         <span class="close" style="cursor:pointer;">&times;</span>
         <h2>口コミ一覧</h2>
         <div class="review-list">
-            @foreach($shop->reviews as $review)
-                <div class="review-item">
-                    <p><strong>{{ $review->user->name }}</strong> - {{ $review->created_at->format('Y年m月d日') }}</p>
-                    <p>{{ $review->comment }}</p>
-                </div>
-            @endforeach
+           @foreach($shop->reviews as $review)
+    <div class="review-item">
+        <p><strong>{{ $review->user->name }}</strong> - {{ $review->created_at->format('Y年m月d日') }}
+             <span class="review-rating">
+                @for ($i = 1; $i <= 5; $i++)
+                    @if ($i <= $review->rating)
+                        ★
+                    @else
+                        ☆
+                    @endif
+                @endfor
+            </span>
+        </p>
+        <p>{{ $review->comment }}</p>
+
+        @if(auth()->id() == $review->user_id)
+        <div class="review-actions">
+            <button class="edit-button" onclick="window.location.href='{{ route('review.edit', ['review_id' => $review->id]) }}'">編集</button>
+            <form action="{{ route('reviews.destroy', $review->id) }}" method="POST"        onsubmit="return confirm('本当に削除しますか？');">
+        @csrf
+        @method('DELETE')
+            <button class="delete-button">削除</button>
+            </form>
+        </div>
+        @endif
+
+        @if($review->image)
+            <div class="review-image">
+                <a href="{{ asset('storage/' . $review->image) }}" target="_blank">
+                    <img src="{{ asset('storage/' . $review->image) }}" alt="レビュー画像" style="max-width: 200px; max-height: 200px;">
+                </a>
+            </div>
+        @endif
+    </div>
+@endforeach
         </div>
     </div>
 </div>
@@ -197,6 +234,21 @@
                 name: '{{ $shop->name }} の予約',
                 description: '{{ $shop->name }} のStripe決済予約',
                 amount: 1000
+            });
+        });
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+    const deleteButtons = document.querySelectorAll('.delete-button');
+    deleteButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            const reviewId = this.dataset.reviewId;
+
+            if (confirm("本当に削除しますか？")) {
+                
+                window.location.href = `/reviews/${reviewId}/delete`;
+                alert("口コミの削除が完了しました");
+                }
             });
         });
     });

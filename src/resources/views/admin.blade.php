@@ -10,7 +10,7 @@
         
         <section class="mt-4">
             <h2>店舗代表者の追加</h2>
-            <form id="representativeForm" class="form-inline" action="{{ route('admin.store.representative') }}" method="POST">
+            <form id="representativeForm" action="{{ route('admin.store.representative') }}" method="POST">
                 @csrf
                 <div class="form-group">
                     <label for="name">代表者名:</label>
@@ -19,7 +19,7 @@
                 </div>
                 <div class="form-group">
                     <label for="email">メールアドレス:</label>
-                     <input type="email" name="email" id="email" class="form-control mx-2" value="{{ old('email') }}">
+                    <input type="email" name="email" id="email" class="form-control mx-2" value="{{ old('email') }}">
                     <div class="error-messages" id="emailErrors"></div>
                 </div>
                 <div class="form-group">
@@ -37,11 +37,11 @@
          
         <section class="mt-5">
             <h2>利用者へのお知らせメール送信</h2>
-            <form id="notificationForm" class="form-inline" action="{{ route('admin.send.notification') }}" method="POST">
+            <form id="notificationForm" action="{{ route('admin.send.notification') }}" method="POST">
                 @csrf
                 <div class="form-group">
                     <label for="subject">件名:</label>
-                     <input type="text" name="subject" id="subject" class="form-control mx-2" value="{{ old('subject') }}">
+                    <input type="text" name="subject" id="subject" class="form-control mx-2" value="{{ old('subject') }}">
                     <div class="error-messages" id="subjectErrors"></div>
                 </div>
                 <div class="form-group">
@@ -54,6 +54,20 @@
 
             <div id="notificationResult" class="mt-3 error-container"></div>
         </section>
+
+        <hr class="my-5">
+
+        <h2>一般ユーザーの口コミの確認・削除</h2>
+
+        <button id="show-reviews" type="button" class="review-show-button">全店舗の口コミを表示</button>
+
+        <div id="review-modal" class="modal" style="display:none;">
+            <div class="modal-content">
+                <span class="close" style="cursor:pointer;">&times;</span>
+                <h2>全店舗の口コミ一覧</h2>
+                <div class="review-list" id="review-list"></div>
+            </div>
+        </div>
     </div>
 
 <script>
@@ -160,5 +174,78 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 });
 
+    document.addEventListener('DOMContentLoaded', function () {
+    const modal = document.getElementById('review-modal');
+    const closeModal = modal.querySelector('.close');
+    const reviewList = document.getElementById('review-list');
+
+    document.getElementById('show-reviews').addEventListener('click', function () {
+        fetch('{{ route('admin.reviews.all') }}', {
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                'Accept': 'application/json',
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            reviewList.innerHTML = '';
+            data.reviews.forEach(review => {
+                reviewList.innerHTML += `
+                    <div class="review-item" data-review-id="${review.id}">
+                        <p><strong>${review.user_name}</strong> - ${review.created_at_formatted}</p>
+                        <p>【店舗名】${review.shop_name}</p>
+                        <p>${review.comment}</p>
+                        ${review.image ? `<img src="${review.image}" alt="レビュー画像" style="max-width: 200px;">` : ''}
+                        <button class="delete-review-button" data-review-id="${review.id}">削除</button>
+                    </div>`;
+            });
+
+            document.querySelectorAll('.delete-review-button').forEach(button => {
+                button.addEventListener('click', function () {
+                    const reviewId = this.getAttribute('data-review-id');
+                    if (confirm('本当に削除しますか？')) {
+                        deleteReview(reviewId);
+                    }
+                });
+            });
+
+            modal.style.display = 'block';
+        });
+    });
+
+    closeModal.addEventListener('click', function () {
+        modal.style.display = 'none';
+    });
+
+    window.addEventListener('click', function (event) {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+
+    function deleteReview(reviewId) {
+        fetch(`{{ url('/reviews') }}/${reviewId}`, {
+            method: 'DELETE',
+            headers: {
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                'Accept': 'application/json',
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('削除が完了しました');
+                const reviewItem = document.querySelector(`.review-item[data-review-id="${reviewId}"]`);
+                if (reviewItem) reviewItem.remove();
+            } else {
+                alert('削除に失敗しました: ' + data.message);
+            }
+        })
+        .catch(error => {
+            alert('削除中にエラーが発生しました: ' + error.message);
+        });
+    }
+});
+    
 </script>
 @endsection

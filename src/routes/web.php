@@ -19,6 +19,9 @@ Auth::routes(['verify' => true]);
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 Route::post('/admin/store-representative', [AdminController::class, 'storeRepresentative'])->name('admin.store.representative');
 Route::post('/admin/send-notification', [AdminController::class, 'sendNotification'])->name('admin.send.notification');
+Route::get('/admin/reviews/all', [AdminController::class, 'getAllReviews'])->name('admin.reviews.all');
+Route::delete('/reviews/{id}', [AdminController::class, 'destroy'])->name('admin.reviews.destroy');
+Route::get('/admin/reviews/all', [AdminController::class, 'getAllReviews'])->name('admin.reviews.all');
 
 Route::get('/representative/login', [RepresentativeController::class, 'showLoginForm'])->name('representative.login');
 Route::post('/representative/login', [RepresentativeController::class, 'login']);
@@ -70,6 +73,9 @@ Route::post('/checkout', [CheckoutController::class, 'checkout'])->name('checkou
 
 Route::get('/reviews/create/{shop_id}', [ReviewController::class, 'create'])->name('review.create');
 Route::post('/reviews/store/{shop_id}', [ReviewController::class, 'store'])->name('review.store');
+Route::get('/reviews/{review_id}/edit', [ReviewController::class, 'edit'])->name('review.edit');
+Route::put('/reviews/{review_id}/update', [ReviewController::class, 'update'])->name('review.update');
+Route::delete('/reviews/{id}/delete', [ReviewController::class, 'destroy'])->name('reviews.destroy');
 
 Route::get('/review_thanks', function () {
     return view('review_thanks');

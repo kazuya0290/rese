@@ -15,6 +15,8 @@ class CreateReviewsTable extends Migration
             $table->tinyInteger('rating')->comment('1から5までの評価');
             $table->text('comment');
             $table->timestamps();
+            $table->unique(['shop_id', 'user_id'], 'unique_shop_user_review');
+            $table->string('image');
         });
     }
 
