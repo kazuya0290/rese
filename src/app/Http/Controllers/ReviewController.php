@@ -90,11 +90,20 @@ class ReviewController extends Controller
 
     public function destroy($id)
     {
-        
     $review = Review::findOrFail($id);
-    $review->delete();
-
-    return redirect()->route('shop.show', $review->shop_id)->with('success', '口コミを削除しました。');
+    
+    // ユーザー認証のチェック
+    if (auth()->id() !== $review->user_id) {
+        return redirect()->back()->with('error', '削除する権限がありません');
     }
-
+    
+    // 画像がある場合は削除
+    if ($review->image) {
+        Storage::delete('public/' . $review->image);
+    }
+    
+    $review->delete();
+    
+    return redirect()->back()->with('success', '口コミを削除しました');
+    }
 }

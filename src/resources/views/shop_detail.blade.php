@@ -138,11 +138,11 @@
         @if(auth()->id() == $review->user_id)
         <div class="review-actions">
             <button class="edit-button" onclick="window.location.href='{{ route('review.edit', ['review_id' => $review->id]) }}'">編集</button>
-            <form action="{{ route('reviews.destroy', $review->id) }}" method="POST"        onsubmit="return confirm('本当に削除しますか？');">
-        @csrf
-        @method('DELETE')
-            <button class="delete-button">削除</button>
-            </form>
+            <form action="{{ route('reviews.destroy', $review->id) }}" method="POST">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="delete-button">削除</button>
+    </form>
         </div>
         @endif
 
@@ -241,15 +241,14 @@
     document.addEventListener('DOMContentLoaded', function () {
     const deleteButtons = document.querySelectorAll('.delete-button');
     deleteButtons.forEach(button => {
-        button.addEventListener('click', function () {
-            const reviewId = this.dataset.reviewId;
-
+        button.addEventListener('click', function (e) {
+            e.preventDefault(); // フォームのデフォルト送信を防止
+            const form = this.closest('form');
+            
             if (confirm("本当に削除しますか？")) {
-                
-                window.location.href = `/reviews/${reviewId}/delete`;
-                alert("口コミの削除が完了しました");
-                }
-            });
+                form.submit(); // フォームを送信
+            }
         });
     });
+});
 </script>

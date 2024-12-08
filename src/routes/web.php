@@ -16,12 +16,14 @@ use App\Http\Controllers\Auth\RegisterController;
 
 Auth::routes(['verify' => true]);
 
-Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
-Route::post('/admin/store-representative', [AdminController::class, 'storeRepresentative'])->name('admin.store.representative');
-Route::post('/admin/send-notification', [AdminController::class, 'sendNotification'])->name('admin.send.notification');
-Route::get('/admin/reviews/all', [AdminController::class, 'getAllReviews'])->name('admin.reviews.all');
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/', [AdminController::class, 'index'])->name('index'); 
+    Route::post('/store-representative', [AdminController::class, 'storeRepresentative'])->name('store.representative');
+    Route::post('/send-notification', [AdminController::class, 'sendNotification'])->name('send.notification');
+    Route::post('/import-csv', [AdminController::class, 'importCsv'])->name('import.csv'); 
+    Route::get('/reviews/all', [AdminController::class, 'getAllReviews'])->name('reviews.all');
+});
 Route::delete('/reviews/{id}', [AdminController::class, 'destroy'])->name('admin.reviews.destroy');
-Route::get('/admin/reviews/all', [AdminController::class, 'getAllReviews'])->name('admin.reviews.all');
 
 Route::get('/representative/login', [RepresentativeController::class, 'showLoginForm'])->name('representative.login');
 Route::post('/representative/login', [RepresentativeController::class, 'login']);

@@ -41,16 +41,15 @@ class ShopAllController extends Controller
         }
 
         if ($request->has('sort')) {
-                $sort = $request->sort;
-            if ($sort === 'high_rating') {
-        
-                $query->orderByRaw('ISNULL(reviews_avg_rating), reviews_avg_rating DESC');
-            } elseif ($sort === 'rating_low') {
-                $query->orderByRaw('ISNULL(reviews_avg_rating), reviews_avg_rating ASC');
-            } elseif ($sort === 'random') {
-                $query->inRandomOrder();
-            }
+        $sort = $request->sort;
+        if ($sort === 'high_rating') {
+            $query->orderByRaw('ISNULL(reviews_avg_rating), reviews_avg_rating DESC');
+        } elseif ($sort === 'low_rating') {
+            $query->orderByRaw('ISNULL(reviews_avg_rating), reviews_avg_rating ASC');
+        } elseif ($sort === 'random') {
+            $query->inRandomOrder();
         }
+    }
 
         $shops = $query->get();
         $favorites = auth()->check() ? auth()->user()->favorites->pluck('id')->toArray() : []; 
