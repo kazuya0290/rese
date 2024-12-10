@@ -85,12 +85,13 @@ p {
 }
 
 @media (max-width: 768px) {
+
     label {
-        font-size: 20px;
+        font-size: 1rem;
     }
-    
+
     p {
-        font-size: 20px;
+        font-size: 1rem;
     }
 
     .review-container {
@@ -116,26 +117,22 @@ p {
     }
 
     .star {
-        font-size: 24px;
+        font-size: 1.8rem;
     }
 
-   .submit-button {
-       display: block;
-       width: 500px;
-       margin: 20px auto;
-       padding: 12px;
-       font-size: 1.2em;
-       background-color: #4CAF50;
-       color: white;
-       border: none;
-       border-radius: 20px;
-       text-align: center;
-       cursor: pointer;
-   }
-
-   .submit-button:hover {
-       background-color: #45a049;
-   }
+    .submit-button {
+        width: 80%;
+        max-width: 500px;
+        margin: 20px auto;
+        padding: 12px;
+        font-size: 1em;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 20px;
+        text-align: center;
+        cursor: pointer;
+    }
 
     .char-counter {
         text-align: right;
@@ -154,14 +151,15 @@ p {
         background-color: #f9f9f9;
         margin-top: 10px;
         transition: background-color 0.3s ease;
-        }
-    
+    }
+
     .image-upload-area:hover {
         background-color: #f0f0f0;
-        }
-    
+    }
+
     .image-upload-area.dragging {
         background-color: #e0f7fa;
         border-color: #0288d1;
-        }
+        border-width: 3px;
+    }
 }
