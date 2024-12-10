@@ -2,66 +2,102 @@
 
 @section('css')	
 <link rel="stylesheet" href="{{ asset('css/review.css') }}">	
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" /> 
 @endsection
 
 @section('content')
-<div class="review-container">
-    <h1>{{ isset($review) ? $shop->name . 'の口コミを編集' : $shop->name . 'の口コミを投稿' }}</h1>
-
-    <form action="{{ isset($review) ? route('review.update', $review->id) : route('review.store', $shop->id) }}" method="POST" enctype="multipart/form-data">
-        @csrf
-        
-        @if(isset($review))
-            @method('PUT')
-        @endif
-
-        <div class="star-rating">
-                <label for="rating">評価:</label>
-            <div class="stars">
-                @for ($i = 1; $i <= 5; $i++)
-                    <span class="star" data-value="{{ $i }}">☆</span>
-                @endfor
-                <input type="hidden" name="rating" id="rating"
-                       value="{{ isset($review) ? $review->rating : old('rating') }}">
+    <div class="review-page1">
+     <p class="shop-review">今回のご利用はいかがでしたか？</p>
+    <div class="shop-list" style="width: 40%; float: left; margin-right: 80px; height:430px;">
+        <div class="shop-item">
+            @php
+                $imageUrl = $shop->image;
+                if (!str_starts_with($imageUrl, 'http')) {
+                    $imageUrl = Storage::url($imageUrl);
+                }
+            @endphp
+            <img src="{{ $imageUrl }}" alt="{{ $shop->name }}" class="shop-image" style="width: 100%; height: auto;">
+            <div class="shop-details">
+                <div class="shop-info">
+                    <h3>{{ $shop->name }}</h3>
+                    <p>
+                        @if ($shop->area) #{{ $shop->area->area }} @endif
+                        @if ($shop->genre) #{{ $shop->genre->genre }} @endif
+                    </p>
+                </div>
+                <div class="shop-actions">
+                    <a href="{{ route('shop.show', ['id' => $shop->id]) }}" class="details-button">詳しくみる</a>
+                    <span class="favorite-button" data-shop-id="{{ $shop->id }}">
+                        <i class="material-symbols-outlined favorite-icon {{ in_array($shop->id, $favorites) ? 'active' : '' }}" title="お気に入り登録">
+                            {{ in_array($shop->id, $favorites) ? 'favorite' : 'favorite_border' }}
+                        </i>
+                    </span>
+                </div>
             </div>
-            @error('rating')	
-                <div class="error">{{ $message }}</div>
-            @enderror
         </div>
+    </div>
 
-        <div class="comment-container">
-            <label for="comment">コメント:</label>
-            <textarea name="comment" id="comment" rows="5">{{ isset($review) ? $review->comment : old('comment') }}</textarea>
-            <div class="char-counter">
-                <span id="charCount">0</span>/400(最大文字数)
+    <div style="position: absolute; left: 43.5%; top: 0; bottom: 0; width: 2px; height: 700px; background-color: gray;"></div>
+
+     <div class="review-page2" style="display: flex; justify-content: space-between;">
+    <div class="review-container" style="width: 55%; float: left;">
+        <h1>{{ isset($review) ? $shop->name . 'の口コミを編集' : $shop->name . 'の口コミを投稿' }}</h1>
+
+        <form action="{{ isset($review) ? route('review.update', $review->id) : route('review.store', $shop->id) }}" method="POST" enctype="multipart/form-data">
+            @csrf
+
+            @if(isset($review))
+                @method('PUT')
+            @endif
+
+            <div class="star-rating">
+                <label for="rating">体験を評価してください:</label>
+                <div class="stars">
+                    @for ($i = 1; $i <= 5; $i++)
+                        <span class="star" data-value="{{ $i }}">☆</span>
+                    @endfor
+                    <input type="hidden" name="rating" id="rating" value="{{ isset($review) ? $review->rating : old('rating') }}">
+                </div>
+                @error('rating')    
+                    <div class="error">{{ $message }}</div>
+                @enderror
             </div>
-            @error('comment')
-                <div class="error">{{ $message }}</div>
-            @enderror
-        </div>
 
-        <label>{{ isset($review) ? '画像の修正:' : '画像の挿入:' }}</label>
-        <div class="image-upload-area" id="dropzone">
-            <p id="file-name-display">クリックして画像を追加 またはドラッグアンドドロップ</p>
+            <div class="comment-container">
+                <label for="comment">口コミを投稿:</label>
+                <textarea name="comment" id="comment" rows="5">{{ isset($review) ? $review->comment : old('comment') }}</textarea>
+                <div class="char-counter">
+                    <span id="charCount">0</span>/400(最大文字数)
+                </div>
+                @error('comment')
+                    <div class="error">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <label>{{ isset($review) ? '画像の修正:' : '画像の挿入:' }}</label>
+            <div class="image-upload-area" id="dropzone">
+                <p id="file-name-display">クリックして画像を追加 またはドラッグアンドドロップ</p>
             <input type="file" name="image" id="image" accept="image/*" style="display: none;" onchange="displayFileName()">
-        </div>
+            </div>
 
             @error('image')
                 <div class="error">{{ $message }}</div>
             @enderror
 
-            @if(isset($imageUrl))
-                <div class="current-image">
-                    <label>現在の画像:</label>
-                    <img src="{{ $imageUrl }}" alt="現在の口コミ画像" style="max-width: 200px;">
-                </div>
+            @if(isset($review) && $review->image)
+            <div class="current-image">
+                <label>現在の画像:</label>
+                <img src="{{ Storage::url($review->image) }}?t={{ time() }}" alt="現在の口コミ画像" style="max-width: 200px; margin-top: 10px; margin-left:20px;">
+            </div>
             @endif
-        <button type="submit" class="submit-button">
-            {{ isset($review) ? '更新する' : '投稿する' }}
-        </button>
-    </form>
+            <div class="submit-button-container">
+                <button type="submit" class="submit-button">
+                    {{ isset($review) ? '更新する' : '投稿する' }}
+                </button>
+        </form>
+    </div>
 </div>
-
+           
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const stars = document.querySelectorAll('.star');
@@ -182,5 +218,31 @@
         displayFileName(); 
     });
 
+    const favoriteButtons = document.querySelectorAll('.favorite-button');
+
+        favoriteButtons.forEach(button => {
+            if (!button.classList.contains('disabled')) {
+                const icon = button.querySelector('.favorite-icon');
+
+                icon.setAttribute('title', icon.classList.contains('active') ? 'お気に入り削除' : 'お気に入り登録');
+
+                button.addEventListener('click', function() {
+                    icon.classList.toggle('active');
+                    icon.setAttribute('title', icon.classList.contains('active') ? 'お気に入り削除' : 'お気に入り登録');
+
+                    const shopId = button.getAttribute('data-shop-id');
+                    const isFavorite = icon.classList.contains('active');
+
+                    fetch(`/favorite/${shopId}`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                        },
+                        body: JSON.stringify({ is_favorite: isFavorite }),
+                    });
+                });
+            }
+        });
 </script>
 @endsection

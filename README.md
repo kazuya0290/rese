@@ -201,7 +201,7 @@ git@github.com:kazuya0290/rese.git<br>
 
 ![reservations](https://github.com/user-attachments/assets/c2f89f76-9078-48b5-afb8-c862d56aced4)
 
-![reviews](https://github.com/user-attachments/assets/2aeace73-94d5-4198-8ecc-9a2696f0ae69)
+![reviews](https://github.com/user-attachments/assets/23c8c1e5-6f52-4b79-8746-413a5dea83d1)
 
 ![shops](https://github.com/user-attachments/assets/4e719628-0e3b-45b3-89a9-eece4d58a499)
 

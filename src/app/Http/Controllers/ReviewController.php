@@ -8,13 +8,18 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ReviewRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Auth; 
 
 class ReviewController extends Controller
 {
     public function create($shop_id)
     {
         $shop = Shop::findOrFail($shop_id);
-        return view('review', compact('shop'));
+        $favorites = Auth::user() ? Auth::user()->favorites->pluck('shop_id')->toArray() : [];
+        $shops = Shop::whereIn('id', $favorites)->get(); 
+        $review = null;
+
+        return view('review', compact('shop', 'favorites', 'shops', 'review'));
     }
 
     public function store(ReviewRequest $request, $shop_id)
@@ -42,20 +47,25 @@ class ReviewController extends Controller
         return redirect()->route('review.thanks');
     }
 
-    public function edit($id)
+     public function edit($id)
     {
-    $review = Review::findOrFail($id);
+        
+        $review = Review::findOrFail($id);
+        $shop = $review->shop;
 
-    if (Gate::denies('update-review', $review)) {
-        abort(403, 'この口コミを編集する権限がありません。');
+        if (Gate::denies('update-review', $review)) {
+            abort(403, 'この口コミを編集する権限がありません。');
         }
 
-    $shop = $review->shop;
-    
-    $imageUrl = $review->image ? Storage::url($review->image) : null;
+        $imageUrl = $review->image ? Storage::url($review->image) : null;
 
-    return view('review', compact('review', 'shop', 'imageUrl'));
+        $favorites = Auth::user() ? Auth::user()->favorites->pluck('shop_id')->toArray() : [];
+
+        $shops = Shop::whereIn('id', $favorites)->get(); 
+
+        return view('review', compact('review', 'shop', 'imageUrl', 'favorites', 'shops'));
     }
+
 
     public function update(ReviewRequest $request, $id)
     {
