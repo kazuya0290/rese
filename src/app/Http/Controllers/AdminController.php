@@ -15,7 +15,9 @@ use Illuminate\Support\Facades\Mail;
 use Exception;
 use Illuminate\Support\Facades\Validator;
 use Maatwebsite\Excel\Facades\Excel;
+use League\Csv\Reader;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Log;
 
 class AdminController extends Controller
 {
@@ -76,67 +78,118 @@ class AdminController extends Controller
 
     public function destroy($id)
     {
-    // レビューの取得
         $review = Review::find($id);
     
-    // レビューが存在すれば削除
         if ($review) {
         $review->delete();
         
-        // JSONレスポンスを返す
             return response()->json([
                 'success' => true, 
                 'message' => '口コミが削除されました'
             ]);
         }
     
-    // レビューが見つからない場合はエラーレスポンスを返す
         return response()->json([
             'success' => false, 
             'message' => '口コミが見つかりません'
         ], 404);
     }
 
-      public function importCsv(Request $request)
+   public function importCsv(Request $request)
     {
-    // 🛠️ CSVファイルのバリデーション
-    $request->validate([
-        'csv_file' => 'required|file|mimes:csv,txt',
-    ]);
-
-    $file = $request->file('csv_file');
-
-    // 🛠️ CSVファイルの保存 (storage/app/public/csvs に保存)
-    $path = $file->storeAs('public/csvs', $file->getClientOriginalName());
-
-    // 🛠️ CSVデータの処理
-    $filePath = storage_path('app/' . $path);
-    $data = array_map('str_getcsv', file($filePath));
-
-    // 🛠️ CSVの1行目はヘッダーの場合が多いので、削除する
-    $header = array_shift($data); 
-
-    // 🛠️ CSVの内容をshopsテーブルに登録する
-    foreach ($data as $row) {
-        try {
-            // CSVのカラムが ["name", "area_id", "genre_id", "hashtags", "description", "image"] であると仮定
-            Shop::create([
-                'name'        => $row[0] ?? '未定義の名前',  // CSVの1列目
-                'area_id'     => $row[1] ?? 1,  // CSVの2列目（地域ID）
-                'genre_id'    => $row[2] ?? 1,  // CSVの3列目（ジャンルID）
-                'description' => $row[3] ?? '説明がありません',  // CSVの5列目（店舗概要）
-                'image'       => $row[4] ?? null,  // CSVの6列目（画像URL）
-            ]);
-        } catch (\Exception $e) {
-            \Log::error('CSVのインポート中にエラーが発生しました', ['エラー' => $e->getMessage()]);
-        }
-    }
-
-    return response()->json([
-        'success' => true,
-        'message' => 'CSVファイルが正常にインポートされました。',
+            $request->validate([
+                'csvFile' => [
+                'required', 
+                'file', 
+                'mimes:csv,txt', 
+                function ($attribute, $value, $fail) {
+                if ($value->getSize() === 0) {
+                    $fail('空のファイルはアップロードできません。');
+                }
+                
+                $path = $value->getRealPath();
+                $data = array_map('str_getcsv', file($path));
+                
+                if (count($data) <= 1) {
+                    $fail('CSVファイルにデータが存在しません。');
+                    }
+                },
+            ],
         ]);
+
+    $csvFile = $request->file('csvFile');
+    $csv = Reader::createFromPath($csvFile->getRealPath(), 'r');
+    $csv->setHeaderOffset(0);
+
+    $records = $csv->getRecords();
+    $errors = [];
+    $rowNumber = 2;
+
+    foreach ($records as $record) {
+       
+        $emptyRecord = true;
+        foreach ($record as $value) {
+            if (trim($value) !== '') {
+                $emptyRecord = false;
+                break;
+            }
+        }
+
+        if ($emptyRecord) {
+            $errors[] = "行{$rowNumber}: すべてのフィールドが空白または未入力です。";
+            $rowNumber++;
+            continue;
+        }
+
+        $customMsgs = [
+            '店舗名.required' => "行{$rowNumber}: 店舗名は50文字以内で入力してください",
+            '店舗名.max' => "行{$rowNumber}: 店舗名は50文字以内で入力してください",
+            '地域.required' => "行{$rowNumber}: 地域は必須です",
+            '地域.integer' => "行{$rowNumber}: 地域は1, 2, 3のいずれかを指定してください",
+            '地域.in' => "行{$rowNumber}: 地域は1(東京都), 2(大阪府), 3(福岡県)のいずれかを指定してください",
+            'ジャンル.required' => "行{$rowNumber}: ジャンルは必須です",
+            'ジャンル.integer' => "行{$rowNumber}: ジャンルは1, 2, 3, 4, 5のいずれかを指定してください",
+            'ジャンル.in' => "行{$rowNumber}: ジャンルは1(寿司), 2(焼肉), 3(イタリアン), 4(居酒屋), 5(ラーメン)のいずれかを指定してください",
+            '店舗概要.required' => "行{$rowNumber}: 店舗概要は必須です",
+            '店舗概要.max' => "行{$rowNumber}: 店舗概要は400文字以内で入力してください",
+            '画像URL.required' => "行{$rowNumber}: 画像URLは必須です",
+            '画像URL.url' => "行{$rowNumber}: 画像URLは、URL形式で「jpeg」「png」のみアップロード可能です",
+            '画像URL.regex' => "行{$rowNumber}: 画像URLは、URL形式で「jpeg」「png」のみアップロード可能です",
+        ];
+
+        $validator = Validator::make($record, [
+            '店舗名' => 'required|max:50',
+            '地域' => 'required|in:1,2,3',
+            'ジャンル' => 'required|in:1,2,3,4,5',
+            '店舗概要' => 'required|max:400',
+            '画像URL' => ['required', 'url', 'regex:/\.(jpg|png)$/i'],
+        ], $customMsgs);
+
+        if ($validator->fails()) {
+            foreach ($validator->errors()->messages() as $field => $messages) {
+                foreach ($messages as $message) {
+                    $errors[] = $message;
+                }
+            }
+
+        } else {
+        
+                Shop::create([
+                    'name' => $record['店舗名'],
+                    'area_id' => $record['地域'], 
+                    'genre_id' => $record['ジャンル'],
+                    'description' => $record['店舗概要'],
+                    'image' => $record['画像URL'],
+                ]);
+            }
+
+        $rowNumber++;
+        }
+
+        if (!empty($errors)) {
+            return back()->withErrors($errors);
+        }
+
+    return back()->with('success', 'CSVファイルのインポートが完了しました');
     }
-
 }
-

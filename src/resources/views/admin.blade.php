@@ -8,7 +8,6 @@
     <div class="container mt-5">
         <h1>管理者画面</h1>
 
-        <!-- 店舗代表者の追加 -->
         <section class="mt-4">
             <h2>店舗代表者の追加</h2>
             <form id="representativeForm" action="{{ route('admin.store.representative') }}" method="POST">
@@ -35,7 +34,6 @@
 
         <hr class="my-5">
         
-        <!-- メール送信フォーム -->
         <section class="mt-5">
             <h2>利用者へのお知らせメール送信</h2>
             <form id="notificationForm" action="{{ route('admin.send.notification') }}" method="POST">
@@ -57,9 +55,8 @@
 
         <hr class="my-5">
 
-        <!-- 口コミ確認・削除 -->
         <section class="mt-5">
-            <h2>一般ユーザーの口コミの確認・削除</h2>
+            <h2>一般ユーザーの全店舗の口コミの確認・削除</h2>
             <button id="show-reviews" type="button" class="review-show-button">全店舗の口コミを表示</button>
             <div id="review-modal" class="modal" style="display:none;">
                 <div class="modal-content">
@@ -71,24 +68,32 @@
         </section>
 
         <hr class="my-5">
+    
+   <h2 class="title">CSVインポートによる店舗追加</h2>
 
-        <!-- CSVインポートフォーム -->
-    <section class="mt-5">
-        <h2>店舗情報のCSVインポート</h2>
-        <form id="csvImportForm" action="{{ route('admin.import.csv') }}" method="POST" enctype="multipart/form-data">
-            @csrf
-            <div class="form-group">
-                <label for="csv_file">CSVファイルを選択:</label>
-                <input type="file" name="csv_file" id="csv_file" class="form-control mx-2">
-                <div class="error-messages" id="csvFileErrors"></div>
-            </div>
-            <button type="submit" class="btn btn-primary">インポート</button>
-        </form>
-        <div id="csvImportResult" class="mt-3 error-container"></div>
-    </section>
+    <form id="csvImportForm" action="{{ route('admin.import.csv') }}" method="POST" enctype="multipart/form-data">
+    @csrf
+    <div class="form-group2">
+        <label for="csv_file">CSVファイルを選択:</label>
+        <input type="file" name="csvFile" accept=".csv" class="input-file" required>
+         @if ($errors->any())
+        <div class="csv-error-messages">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </div>
+        @endif
     </div>
+        <button type="submit" class="btn btn-primary">インポート</button>
+    </form>
+        @if (session('success'))
+            <script>
+            alert(@json(session('success')));
+            </script>
+        @endif
+
 <script>
-document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('representativeForm').addEventListener('submit', function (event) {
         event.preventDefault();
 
@@ -262,50 +267,6 @@ document.addEventListener('DOMContentLoaded', function () {
             alert('削除中にエラーが発生しました: ' + error.message);
         });
     }
-});
-    
-    document.addEventListener('DOMContentLoaded', function () {
-    
-    document.getElementById('csvImportForm').addEventListener('submit', function (event) {
-        event.preventDefault();
-
-        let formData = new FormData(this);
-
-        fetch('{{ route('admin.import.csv') }}', {
-            method: 'POST',
-            headers: {
-                'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                'Accept': 'application/json',
-            },
-            body: formData,
-        })
-        .then(response => {
-            if (!response.ok) {
-                return response.json().then(errors => {
-                    throw errors;
-                });
-            }
-            return response.json();
-        })
-        .then(data => {
-            if (data.success) {
-                alert(data.message);
-                document.getElementById('csvImportForm').reset();
-                document.getElementById('csvImportResult').innerHTML = '';
-            }
-        })
-        .catch(errors => {
-            if (errors.errors) {
-                const errorField = document.getElementById('csvFileErrors');
-                if (errorField) {
-                    errorField.innerHTML = '';
-                    for (const message of errors.errors.csv_file) {
-                        errorField.innerHTML += `<p>${message}</p>`;
-                    }
-                }
-            }
-        });
-    });
 });
 </script>
 @endsection

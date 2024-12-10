@@ -1,7 +1,2 @@
-﻿店舗名,エリア,ジャンル,店舗説明,画像URL,,,,,,,,,,,,
-test,3,5,ラーメンは最高だぜ！！,https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/ramen.jpg,,,,,,,,,area_id,genre_id,,image
-,,,,,,,,,,,,,1(東京),1(寿司),,https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/sushi.jpg
-,,,,,,,,,,,,,2(大阪),2(焼肉),,https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/yakiniku.jpg
-,,,,,,,,,,,,,3(福岡),3(居酒屋),,https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/izakaya.jpg
-,,,,,,,,,,,,,,4(イタリアン),,https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/italian.jpg
-,,,,,,,,,,,,,,5(ラーメン),,https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/ramen.jpg
+﻿店舗名,地域,ジャンル,店舗概要,画像URL
+test,3,3,飲みすぎちゃった♡,https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/ramen.jpg

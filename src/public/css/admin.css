@@ -37,6 +37,15 @@ h2 {
     font-weight: bold;
 }
 
+.form-group2 label[for="csv_file"] {
+    font-size: 1.9rem;
+    margin-left: 300px;
+    text-align: center;
+    font-weight: bold;
+    position: relative;
+    top: 2px;
+}
+
 .form-inline {
     display: flex;
     flex-direction: column;
@@ -52,6 +61,7 @@ h2 {
     border-radius: 5px;
     cursor: pointer;
     margin-left: 500px;
+    margin-top: 30px;
 }
 
 .btn:hover {
@@ -152,6 +162,18 @@ h2 {
     top: 35px;
 }
 
+.csv-error-messages {
+    color: #ff0000;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: -1px;
+    display: block;
+    clear: both;
+    position: relative;
+    top: 2px;
+}
+
 .modal {
     position: fixed;
     z-index: 1050;
@@ -185,7 +207,7 @@ h2 {
     cursor: pointer;
 }
 
-.delete-review-button{
+.delete-review-button {
     padding: 10px 15px;
     font-size: 14px;
     cursor: pointer;
@@ -201,68 +223,44 @@ h2 {
 }
 
 @media (max-width: 768px) {
-    h1,
-    h2 {
-        font-size: 1.5rem;
-        text-align: center;
+
+    .btn,
+    .review-show-button {
+        margin-left: 0;
     }
 
-    .form-inline {
-        flex-direction: column;
+    .form-group label {
+        font-size: 1.5rem;
         
     }
 
-    .form-group label[for="password"],
-    .form-group label[for="name"],
-    .form-group label[for="email"],
-    .form-group label[for="subject"],
+    .form-group label[for="password"] {
+        margin-left: 0;
+    }
+
+    .form-group label[for="name"] {
+        margin-left: 0;
+    }
+
+    .form-group label[for="email"] {
+        margin-left: 0;
+    }
+
+    .form-group label[for="subject"] {
+        margin-left: 0;
+    }
+
     .form-group label[for="message"] {
-        font-size: 1.2rem;
         margin-left: 0;
-        text-align: left;
     }
 
-    .form-group input[type="text"],
-    .form-group input[type="password"],
-    .form-group input[type="email"],
+    .form-group2 label[for="csv_file"] {
+        margin-left: 0;
+    }
+
+    .form-group input,
     .form-group textarea {
-        width: 90%;
-        max-width: none;
+        max-width: 100%;
         margin-left: 0;
-    }
-
-    .btn {
-        font-size: 1rem;
-        padding: 8px 16px;
-        margin-left: 0;
-    }
-
-    .send-email-btn {
-        margin-top: 20px;
-    }
-
-    .review-show-button {
-        background-color: #007bff;
-        color: white;
-        font-size: 1.2rem;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        margin-left: 478px;
-    }
-    
-    .review-show-button:hover {
-        background-color: #0056b3;
-    }
-
-    .my-5 {
-        margin: 20px auto;
-    }
-
-    .error-messages,
-    .error-messages-message {
-        font-size: 14px;
-        top: -15px;
     }
 }
