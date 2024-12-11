@@ -146,7 +146,7 @@ php artisan schedule:run
 ・<strong>管理者画面(新店舗追加の為のCSVファイル記入例)</strong>：新店舗追加のために、[新店舗追加ファイル.csv](https://github.com/user-attachments/files/18096847/default.csv)（src > public）に店舗名、地域、ジャンル、店舗概要、画像URLをそれぞれ入力して、新店舗情報を追加することができます。<strong>※1行目のカラム名を読み取ってデータ登録を行うため、カラム名を削除したり、変更したりしないでください。店舗名は50文字以内、店舗概要は400文字以内、画像URLは後述のURLを1つ選んで入力してください。地域とジャンルはそれぞれ半角数字で入力してください。地域は「1, 2, 3」、ジャンルは「1, 2, 3, 4, 5」のいずれか1つを選んでください。</strong><br>
 ・地域の割り当て<br>
 ```bash
- 東京: 1　
+ 東京: 1
  大阪: 2 
  福岡: 3
 ```
@@ -159,6 +159,7 @@ php artisan schedule:run
 ラーメン: 5
 ```
 ・画像URL<br>
+
 1.寿司
 ```bash
 https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/sushi.jpg
