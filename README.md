@@ -22,7 +22,7 @@ Rese飲食店予約サービスアプリは、利用者(ユーザー)が飲食�
 ![サンクス画面(会員登録)](https://github.com/user-attachments/assets/a4004a69-717b-4111-a899-9efb4f271a62)
 
 <strong>ホーム画面(ログイン時)</strong>
-![ホーム画面(ログイン時)](https://github.com/user-attachments/assets/bd91d76e-657d-404a-aa70-fb6f6d05e3e5)
+![ホーム画面(ログイン時)](https://github.com/user-attachments/assets/1cbe10e9-4aff-47b9-818a-b5d1ce9bd67c)
 
 <strong>メニュー画面2(ログイン時)</strong>
 ![メニュー画面2(ログイン時)](https://github.com/user-attachments/assets/4c94d24f-86fb-4e73-a649-7b65c0b0e1af)
