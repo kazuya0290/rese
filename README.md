@@ -57,8 +57,8 @@ Rese飲食店予約サービスアプリは、利用者(ユーザー)が飲食�
 <strong>レビュー投稿サンクス画面</strong>
 ![レビューサンクス画面](https://github.com/user-attachments/assets/b9ded2da-fdf3-43dd-bbee-abd4bd03d1b8)
 
-<strong>レビュー内容確認画面</strong>
-![レビュー内容確認画面](https://github.com/user-attachments/assets/10c09b05-9d48-4b6c-92db-d3c52a11a62f)
+<strong>レビュー内容確認・編集・削除画面</strong>
+![レビュー内容確認画面3](https://github.com/user-attachments/assets/78c7883e-a39c-46e8-96b5-4f8e12238039)
 
 <strong>管理者画面(店舗代表者の追加)</strong>
 ![管理者画面(店舗代表者の追加)](https://github.com/user-attachments/assets/636cd693-8134-4bae-b4e8-5f36ea0e26c9)
