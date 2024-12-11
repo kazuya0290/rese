@@ -46,7 +46,7 @@ Rese飲食店予約サービスアプリは、利用者(ユーザー)が飲食�
 ![予約リマインダーメールの内容](https://github.com/user-attachments/assets/b7503f4e-a6e9-4eb9-bf55-7236d8b76206)
 
 <strong>レビュー投稿画面</strong>
-![レビュー投稿画面](https://github.com/user-attachments/assets/a08df26c-6aca-4977-8bbc-f23b091734e1)
+![レビュー投稿画面](https://github.com/user-attachments/assets/9c4927c0-a415-4de5-b028-a1834ab1ebf6)
 
 <strong>レビュー投稿サンクス画面</strong>
 ![レビューサンクス画面](https://github.com/user-attachments/assets/b9ded2da-fdf3-43dd-bbee-abd4bd03d1b8)
