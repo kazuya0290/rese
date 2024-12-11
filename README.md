@@ -244,14 +244,14 @@ git@github.com:kazuya0290/rese.git<br>
 24.店舗代表者による新規店舗作成機能<br>
 
 ## 使用技術(実行環境)
--Laravel Framework 8.83.8<br>
--PHP 7.4.9<br>
--JavaScript<br>
--MySQL (マイグレーションは php artisan migrate を使用)<br>
--Mailhog 1.0.1 (開発環境用のメール送受信ツール)<br>
--qrcodejs 1.0.0 (QRコード発行ライブラリ)<br>
--Stripe PHP 9.9 (決済システム)<br>
--leaguecsv 9.8<br>
+- Laravel Framework 8.83.8<br>
+- PHP 7.4.9<br>
+- JavaScript<br>
+- MySQL (マイグレーションは `php artisan migrate` を使用)<br>
+- Mailhog 1.0.1 (開発環境用のメール送受信ツール)<br>
+- qrcodejs 1.0.0 (QRコード発行ライブラリ)<br>
+- Stripe PHP 9.9 (決済システム)<br>
+- leaguecsv 9.8 (CSVファイル操作ライブラリ)<br>
 
 ## テーブル図
 ![areas](https://github.com/user-attachments/assets/d9b3ae8f-c605-4e5e-aee9-420a2c9afac9)
@@ -354,6 +354,8 @@ QRコード発行機能に simplesoftwareio/simple-qrcode ライブラリを使�
 決済機能には stripe/stripe-php を使用しています。このライブラリを利用することで、Stripe APIと簡単に連携し、オンライン決済処理を行うことができます。<br>
 3.メール送信(MailHog)<br>
 開発環境でのメール送信には MailHog を使用しています。MAIL_MAILER=smtp と MAIL_HOST=mailhog の設定により、送信されたメールは http://localhost:8025 の MailHog ダッシュボードで確認できます。MailHogは開発環境でメール送信をテストするためのツールです。<br>
+4. CSVファイル操作 (leaguecsv 9.8)<br>
+CSVファイルの読み書きには `leaguecsv/league-csv` ライブラリを使用しています。このパッケージを使用することで、CSVファイルの簡単な操作が可能となり、データのインポートやエクスポートをスムーズに行うことができます。特に、大量のデータを効率的に処理できるため、新店舗情報の一括インポートなどの処理に便利です。<br>
 
 ## URL
 - 開発環境: http://localhost/ <br>
