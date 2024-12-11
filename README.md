@@ -236,19 +236,29 @@ git@github.com:kazuya0290/rese.git<br>
 -<strong> Dockerのビルド</strong>-<br>
 
 1.リポジトリのクローン<br>
-→```git clone git@github.com:kazuya0290/rese.git```<br>
+```bash 
+git clone git@github.com:kazuya0290/rese.git
+```
 2.Dockerデスクトップを立ち上げ、作成したコンテナを起動する。<br>
 3.コンテナの起動と再ビルド<br>
-→```docker-compose up -d --build```<br>
+```bash 
+docker-compose up -d --build
+```
 
 -<strong>Laravel環境構築</strong>-<br>
 
 1.Dockerコンテナに入る<br>
-→```docker-compose exec php bash```<br>
+```bash
+docker-compose exec php bash
+```
 2.Composerのインストール<br>
-→```composer install```<br>
+```bash 
+composer install
+```
 3.「.env.example」ファイルを 「.env」ファイルに命名を変更。または、新しく.envファイルを作成<br>
-→```cp .env.example .env```<br>
+```bash 
+cp .env.example .env
+```
 4..envに以下の環境変数を追加<br>
 ```
 DB_CONNECTION=mysql
