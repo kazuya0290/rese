@@ -23,7 +23,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::post('admin.import-csv', [AdminController::class, 'importCsv'])->name('import.csv');
     Route::get('/reviews/all', [AdminController::class, 'getAllReviews'])->name('reviews.all');
 });
-    Route::delete('/reviews/{id}', [AdminController::class, 'destroy'])->name('admin.reviews.destroy');
+Route::delete('/reviews/{id}', [AdminController::class, 'destroy'])->name('admin.reviews.destroy');
 
 Route::get('/representative/login', [RepresentativeController::class, 'showLoginForm'])->name('representative.login');
 Route::post('/representative/login', [RepresentativeController::class, 'login']);
