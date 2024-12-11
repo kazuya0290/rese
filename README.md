@@ -234,7 +234,7 @@ git@github.com:kazuya0290/rese.git<br>
 
 ![reservations](https://github.com/user-attachments/assets/c2f89f76-9078-48b5-afb8-c862d56aced4)
 
-![reviews](https://github.com/user-attachments/assets/23c8c1e5-6f52-4b79-8746-413a5dea83d1)
+![reviews](https://github.com/user-attachments/assets/aca533e2-ffa6-4242-bba6-f220b19331bd)
 
 ![shops](https://github.com/user-attachments/assets/4e719628-0e3b-45b3-89a9-eece4d58a499)
 
@@ -243,7 +243,7 @@ git@github.com:kazuya0290/rese.git<br>
 ![users](https://github.com/user-attachments/assets/6e818e97-8fc4-4476-8d7b-3b7d49f23ce0)
 
 ## ER図
-![er](https://github.com/user-attachments/assets/ba5bbe11-ba8d-4921-bccd-eee107f2ea39)
+![er](https://github.com/user-attachments/assets/df0a2736-5765-43b2-81c4-15e7f9dda252)
 
 ## 環境構築
 -<strong> Dockerのビルド</strong>-<br>
