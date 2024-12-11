@@ -70,7 +70,7 @@ Rese飲食店予約サービスアプリは、利用者(ユーザー)が飲食�
 ![店舗代表者ログイン画面](https://github.com/user-attachments/assets/87f871c9-303b-46f2-bae6-aeba1c575059)
 
 <strong>店舗代表者ホーム画面</strong>
-![店舗代表者ホーム画面](https://github.com/user-attachments/assets/0a22f786-003f-4ab4-a37d-5842b96ef5f9)
+![店舗代表者ホーム画面](https://github.com/user-attachments/assets/437a9acc-00db-4675-9bbc-3bd61362ade4)
 
 <strong>店舗代表者ホーム画面2</strong>
 ![店舗代表者ホーム画面2](https://github.com/user-attachments/assets/12ee82cc-89f4-4079-98ee-7a5354c8c436)
