@@ -279,11 +279,17 @@ STRIPE_KEY=pk_test_51QCaiKINecNlWRFz1faiSxHyYUW6BKkysgHeSitbGAU0VJjH3HGdYFEcAlZx
 STRIPE_SECRET=sk_test_51QCaiKINecNlWRFzZ15SXBwdCEs5c1gX1Yo7W0ArQ4g5jDqY3Qji3TFOyOtLcc9g8fJvfRcnwSGtO4IUhfMswSsx00OTvsCtV9
 ```
 5.アプリケーションキーの作成<br>
-→```php artisan key:generate```<br>
+```bash
+php artisan key:generate
+```
 6.マイグレーションの実行<br>
-→```php artisan migrate```<br>
+```bash
+php artisan migrate
+```
 7.シーディングの実行(データ・ダミーデータの挿入)<br>
-→```php artisan db:seed```<br>
+```bash
+php artisan db:seed
+```
 
 -<strong>使用するパッケージについて</strong>-<br>
 
