@@ -28,7 +28,7 @@ Rese飲食店予約サービスアプリは、利用者(ユーザー)が飲食�
 ![メニュー画面2(ログイン時)](https://github.com/user-attachments/assets/4c94d24f-86fb-4e73-a649-7b65c0b0e1af)
 
 <strong>店舗詳細画面</strong>
-![店舗詳細画面](https://github.com/user-attachments/assets/56cd9ecb-2c43-445c-b57a-783ffe84b915)
+![店舗詳細画面](https://github.com/user-attachments/assets/91681070-5038-4428-bce8-0ae924389060)
 
 <strong>Stripe決済画面</strong>
 ![Stripe決済画面](https://github.com/user-attachments/assets/bd51be15-f2ce-4659-a39a-74fccc5a3538)
