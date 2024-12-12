@@ -221,6 +221,13 @@
                         <button class="delete-review-button" data-review-id="${review.id}">削除</button>
                     </div>`;
             });
+            
+            document.querySelectorAll('.review-item img').forEach(img => {
+                img.addEventListener('click', function () {
+                    const imageUrl = this.src;
+                    window.open(imageUrl, '_blank');
+                });
+            });
 
             document.querySelectorAll('.delete-review-button').forEach(button => {
                 button.addEventListener('click', function () {
