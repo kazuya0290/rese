@@ -334,8 +334,6 @@ MAIL_PASSWORD=null
 MAIL_ENCRYPTION=null
 MAIL_FROM_ADDRESS=example@example.com
 MAIL_FROM_NAME="Example"
-STRIPE_KEY=pk_test_51QCaiKINecNlWRFz1faiSxHyYUW6BKkysgHeSitbGAU0VJjH3HGdYFEcAlZxJNkHUiBAhju7eyklW2AGn2mqS2zd00B4Xp1iSg
-STRIPE_SECRET=sk_test_51QCaiKINecNlWRFzZ15SXBwdCEs5c1gX1Yo7W0ArQ4g5jDqY3Qji3TFOyOtLcc9g8fJvfRcnwSGtO4IUhfMswSsx00OTvsCtV9
 ```
 5.アプリケーションキーの作成<br>
 ```bash
